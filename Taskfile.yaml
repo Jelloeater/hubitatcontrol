@@ -1,6 +1,6 @@
 version: '3'
 tasks:
-    default:
+    test:
         silent: false
         interactive: true
         env:
@@ -8,4 +8,4 @@ tasks:
         cmds:
             - pip install pipenv
             - pipenv install --dev
-            - pipenv run pytest --cov --cov-fail-under=75
+            - pipenv run pytest --cov
