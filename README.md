@@ -25,7 +25,11 @@ task test
 
 ## Usage
 
+- You will need to fill out the .env file for the API to work.
+
 ```python
+from dotenv import load_dotenv
+load_dotenv()
 import Hubitat
 
 h = Hubitat.Hub()
