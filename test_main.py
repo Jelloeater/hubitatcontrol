@@ -1,9 +1,13 @@
+import os
 
 import pytest
 from dotenv import load_dotenv
-import Hubitat as Hubitat
 
 load_dotenv()
+host_env = os.getenv("HUBITAT_HOST")
+token_env = os.getenv("HUBITAT_API_TOKEN")
+app_id_env = os.getenv("HUBITAT_API_APP_ID")
+import src.HubitatMaker as Hubitat
 
 
 def test_creds():
@@ -13,7 +17,7 @@ def test_creds():
 
 
 def test_hub_get():
-    h = Hubitat.Hub()
+    h = Hubitat.Hub(host=host_env, token=token_env, app_id=app_id_env)
     if h.devices is not None:
         pytest.hub = h
         assert True
@@ -23,22 +27,22 @@ def test_hub_get():
 
 
 def test_lookup_device():
-    h = Hubitat.Hub()
+    h = Hubitat.Hub(host=host_env, token=token_env, app_id=app_id_env)
     p = h.get_device('Porch')
     assert p is not None
 
 
 def test_init_device():
-    h = Hubitat.Hub()
+    h = Hubitat.Hub(host=host_env, token=token_env, app_id=app_id_env)
     d = h.get_device('Porch')
-    device = Hubitat.Device(d)
+    device = Hubitat.Device(hub=h, device_from_hub=d)
     assert device is not None
 
 
 def test_send_device_command():
-    h = Hubitat.Hub()
+    h = Hubitat.Hub(host=host_env, token=token_env, app_id=app_id_env)
     d = h.get_device('Porch')
-    test_bulb = Hubitat.Bulb(d)
+    test_bulb = Hubitat.Bulb(device_from_hub=d)
 
     test_bulb.turn_on()
     assert test_bulb.switch == 'on'
