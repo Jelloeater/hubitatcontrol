@@ -1,25 +1,20 @@
 """Hubitat Maker API"""
 __version__ = "0.1.0"
-import os
+
 import time
 import requests
 
 
-class Hubitat:
-    def __init__(self, cloud: bool = False):
-        self.host = os.getenv("HUBITAT_HOST")
-        self.cloud_id = os.getenv("HUBITAT_CLOUD_ID")
-        self.token = os.getenv("HUBITAT_API_TOKEN")
-        self.app_id = os.getenv("HUBITAT_API_APP_ID")
-        if cloud:
+class Hub:
+    def __init__(self, host, token, app_id, cloud_id=None):
+        self.host = host
+        self.cloud_id = cloud_id
+        self.token = token
+        self.app_id = app_id
+        if cloud_id:
             self.base_url_prefix = self.host + "/api/" + self.cloud_id + "/apps/" + self.app_id + "/devices"
         else:
             self.base_url_prefix = self.host + "/apps/api/" + self.app_id + "/devices"
-
-
-class Hub(Hubitat):
-    def __init__(self):
-        super().__init__()
 
     @property
     def devices(self) -> list:
@@ -28,15 +23,16 @@ class Hub(Hubitat):
         )
         return r.json()
 
-    def get_device(self, name: str) -> int:
+    def get_device(self, name: str) -> dict:
         for i in self.devices:
             if i['label'] == name:
                 return i
 
 
-class Device(Hubitat):
-    def __init__(self, device_from_hub):
-        super().__init__()
+class Device:
+    def __init__(self, hub: Hub, device_from_hub: dict):
+        self.token = hub.token
+        self.base_url_prefix = hub.base_url_prefix
         self.name = device_from_hub['name']
         self.label = device_from_hub['label']
         self.type = device_from_hub['type']
