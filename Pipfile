@@ -7,6 +7,7 @@ name = "pypi"
 requests = "*"
 
 [dev-packages]
+flit = "*"
 pytest = "*"
 pytest-cov = "*"
 pytest-pycharm = "*"
