@@ -1,7 +1,9 @@
+"""Hubitat Maker API"""
+__version__ = "0.1.0"
 import os
 import time
-
 import requests
+
 
 class Hubitat:
     def __init__(self, cloud: bool = False):
