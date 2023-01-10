@@ -5,7 +5,10 @@ tasks:
         - task: build
     build:
         cmds:
-            - flit build
+            - pipenv clean
+            - pipenv install
+            - pipenv graph
+            - pipenv run flit build
     test:
         silent: false
         interactive: true
