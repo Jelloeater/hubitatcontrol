@@ -1,5 +1,11 @@
 version: '3'
 tasks:
+    default:
+        - task: test
+        - task: build
+    build:
+        cmds:
+            - flit build
     test:
         silent: false
         interactive: true
