@@ -5,6 +5,7 @@ tasks:
         - task: build
     clean:
         - pipenv clean
+        - rm -rf dist
     build:
         cmds:
             - pipenv install
@@ -21,6 +22,6 @@ tasks:
             - pipenv run isort --recursive --diff .
             - pipenv run pytest --cov
     install:
-        - task: build
-        - deactivate
         - flit install --user
+    uninstall:
+        - pip uninstall hubitatcontrol -y
