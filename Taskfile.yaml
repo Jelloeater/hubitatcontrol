@@ -3,9 +3,10 @@ tasks:
     default:
         - task: test
         - task: build
+    clean:
+        - pipenv clean
     build:
         cmds:
-            - pipenv clean
             - pipenv install
             - pipenv graph
             - pipenv run flit build
