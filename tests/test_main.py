@@ -1,8 +1,6 @@
 import os
-
-import pytest
 from dotenv import load_dotenv
-import hubitatcontrol as Hubitat
+import src.hubitatcontrol as Hubitat
 load_dotenv()
 host_env = os.getenv("HUBITAT_HOST")
 token_env = os.getenv("HUBITAT_API_TOKEN")
@@ -18,10 +16,8 @@ def test_creds():
 def test_hub_get():
     h = Hubitat.Hub(host=host_env, token=token_env, app_id=app_id_env)
     if h.devices is not None:
-        pytest.hub = h
         assert True
     else:
-        pytest.hub = None
         assert False
 
 
