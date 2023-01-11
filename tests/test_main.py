@@ -2,7 +2,7 @@ import os
 
 import pytest
 from dotenv import load_dotenv
-import HubitatMaker as Hubitat
+import hubitatcontrol as Hubitat
 load_dotenv()
 host_env = os.getenv("HUBITAT_HOST")
 token_env = os.getenv("HUBITAT_API_TOKEN")

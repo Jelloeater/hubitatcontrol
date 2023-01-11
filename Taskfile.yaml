@@ -20,3 +20,7 @@ tasks:
             - pipenv install --dev
             - pipenv run isort --recursive --diff .
             - pipenv run pytest --cov
+    install:
+        - task: build
+        - deactivate
+        - flit install --user
