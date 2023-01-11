@@ -8,6 +8,7 @@ requests = "*"
 
 [dev-packages]
 flit = "*"
+isort = "*"
 pytest = "*"
 pytest-cov = "*"
 pytest-pycharm = "*"
