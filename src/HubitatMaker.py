@@ -81,8 +81,8 @@ class Device:
 
 
 class Bulb(Device):
-    def __init__(self, device_from_hub):
-        super().__init__(device_from_hub)
+    def __init__(self, hub, device_from_hub):
+        super().__init__(hub, device_from_hub=device_from_hub)
 
     @property
     def switch(self):
