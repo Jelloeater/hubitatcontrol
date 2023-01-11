@@ -1,4 +1,4 @@
-# Hubitat-Maker-API
+# Hubitat Control
 
 Hubitat Elevation Maker API Interface (with Requests)
 
@@ -30,7 +30,7 @@ task test
 ```python
 from dotenv import load_dotenv
 load_dotenv()
-import Hubitat
+import hubitat-control as Hubitat
 
 h = Hubitat.Hub()
 d = h.get_device('Living Room')
