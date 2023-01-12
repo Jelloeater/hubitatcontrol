@@ -22,7 +22,7 @@ tasks:
         cmds:
             - pip install pipenv
             - pipenv install --dev
-            - pipenv run isort --recursive --diff .
+            - pipenv run isort --diff .
             - pipenv run pytest --cov
     install:
         - flit install --user
