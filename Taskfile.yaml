@@ -7,9 +7,12 @@ tasks:
         - pipenv clean
         - rm -rf dist
     build:
+        env:
+            PIPENV_IGNORE_VIRTUALENVS: 1
         cmds:
             - pipenv install
             - pipenv graph
+            - pipenv run pdoc3 src -o docs -f
             - pipenv run flit build
     test:
         silent: false
