@@ -11,6 +11,12 @@ Please note, this is a WIP.
 - Install Go-Task (<https://taskfile.dev/>)(Optional, it's NEAT!)
   - Linux (`sudo snap install task --classic`)
 
+## TODO:
+- Add rest of bulb options
+- Outlet 
+- Thermostat
+- Door Lock
+
 ## Test
 
 ```sh
