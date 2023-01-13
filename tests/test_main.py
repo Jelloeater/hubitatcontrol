@@ -1,11 +1,12 @@
 import os
 from dotenv import load_dotenv
 import src.hubitatcontrol as Hubitat
+
 load_dotenv()
 host_env = os.getenv("HUBITAT_HOST")
 token_env = os.getenv("HUBITAT_API_TOKEN")
 app_id_env = os.getenv("HUBITAT_API_APP_ID")
-
+test_device_name = 'Lou Task'
 
 def test_creds():
     import os
@@ -23,21 +24,35 @@ def test_hub_get():
 
 def test_lookup_device():
     h = Hubitat.Hub(host=host_env, token=token_env, app_id=app_id_env)
-    p = h.get_device('Porch')
+    p = h.get_device(test_device_name)
     assert p is not None
 
 
 def test_init_device():
     h = Hubitat.Hub(host=host_env, token=token_env, app_id=app_id_env)
-    d = h.get_device('Porch')
+    d = h.get_device(test_device_name)
     device = Hubitat.Device(hub=h, device_from_hub=d)
     assert device is not None
 
 
-def test_send_device_command():
+def test_device_basic():
     h = Hubitat.Hub(host=host_env, token=token_env, app_id=app_id_env)
-    d = h.get_device('Porch')
-    test_bulb = Hubitat.Bulb(h, d)
+    d = h.get_device(test_device_name)
+    device = Hubitat.Device(hub=h, device_from_hub=d)
+    for i in device.commands:
+        assert i
+    for i in device.capabilities:
+        assert i
+    for i in device.history:
+        assert i
+    for i in device.attributes:
+        assert i
+
+
+def test_device_bulb():
+    h = Hubitat.Hub(host=host_env, token=token_env, app_id=app_id_env)
+    d = h.get_device(test_device_name)
+    test_bulb = Hubitat.RGB_Bulb(h, d)
 
     test_bulb.turn_on()
     assert test_bulb.switch == 'on'
@@ -45,5 +60,3 @@ def test_send_device_command():
     assert test_bulb.switch == 'off'
     test_bulb.turn_on()
     assert test_bulb.switch == 'on'
-    test_bulb.turn_off()
-    assert test_bulb.switch == 'off'

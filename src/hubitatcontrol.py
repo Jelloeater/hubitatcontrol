@@ -81,15 +81,41 @@ class Device:
 
 
 class Bulb(Device):
-    def __init__(self, hub, device_from_hub):
-        super().__init__(hub, device_from_hub=device_from_hub)
-
     @property
     def switch(self):
         return [x for x in self.attributes if "switch" in x["name"]][0]['currentValue']
+
+    @property
+    def level(self):
+        return [x for x in self.attributes if "level" in x["name"]][0]['currentValue']
 
     def turn_on(self):
         self.send_device_command(command='on')
 
     def turn_off(self):
         self.send_device_command(command='off')
+
+
+class RGB_Bulb(Bulb):
+    def __init__(self, hub, device_from_hub):
+        super().__init__(hub, device_from_hub=device_from_hub)
+
+    @property
+    def color_mode(self):
+        return [x for x in self.attributes if "colorMode" in x["name"]][0]['currentValue']
+
+    @property
+    def color_name(self):
+        return [x for x in self.attributes if "colorName" in x["name"]][0]['currentValue']
+
+    @property
+    def color(self):
+        return [x for x in self.attributes if "color" in x["name"]][0]['currentValue']
+
+    @property
+    def color_temp(self):
+        return [x for x in self.attributes if "colorTemperature" in x["name"]][0]['currentValue']
+
+    @property
+    def hue(self):
+        return [x for x in self.attributes if "hue" in x["name"]][0]['currentValue']
