@@ -2,6 +2,8 @@
 __version__ = "0.1.0"
 
 import time
+from typing import Callable
+
 import requests
 
 
@@ -23,10 +25,17 @@ class Hub:
         )
         return r.json()
 
-    def get_device(self, name: str) -> dict:
+    def get_device(self, name: str) -> object:
         for i in self.devices:
             if i['label'] == name:
                 return i
+
+    # TODO Work on returning class obj from Hub call
+    # def return_dev_class(self, i) -> object:
+    #     d = Device(self, i)
+    #     if d.type == 'Advanced Zigbee RGBW Bulb':
+    #         x = Advanced_Zigbee_RGBW_Bulb(self, d)
+    #         return Advanced_Zigbee_RGBW_Bulb(self, device_from_hub=d)
 
 
 class Device:
@@ -96,8 +105,8 @@ class Bulb(Device):
         self.send_device_command(command='off')
 
 
-class RGB_Bulb(Bulb):
-    def __init__(self, hub, device_from_hub):
+class Advanced_Zigbee_RGBW_Bulb(Bulb):
+    def __init__(self, hub: Hub, device_from_hub):
         super().__init__(hub, device_from_hub=device_from_hub)
 
     @property
