@@ -5,32 +5,12 @@ Hubitat Maker API
 Classes
 -------
 
-`Bulb(hub, device_from_hub)`
-:   
-
-    ### Ancestors (in MRO)
-
-    * src.hubitatcontrol.Device
-
-    ### Instance variables
-
-    `switch`
-    :
-
-    ### Methods
-
-    `turn_off(self)`
-    :
-
-    `turn_on(self)`
-    :
-
 `Device(hub: src.hubitatcontrol.Hub, device_from_hub: dict)`
 :   
 
     ### Descendants
 
-    * src.hubitatcontrol.Bulb
+    * src.lights.Bulb
 
     ### Instance variables
 
@@ -61,5 +41,5 @@ Classes
 
     ### Methods
 
-    `get_device(self, name: str) ‑> dict`
+    `get_device(self, name: str) ‑> object`
     :

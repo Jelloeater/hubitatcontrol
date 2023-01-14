@@ -1,4 +1,4 @@
-from hubitatcontrol import *
+from src.hubitatcontrol import *
 
 
 class Bulb(Device):
