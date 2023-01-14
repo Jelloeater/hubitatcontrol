@@ -1,8 +1,7 @@
 """Hubitat Maker API"""
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 import time
-from typing import Callable
 
 import requests
 
