@@ -1,13 +1,13 @@
 import os
 from dotenv import load_dotenv
 
-import src.hubitatcontrol as Hubitat
+import hubitatcontrol as Hubitat
+import lights
 
 load_dotenv()
 host_env = os.getenv("HUBITAT_HOST")
 token_env = os.getenv("HUBITAT_API_TOKEN")
 app_id_env = os.getenv("HUBITAT_API_APP_ID")
-test_device_name = 'Porch'
 
 
 def test_creds():
@@ -22,6 +22,9 @@ def test_hub_get():
         assert True
     else:
         assert False
+
+
+test_device_name = 'Porch'
 
 
 def test_lookup_device():
@@ -51,10 +54,11 @@ def test_device_basic():
         assert i
 
 
+
 def test_device_bulb():
     h = Hubitat.Hub(host=host_env, token=token_env, app_id=app_id_env)
     d = h.get_device(test_device_name)
-    test_bulb = Hubitat.Advanced_Zigbee_RGBW_Bulb(h, d)
+    test_bulb = lights.Advanced_Zigbee_RGBW_Bulb(h, d)
 
     test_bulb.turn_on()
     assert test_bulb.switch == 'on'

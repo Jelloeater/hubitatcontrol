@@ -19,12 +19,26 @@ Hub --> Device --> Bulb --> Advanced_Zigbee_RGBW_Bulb
 ```
 
 ## TODO
-
-- [ ] Add rest of bulb options
-- [ ] Outlet
-- [ ] Thermostat
-- [ ] Door Lock
-
+- Advanced Zigbee RGBW Bulb
+  - Add rest of bulb options
+## Missing Devices
+- Bulb
+  - hueBridgeBulb
+  - hueBridgeBulbCT
+  - hueBridgeBulbRGBW
+- Switch
+  - Generic Z-Wave Plus Scene Switch
+- Outlet
+  - Generic Zigbee Outlet
+- Thermostat
+  - Ecobee Thermostat
+- Door Lock
+  - Generic Z-Wave Lock
+- Dimmer
+  - Leviton DZ6HD Z-Wave Dimmer
+- Other Devices
+  - Generic Zigbee Contact Sensor (no temp)
+  - Sonoff Zigbee Button Controller
 ## Test
 
 ```sh
