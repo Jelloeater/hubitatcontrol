@@ -12,7 +12,7 @@ tasks:
         cmds:
             - pipenv install
             - pipenv graph
-            - pipenv run pdoc3 src -o docs -f
+            - pipenv run pdoc3 hubitatcontrol -o docs -f
             - pipenv run flit build
     test:
         silent: false
@@ -27,4 +27,4 @@ tasks:
     install:
         - flit install --user
     uninstall:
-        - pip uninstall src -y
+        - pip uninstall hubitatcontrol -y
