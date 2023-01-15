@@ -1,7 +1,8 @@
-Namespace src
-=============
+Module src
+==========
+Hubitat Maker API
 
 Sub-modules
 -----------
-* src.hubitatcontrol
 * src.lights
+* src.main

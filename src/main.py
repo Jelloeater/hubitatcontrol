@@ -1,6 +1,3 @@
-"""Hubitat Maker API"""
-__version__ = "0.1.1"
-
 import time
 
 import requests

@@ -1,11 +1,10 @@
-Module src.hubitatcontrol
-=========================
-Hubitat Maker API
+Module src.main
+===============
 
 Classes
 -------
 
-`Device(hub: src.hubitatcontrol.Hub, device_from_hub: dict)`
+`Device(hub: src.main.Hub, device_from_hub: dict)`
 :   
 
     ### Descendants
