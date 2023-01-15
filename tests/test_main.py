@@ -2,8 +2,8 @@ import os
 
 from dotenv import load_dotenv
 
-from main import Hub, Device
-from lights import Advanced_Zigbee_RGBW_Bulb
+from hubitatcontrol.main import *
+from hubitatcontrol.lights import *
 
 load_dotenv()
 host_env = os.getenv("HUBITAT_HOST")
