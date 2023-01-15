@@ -2,6 +2,9 @@ import time
 
 import requests
 
+import lights
+import main
+from hubitatcontrol import *
 
 class Hub:
     def __init__(self, host, token, app_id, cloud_id=None):
@@ -21,17 +24,15 @@ class Hub:
         )
         return r.json()
 
-    def get_device(self, name: str) -> object:
+    def get_device(self, name: str):
         for i in self.devices:
             if i['label'] == name:
-                return i
+                return self.__return_device__(i)
 
-    # TODO Work on returning class obj from Hub call
-    # def return_dev_class(self, i) -> object:
-    #     d = Device(self, i)
-    #     if d.type == 'Advanced Zigbee RGBW Bulb':
-    #         x = Advanced_Zigbee_RGBW_Bulb(self, d)
-    #         return Advanced_Zigbee_RGBW_Bulb(self, device_from_hub=d)
+    def __return_device__(self, i):
+        d = Device(self, i)
+        if d.type == 'Advanced Zigbee RGBW Bulb':
+            return lights.Advanced_Zigbee_RGBW_Bulb(hub=self, device_from_hub=i)
 
 
 class Device:
