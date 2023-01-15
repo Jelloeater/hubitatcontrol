@@ -4,13 +4,13 @@ Module src.lights
 Classes
 -------
 
-`Advanced_Zigbee_RGBW_Bulb(hub: src.hubitatcontrol.Hub, device_from_hub)`
+`Advanced_Zigbee_RGBW_Bulb(hub: src.main.Hub, device_from_hub)`
 :   
 
     ### Ancestors (in MRO)
 
     * src.lights.Bulb
-    * src.hubitatcontrol.Device
+    * src.main.Device
 
     ### Instance variables
 
@@ -29,12 +29,12 @@ Classes
     `hue`
     :
 
-`Bulb(hub: src.hubitatcontrol.Hub, device_from_hub: dict)`
+`Bulb(hub: src.main.Hub, device_from_hub: dict)`
 :   
 
     ### Ancestors (in MRO)
 
-    * src.hubitatcontrol.Device
+    * src.main.Device
 
     ### Descendants
 
