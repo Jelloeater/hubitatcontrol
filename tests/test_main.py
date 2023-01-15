@@ -55,11 +55,9 @@ def test_device_basic():
         assert i
 
 
-
 def test_device_bulb():
     h = Hub(host=host_env, token=token_env, app_id=app_id_env)
-    d = h.get_device(test_device_name)
-    test_bulb = Advanced_Zigbee_RGBW_Bulb(h, d)
+    test_bulb = h.get_device(test_device_name)
 
     test_bulb.turn_on()
     assert test_bulb.switch == 'on'

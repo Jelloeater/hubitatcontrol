@@ -1,7 +1,8 @@
+import main
 from hubitatcontrol.main import *
 
 
-class Bulb(Device):
+class Bulb(main.Device):
     @property
     def switch(self):
         return [x for x in self.attributes if "switch" in x["name"]][0]['currentValue']
@@ -18,9 +19,6 @@ class Bulb(Device):
 
 
 class Advanced_Zigbee_RGBW_Bulb(Bulb):
-    def __init__(self, hub: Hub, device_from_hub):
-        super().__init__(hub, device_from_hub=device_from_hub)
-
     @property
     def color_mode(self):
         return [x for x in self.attributes if "colorMode" in x["name"]][0]['currentValue']
