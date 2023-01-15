@@ -1,8 +1,9 @@
 import os
+
 from dotenv import load_dotenv
 
-import hubitatcontrol as Hubitat
-import lights
+from hubitatcontrol.main import Hub, Device
+from hubitatcontrol.lights import Advanced_Zigbee_RGBW_Bulb
 
 load_dotenv()
 host_env = os.getenv("HUBITAT_HOST")
@@ -17,7 +18,7 @@ def test_creds():
 
 
 def test_hub_get():
-    h = Hubitat.Hub(host=host_env, token=token_env, app_id=app_id_env)
+    h = Hub(host=host_env, token=token_env, app_id=app_id_env)
     if h.devices is not None:
         assert True
     else:
@@ -28,22 +29,22 @@ test_device_name = 'Porch'
 
 
 def test_lookup_device():
-    h = Hubitat.Hub(host=host_env, token=token_env, app_id=app_id_env)
+    h = Hub(host=host_env, token=token_env, app_id=app_id_env)
     p = h.get_device(test_device_name)
     assert p is not None
 
 
 def test_init_device():
-    h = Hubitat.Hub(host=host_env, token=token_env, app_id=app_id_env)
+    h = Hub(host=host_env, token=token_env, app_id=app_id_env)
     d = h.get_device(test_device_name)
-    device = Hubitat.Device(hub=h, device_from_hub=d)
+    device = Device(hub=h, device_from_hub=d)
     assert device is not None
 
 
 def test_device_basic():
-    h = Hubitat.Hub(host=host_env, token=token_env, app_id=app_id_env)
+    h = Hub(host=host_env, token=token_env, app_id=app_id_env)
     d = h.get_device(test_device_name)
-    device = Hubitat.Device(hub=h, device_from_hub=d)
+    device = Device(hub=h, device_from_hub=d)
     for i in device.commands:
         assert i
     for i in device.capabilities:
@@ -56,9 +57,9 @@ def test_device_basic():
 
 
 def test_device_bulb():
-    h = Hubitat.Hub(host=host_env, token=token_env, app_id=app_id_env)
+    h = Hub(host=host_env, token=token_env, app_id=app_id_env)
     d = h.get_device(test_device_name)
-    test_bulb = lights.Advanced_Zigbee_RGBW_Bulb(h, d)
+    test_bulb = Advanced_Zigbee_RGBW_Bulb(h, d)
 
     test_bulb.turn_on()
     assert test_bulb.switch == 'on'
