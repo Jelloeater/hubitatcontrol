@@ -1,15 +1,15 @@
-Module src.main
-===============
+Module hubitatcontrol.main
+==========================
 
 Classes
 -------
 
-`Device(hub: src.main.Hub, device_from_hub: dict)`
+`Device(hub: hubitatcontrol.main.Hub, device_from_hub: dict)`
 :   
 
     ### Descendants
 
-    * src.lights.Bulb
+    * hubitatcontrol.lights.Bulb
 
     ### Instance variables
 
