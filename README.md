@@ -3,20 +3,21 @@
 Hubitat Elevation Maker API Interface (with Requests)
 
 ## Roadmap
-### v.5 (Bulbs) <-- IN PROGRESS
+### v0.5
 - [ ] Advanced Zigbee RGBW Bulb
-### v.7 (Switches & Outlets)
-- [ ] Generic Z-Wave Plus Scene Switch
+### v0.7
 - [ ] Generic Zigbee Outlet
+### v0.8
+- [ ] Generic Z-Wave Plus Scene Switch
 - [ ] Leviton DZ6HD Z-Wave Dimmer
-### v1.0 (Hue Bulbs)
+### v1.0
 - [ ] hueBridgeBulb
 - [ ] hueBridgeBulbCT
 - [ ] hueBridgeBulbRGBW
-### v1.5 (Other Devices)
+### v1.5
 - [ ] Ecobee Thermostat
 - [ ] Generic Z-Wave Lock
-### v2 (External Control)
+### v2.0
 - [ ] Generic Zigbee Contact Sensor (no temp)
 - [ ] Sonoff Zigbee Button Controller
 
