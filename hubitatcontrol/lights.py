@@ -1,8 +1,7 @@
-import main
-from hubitatcontrol.main import *
+from hubitatcontrol.hub import Device
 
 
-class Bulb(main.Device):
+class Bulb(Device):
     @property
     def switch(self):
         return [x for x in self.attributes if "switch" in x["name"]][0]['currentValue']
