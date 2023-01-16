@@ -25,18 +25,9 @@ def test_hub_get():
         assert False
 
 
-test_device_name = 'Porch'
-
-
-def test_lookup_device():
-    h = Hub(host=host_env, token=token_env, app_id=app_id_env)
-    p = h.get_device(test_device_name)
-    assert p is not None
-
-
 def test_device_bulb():
     h = Hub(host=host_env, token=token_env, app_id=app_id_env)
-    test_bulb = lookup_device(h, test_device_name)
+    test_bulb = lookup_device(h, 'Porch')
 
     test_bulb.turn_on()
     assert test_bulb.switch == 'on'
@@ -44,3 +35,9 @@ def test_device_bulb():
     assert test_bulb.switch == 'off'
     test_bulb.turn_on()
     assert test_bulb.switch == 'on'
+
+
+# def test_device_outlet():
+#     h = Hub(host=host_env, token=token_env, app_id=app_id_env)
+#     t = lookup_device(h, 'Den Outlet')
+#     assert t
