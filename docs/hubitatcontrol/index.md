@@ -5,5 +5,11 @@ Hubitat Maker API
 Sub-modules
 -----------
 * hubitatcontrol.hub
-* hubitatcontrol.hubitatcontrol
 * hubitatcontrol.lights
+
+Functions
+---------
+
+    
+`lookup_device(hub, device_lookup)`
+:

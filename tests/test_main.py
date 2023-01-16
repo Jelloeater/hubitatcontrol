@@ -2,7 +2,7 @@ import os
 
 from dotenv import load_dotenv
 
-from hubitatcontrol.main import lookup_device
+from hubitatcontrol import *
 from hubitatcontrol.hub import Hub
 
 load_dotenv()
