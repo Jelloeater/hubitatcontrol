@@ -4,17 +4,19 @@ Module hubitatcontrol.generic
 Classes
 -------
 
-`ZigbeeOutlet(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
+`Switch(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
 :   
 
     ### Ancestors (in MRO)
 
     * hubitatcontrol.hub.Device
 
-    ### Instance variables
+    ### Descendants
 
-    `power: int`
-    :   Returns power usage
+    * hubitatcontrol.generic.ZigbeeOutlet
+    * hubitatcontrol.lights.Bulb
+
+    ### Instance variables
 
     `switch: str`
     :   Returns either (on or off)
@@ -26,3 +28,16 @@ Classes
 
     `turn_on(self)`
     :
+
+`ZigbeeOutlet(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
+:   
+
+    ### Ancestors (in MRO)
+
+    * hubitatcontrol.generic.Switch
+    * hubitatcontrol.hub.Device
+
+    ### Instance variables
+
+    `power: int`
+    :   Returns power usage

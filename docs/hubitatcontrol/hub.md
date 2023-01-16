@@ -9,8 +9,7 @@ Classes
 
     ### Descendants
 
-    * hubitatcontrol.generic.ZigbeeOutlet
-    * hubitatcontrol.lights.Bulb
+    * hubitatcontrol.generic.Switch
 
     ### Instance variables
 
