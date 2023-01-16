@@ -33,33 +33,20 @@ Hubitat Elevation Maker API Interface (with Requests)
 
 ```mermaid
 flowchart LR
-Hub --> Device --> Bulb --> Advanced_Zigbee_RGBW_Bulb
+Hub --> Device --> Abstract_Device_Class --> Specific_Device
 ```
 ## Test
 
 ```sh
-task test
+task
 ```
 
-**OR**
-
-- `pip install pipenv`
-- `pipenv install --dev`
-- `pipenv run pytest --cov`
-
 ## Usage
-
-- You will need to fill out the .env file for the API to work.
-
 ```python
-from dotenv import load_dotenv
-load_dotenv()
-import hubitat-control as Hubitat
-
-h = Hubitat.Hub()
-d = h.get_device('Living Room')
-test_bulb = Hubitat.Bulb(d)
-
-test_bulb.turn_on()
-assert test_bulb.switch == 'on'
+from hubitatcontrol import *
+h = get_hub(host='Hubitat_IP_or_Hostname', token='Maker_Token', app_id='Maker_App_ID')
+d = lookup_device(h, 'Device_Name')
+print(d.switch)
+d.turn_on()
+print(d.switch)
 ```
