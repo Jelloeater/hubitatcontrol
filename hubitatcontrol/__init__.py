@@ -1,12 +1,15 @@
 """Hubitat Maker API"""
 __version__ = "0.1.1"
 
+from hubitatcontrol.hub import Hub
 from hubitatcontrol.lights import *
 
 
-# TODO Add hub get function
+def get_hub(host, token, app_id) -> Hub:
+    return Hub(host=host, token=token, app_id=app_id)
 
-def lookup_device(hub, device_lookup):
-    d = hub.get_device(device_lookup)
+
+def lookup_device(hub_in, device_lookup):
+    d = hub_in.get_device(device_lookup)
     if d['type'] == 'Advanced Zigbee RGBW Bulb':
-        return Advanced_Zigbee_RGBW_Bulb(device_from_hub=d, hub=hub)
+        return Advanced_Zigbee_RGBW_Bulb(device_from_hub=d, hub=hub_in)

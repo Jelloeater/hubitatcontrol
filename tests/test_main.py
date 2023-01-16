@@ -3,7 +3,6 @@ import os
 from dotenv import load_dotenv
 
 from hubitatcontrol import *
-from hubitatcontrol.hub import Hub
 
 load_dotenv()
 host_env = os.getenv("HUBITAT_HOST")
@@ -26,7 +25,7 @@ def test_hub_get():
 
 
 def test_device_bulb():
-    h = Hub(host=host_env, token=token_env, app_id=app_id_env)
+    h = get_hub(host=host_env, token=token_env, app_id=app_id_env)
     test_bulb = lookup_device(h, 'Porch')
 
     test_bulb.turn_on()
