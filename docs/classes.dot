@@ -1,0 +1,14 @@
+digraph "classes" {
+rankdir=BT
+charset="utf-8"
+"hubitatcontrol.lights.Advanced_Zigbee_RGBW_Bulb" [color="black", fontcolor="black", label="{Advanced_Zigbee_RGBW_Bulb|color\lcolor_mode\lcolor_name\lcolor_temp\lhue\l|}", shape="record", style="solid"];
+"hubitatcontrol.lights.Bulb" [color="black", fontcolor="black", label="{Bulb|level\l|}", shape="record", style="solid"];
+"hubitatcontrol.hub.Device" [color="black", fontcolor="black", label="{Device|attributes\lbase_url_prefix\lcapabilities\lcommands\lhistory\lid\llabel\lname\ltoken\ltype\l|send_device_command(command: str, secondary_command: str): requests.Response\l}", shape="record", style="solid"];
+"hubitatcontrol.hub.Hub" [color="black", fontcolor="black", label="{Hub|app_id\lbase_url_prefix\lcloud_id : NoneType\ldevices\lhost\ltoken\l|get_device(name: str)\l}", shape="record", style="solid"];
+"hubitatcontrol.generic.Switch" [color="black", fontcolor="black", label="{Switch|switch\l|turn_off()\lturn_on()\l}", shape="record", style="solid"];
+"hubitatcontrol.generic.ZigbeeOutlet" [color="black", fontcolor="black", label="{ZigbeeOutlet|power\l|}", shape="record", style="solid"];
+"hubitatcontrol.generic.Switch" -> "hubitatcontrol.hub.Device" [arrowhead="empty", arrowtail="none"];
+"hubitatcontrol.generic.ZigbeeOutlet" -> "hubitatcontrol.generic.Switch" [arrowhead="empty", arrowtail="none"];
+"hubitatcontrol.lights.Advanced_Zigbee_RGBW_Bulb" -> "hubitatcontrol.lights.Bulb" [arrowhead="empty", arrowtail="none"];
+"hubitatcontrol.lights.Bulb" -> "hubitatcontrol.generic.Switch" [arrowhead="empty", arrowtail="none"];
+}

@@ -10,6 +10,7 @@ Classes
     ### Ancestors (in MRO)
 
     * hubitatcontrol.lights.Bulb
+    * hubitatcontrol.generic.Switch
     * hubitatcontrol.hub.Device
 
     ### Instance variables
@@ -34,6 +35,7 @@ Classes
 
     ### Ancestors (in MRO)
 
+    * hubitatcontrol.generic.Switch
     * hubitatcontrol.hub.Device
 
     ### Descendants
@@ -43,15 +45,4 @@ Classes
     ### Instance variables
 
     `level: int`
-    :
-
-    `switch: str`
-    :   Returns either (on or off)
-
-    ### Methods
-
-    `turn_off(self)`
-    :
-
-    `turn_on(self)`
     :

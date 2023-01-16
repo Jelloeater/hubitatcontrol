@@ -4,9 +4,9 @@ Hubitat Elevation Maker API Interface (with Requests)
 
 ## Roadmap
 ### v0.5
-- [ ] Advanced Zigbee RGBW Bulb
+- [X] Advanced Zigbee RGBW Bulb
 ### v0.7
-- [ ] Generic Zigbee Outlet
+- [X] Generic Zigbee Outlet
 ### v0.8
 - [ ] Generic Z-Wave Plus Scene Switch
 - [ ] Leviton DZ6HD Z-Wave Dimmer

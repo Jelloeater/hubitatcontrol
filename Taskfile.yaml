@@ -17,6 +17,7 @@ tasks:
     docs:
         - rm -rf docs
         - pipenv run pdoc3 hubitatcontrol -o docs -f
+        - pipenv run pyreverse hubitatcontrol -d docs
         - git add docs
     test:
         silent: false

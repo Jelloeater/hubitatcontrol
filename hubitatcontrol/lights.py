@@ -1,21 +1,10 @@
-from hubitatcontrol.hub import Device
+from hubitatcontrol.generic import Switch
 
 
-class Bulb(Device):
-    @property
-    def switch(self) -> str:
-        """Returns either (on or off)"""
-        return [x for x in self.attributes if "switch" in x["name"]][0]['currentValue']
-
+class Bulb(Switch):
     @property
     def level(self) -> int:
         return [x for x in self.attributes if "level" in x["name"]][0]['currentValue']
-
-    def turn_on(self):
-        self.send_device_command(command='on')
-
-    def turn_off(self):
-        self.send_device_command(command='off')
 
 
 class Advanced_Zigbee_RGBW_Bulb(Bulb):
