@@ -36,7 +36,12 @@ def test_device_bulb():
     assert test_bulb.switch == 'on'
 
 
-# def test_device_outlet():
-#     h = Hub(host=host_env, token=token_env, app_id=app_id_env)
-#     t = lookup_device(h, 'Den Outlet')
-#     assert t
+def test_device_outlet():
+    h = Hub(host=host_env, token=token_env, app_id=app_id_env)
+    t = lookup_device(h, 'Den Outlet')
+
+    assert t.switch == 'on'
+    t.turn_off()
+    assert t.switch == 'off'
+    t.turn_on()
+    assert t.switch == 'on'
