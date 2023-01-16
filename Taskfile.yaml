@@ -12,8 +12,12 @@ tasks:
         cmds:
             - pipenv install
             - pipenv graph
-            - pipenv run pdoc3 hubitatcontrol -o docs -f
+            - task: docs
             - pipenv run flit build
+    docs:
+        - rm -rf docs
+        - pipenv run pdoc3 hubitatcontrol -o docs -f
+        - git add docs
     test:
         silent: false
         interactive: true

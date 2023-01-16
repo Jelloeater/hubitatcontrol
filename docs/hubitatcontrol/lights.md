@@ -14,19 +14,19 @@ Classes
 
     ### Instance variables
 
-    `color`
+    `color: str`
     :
 
-    `color_mode`
+    `color_mode: str`
     :
 
-    `color_name`
+    `color_name: str`
     :
 
-    `color_temp`
+    `color_temp: int`
     :
 
-    `hue`
+    `hue: int`
     :
 
 `Bulb(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
@@ -42,11 +42,11 @@ Classes
 
     ### Instance variables
 
-    `level`
+    `level: int`
     :
 
-    `switch`
-    :
+    `switch: str`
+    :   Returns either (on or off)
 
     ### Methods
 
