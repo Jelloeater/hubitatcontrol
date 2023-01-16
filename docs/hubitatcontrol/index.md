@@ -11,5 +11,9 @@ Functions
 ---------
 
     
-`lookup_device(hub, device_lookup)`
+`get_hub(host, token, app_id) ‑> hubitatcontrol.hub.Hub`
+:   
+
+    
+`lookup_device(hub_in, device_lookup)`
 :
