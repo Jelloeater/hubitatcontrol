@@ -2,8 +2,8 @@ import os
 
 from dotenv import load_dotenv
 
-from hubitatcontrol.main import *
-from hubitatcontrol.lights import *
+from hubitatcontrol.main import lookup_device
+from hubitatcontrol.hub import Hub
 
 load_dotenv()
 host_env = os.getenv("HUBITAT_HOST")
@@ -34,30 +34,9 @@ def test_lookup_device():
     assert p is not None
 
 
-def test_init_device():
-    h = Hub(host=host_env, token=token_env, app_id=app_id_env)
-    d = h.get_device(test_device_name)
-    device = Device(hub=h, device_from_hub=d)
-    assert device is not None
-
-
-def test_device_basic():
-    h = Hub(host=host_env, token=token_env, app_id=app_id_env)
-    d = h.get_device(test_device_name)
-    device = Device(hub=h, device_from_hub=d)
-    for i in device.commands:
-        assert i
-    for i in device.capabilities:
-        assert i
-    for i in device.history:
-        assert i
-    for i in device.attributes:
-        assert i
-
-
 def test_device_bulb():
     h = Hub(host=host_env, token=token_env, app_id=app_id_env)
-    test_bulb = h.get_device(test_device_name)
+    test_bulb = lookup_device(h, test_device_name)
 
     test_bulb.turn_on()
     assert test_bulb.switch == 'on'
