@@ -4,6 +4,7 @@ Hubitat Maker API
 
 Sub-modules
 -----------
+* hubitatcontrol.generic
 * hubitatcontrol.hub
 * hubitatcontrol.lights
 
