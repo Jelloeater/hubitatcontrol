@@ -26,7 +26,7 @@ Hubitat Elevation Maker API Interface (with Requests)
 **Tooling**
 - Need Python > 3.10 Installed
 - Doc gen w/ pdoc3 and pylint
-- Pipenv for package management + Flit for build (might change to Poetry)
+- Poetry for package management + Build
 - Code Complexity with Radon and Xenon
 - isort for imports
 - Testing with PyTest

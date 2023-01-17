@@ -1,14 +1,28 @@
-[build-system]
-requires = ["flit_core >=3.2,<4"]
-build-backend = "flit_core.buildapi"
-
-[project]
+[tool.poetry]
 name = "hubitatcontrol"
-authors = [{name = "Jesse Schoepfer", email = "jelloeater@gmail.com"}]
+version = "0.1.0"
+description = ""
+authors = ["Jesse Schoepfer <jelloeater@gmail.com>"]
+license = "MIT License"
 readme = "README.md"
-license = {file = "LICENSE"}
-classifiers = ["License :: OSI Approved :: MIT License"]
-dynamic = ["version", "description"]
 
-[project.urls]
-Home = "https://github.com/Jelloeater/Hubitat-Maker-API"
+[tool.poetry.dependencies]
+python = "^3.10"
+requests = "*"
+
+
+[tool.poetry.group.dev.dependencies]
+flit = "*"
+isort = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-pycharm = "*"
+python-dotenv = "*"
+pdoc3 = "*"
+pylint = "*"
+radon = "*"
+xenon = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

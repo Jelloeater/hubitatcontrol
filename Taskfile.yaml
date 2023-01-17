@@ -5,41 +5,45 @@ tasks:
     default:
         - task: test
         - task: build
+    setup:
+        - python3 -m pip install pipx
+        - python3 -m pipx ensurepath
+        - pipx install poetry
     clean:
-        - pipenv clean
         - rm -rf dist
+        - poetry cache clear
     build:
         env:
             PIPENV_IGNORE_VIRTUALENVS: 1
         cmds:
-            - pipenv install
-            - pipenv graph
+            - poetry check
+            - poetry install
+            - poetry show
             - task: docs
-            - pipenv run flit build
+            - poetry build
     docs:
         - rm -rf docs
-        - pipenv run pdoc3 hubitatcontrol -o docs -f
-        - pipenv run pyreverse hubitatcontrol -d docs
+        - poetry run pdoc3 hubitatcontrol -o docs -f
+        - poetry run pyreverse hubitatcontrol -d docs
         - git add docs
     test:
         silent: false
         interactive: true
         cmds:
-            - pip install pipenv
-            - pipenv install --dev
-            - pipenv run isort --diff .
-            - pipenv run pytest --cov
-            - pipenv run xenon --max-absolute B --max-modules B --max-average B {{.BUILD_DIR}}
-            - pipenv run radon mi {{.BUILD_DIR}}
+            - poetry install
+            - poetry run isort --diff .
+            - poetry run pytest --cov
+            - poetry run xenon --max-absolute B --max-modules B --max-average B {{.BUILD_DIR}}
+            - poetry run radon mi {{.BUILD_DIR}}
     cc:
         env:
             PIPENV_VERBOSITY: -1
             PIPENV_IGNORE_VIRTUALENVS: 1
         cmds:
-            - pipenv run radon raw {{.BUILD_DIR}}
-            - pipenv run radon hal {{.BUILD_DIR}}
-            - pipenv run radon cc {{.BUILD_DIR}} -a
-            - pipenv run radon mi {{.BUILD_DIR}}
+            - poetry run radon raw {{.BUILD_DIR}}
+            - poetry run radon hal {{.BUILD_DIR}}
+            - poetry run radon cc {{.BUILD_DIR}} -a
+            - poetry run radon mi {{.BUILD_DIR}}
 #    wily:
 #        - pipenv run wily clean -y
 #        - pipenv run wily build {{.BUILD_DIR}}
