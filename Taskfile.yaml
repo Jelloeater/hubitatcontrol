@@ -11,7 +11,8 @@ tasks:
         - pipx install poetry
     clean:
         - rm -rf dist
-        - poetry cache clear
+        - poetry cache clear _default_cache --all  --no-interaction
+        - poetry cache clear PyPI --all  --no-interaction
     build:
         env:
             PIPENV_IGNORE_VIRTUALENVS: 1
