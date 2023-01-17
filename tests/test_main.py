@@ -1,3 +1,4 @@
+import logging
 import os
 
 from dotenv import load_dotenv
@@ -39,6 +40,7 @@ def test_device_bulb():
     else:
         test_bulb.turn_off()
 
+
 def test_device_outlet():
     h = Hub(host=host_env, token=token_env, app_id=app_id_env)
     t = lookup_device(h, 'Den Outlet')
@@ -52,3 +54,14 @@ def test_device_outlet():
         t.turn_on()
     else:
         t.turn_off()
+
+
+def test_device_dimmer():
+    h = Hub(host=host_env, token=token_env, app_id=app_id_env)
+    for i in h.devices:
+        if i['type'] == 'Leviton DZ6HD Z-Wave Dimmer':
+            t = Device(h, i)
+            pass
+        # TODO Start dimmer class
+
+
