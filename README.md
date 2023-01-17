@@ -9,6 +9,7 @@ Hubitat Elevation Maker API Interface (with Requests)
 - [X] Generic Zigbee Outlet
 ### v0.8
 - [ ] Generic Z-Wave Plus Scene Switch
+### v0.9
 - [ ] Leviton DZ6HD Z-Wave Dimmer
 ### v1.0
 - [ ] hueBridgeBulb
