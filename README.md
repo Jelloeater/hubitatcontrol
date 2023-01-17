@@ -8,17 +8,20 @@ Hubitat Elevation Maker API Interface (with Requests)
 ### v0.7
 - [X] Generic Zigbee Outlet
 ### v0.8
-- [ ] Generic Z-Wave Plus Scene Switch
-### v0.9
 - [ ] Leviton DZ6HD Z-Wave Dimmer
 ### v1.0
 - [ ] hueBridgeBulb
+### v1.1
 - [ ] hueBridgeBulbCT
+### v1.2
 - [ ] hueBridgeBulbRGBW
 ### v1.5
 - [ ] Ecobee Thermostat
-- [ ] Generic Z-Wave Lock
 ### v2.0
+- [ ] Generic Z-Wave Lock
+### v2.5
+- [ ] Generic Z-Wave Plus Scene Switch
+### v2.6
 - [ ] Generic Zigbee Contact Sensor (no temp)
 - [ ] Sonoff Zigbee Button Controller
 
