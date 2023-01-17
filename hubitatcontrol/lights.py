@@ -6,6 +6,12 @@ class Bulb(Switch):
     def level(self) -> int:
         return [x for x in self.attributes if "level" in x["name"]][0]['currentValue']
 
+    def set_level(self, level: int):
+        self.send_device_command(command='setLevel', secondary_command=str(level))
+
+    def flash(self):
+        self.send_device_command(command='flash')
+
 
 class Advanced_Zigbee_RGBW_Bulb(Bulb):
     @property
