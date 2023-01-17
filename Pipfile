@@ -15,9 +15,9 @@ pytest-pycharm = "*"
 python-dotenv = "*"
 pdoc3 = "*"
 pylint = "*"
-wily = "*"
 radon = "*"
 xenon = "*"
+#wily = "*"
 
 [requires]
 python_version = "3.10"

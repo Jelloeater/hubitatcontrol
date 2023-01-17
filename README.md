@@ -23,9 +23,15 @@ Hubitat Elevation Maker API Interface (with Requests)
 
 
 ## Development setup
-
+**Tooling**
 - Need Python > 3.10 Installed
+- Doc gen w/ pdoc3 and pylint
+- Pipenv for package management + Flit for build (might change to Poetry)
+- Code Complexity with Radon and Xenon
+- isort for imports
+- Testing with PyTest
 
+- **Setup**
 - Install Go-Task (<https://taskfile.dev/>)(Optional, it's NEAT!)
   - Linux (`sudo snap install task --classic`)
 
