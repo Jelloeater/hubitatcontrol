@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "hubitatcontrol"
-version = "0.1.0"
+version = "0.7"
 description = ""
 authors = ["Jesse Schoepfer <jelloeater@gmail.com>"]
 license = "MIT License"

@@ -1,5 +1,4 @@
 """Hubitat Maker API"""
-__version__ = "0.1.1"
 
 from hubitatcontrol.hub import Hub
 from hubitatcontrol.lights import *
