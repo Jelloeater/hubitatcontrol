@@ -27,21 +27,28 @@ def test_hub_get():
 def test_device_bulb():
     h = get_hub(host=host_env, token=token_env, app_id=app_id_env)
     test_bulb = lookup_device(h, 'Porch')
-
+    state = test_bulb.switch
     test_bulb.turn_on()
     assert test_bulb.switch == 'on'
     test_bulb.turn_off()
     assert test_bulb.switch == 'off'
     test_bulb.turn_on()
     assert test_bulb.switch == 'on'
-
+    if state == 'on':
+        test_bulb.turn_on()
+    else:
+        test_bulb.turn_off()
 
 def test_device_outlet():
     h = Hub(host=host_env, token=token_env, app_id=app_id_env)
     t = lookup_device(h, 'Den Outlet')
 
-    assert t.switch == 'on'
+    state = t.switch
     t.turn_off()
     assert t.switch == 'off'
     t.turn_on()
     assert t.switch == 'on'
+    if state == 'on':
+        t.turn_on()
+    else:
+        t.turn_off()
