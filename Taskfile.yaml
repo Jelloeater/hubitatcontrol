@@ -3,6 +3,7 @@ vars:
   BUILD_DIR: hubitatcontrol
 tasks:
     default:
+        - poetry install
         - task: test
         - task: build
     setup:
@@ -16,25 +17,26 @@ tasks:
     build:
         env:
             PIPENV_IGNORE_VIRTUALENVS: 1
-        cmds:
-            - poetry check
-            - poetry install
-            - poetry show
+        deps:
             - task: docs
+        cmds:
+            - poetry install
             - poetry build
     docs:
         - rm -rf docs
         - poetry run pdoc3 hubitatcontrol -o docs -f
         - poetry run pyreverse hubitatcontrol -d docs
         - git add docs
+    pre_test:
+        - poetry run isort --diff .
+        - poetry run xenon --max-absolute B --max-modules B --max-average B {{.BUILD_DIR}}
     test:
         silent: false
         interactive: true
+        deps:
+            - task: pre_test
         cmds:
-            - poetry install
-            - poetry run isort --diff .
             - poetry run pytest --cov
-            - poetry run xenon --max-absolute B --max-modules B --max-average B {{.BUILD_DIR}}
             - poetry run radon mi {{.BUILD_DIR}}
     cc:
         env:
