@@ -20,7 +20,10 @@ tasks:
         deps:
             - task: docs
         cmds:
+            - poetry check
             - poetry install
+            - poetry show
+            - task: docs
             - poetry build
     docs:
         - rm -rf docs
@@ -30,14 +33,19 @@ tasks:
     pre_test:
         - poetry run isort --diff .
         - poetry run xenon --max-absolute B --max-modules B --max-average B {{.BUILD_DIR}}
+        - poetry run bandit -r {{.BUILD_DIR}}
     test:
         silent: false
         interactive: true
         deps:
             - task: pre_test
         cmds:
+            - poetry install
+            - poetry run isort --diff .
             - poetry run pytest --cov
+            - poetry run xenon --max-absolute B --max-modules B --max-average B {{.BUILD_DIR}}
             - poetry run radon mi {{.BUILD_DIR}}
+
     cc:
         env:
             PIPENV_VERBOSITY: -1

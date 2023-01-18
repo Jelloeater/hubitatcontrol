@@ -22,6 +22,7 @@ pdoc3 = "*"
 pylint = "*"
 radon = "*"
 xenon = "*"
+bandit = "*"
 
 [build-system]
 requires = ["poetry-core"]
