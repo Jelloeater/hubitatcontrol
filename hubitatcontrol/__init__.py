@@ -11,9 +11,9 @@ def get_hub(host, token, app_id) -> Hub:
 
 def lookup_device(hub_in, device_lookup):
     d = hub_in.get_device(device_lookup)
-    if d['type'] == 'Advanced Zigbee RGBW Bulb':
+    if d["type"] == "Advanced Zigbee RGBW Bulb":
         return Advanced_Zigbee_RGBW_Bulb(device_from_hub=d, hub=hub_in)
-    if d['type'] == 'Generic Zigbee Outlet':
+    if d["type"] == "Generic Zigbee Outlet":
         return ZigbeeOutlet(device_from_hub=d, hub=hub_in)
-    if d['type'] == 'Leviton DZ6HD Z-Wave Dimmer':
+    if d["type"] == "Leviton DZ6HD Z-Wave Dimmer":
         return Bulb(device_from_hub=d, hub=hub_in)

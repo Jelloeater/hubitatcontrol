@@ -20,7 +20,7 @@ tasks:
         interactive: true
         cmds:
             - poetry run isort --atomic {{.BUILD_DIR}}
-            - poetry run black {{.BUILD_DIR}} --diff --color
+            - poetry run black {{.BUILD_DIR}} --color #--diff
             - poetry run bandit --silent -r {{.BUILD_DIR}}
             - poetry run vulture --min-confidence 100 {{.BUILD_DIR}}
             - poetry run xenon --max-absolute B --max-modules B --max-average B {{.BUILD_DIR}}
