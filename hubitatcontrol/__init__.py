@@ -1,8 +1,8 @@
 """Hubitat Maker API"""
 
+from hubitatcontrol.generic import *
 from hubitatcontrol.hub import Hub
 from hubitatcontrol.lights import *
-from hubitatcontrol.generic import *
 
 
 def get_hub(host, token, app_id) -> Hub:

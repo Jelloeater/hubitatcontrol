@@ -10,6 +10,8 @@ readme = "README.md"
 python = "^3.10"
 requests = "*"
 
+[tool.black]
+line-length = 120
 
 [tool.poetry.group.dev.dependencies]
 setuptools = "*"
@@ -25,6 +27,7 @@ radon = "*"
 xenon = "*"
 bandit = "*"
 black = "*"
+typeguard ="*"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
