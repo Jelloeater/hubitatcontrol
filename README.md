@@ -8,7 +8,7 @@ Hubitat Elevation Maker API Interface (with Requests)
 ### v0.7
 - [X] Generic Zigbee Outlet
 ### v0.8
-- [ ] Leviton DZ6HD Z-Wave Dimmer
+- [X] Leviton DZ6HD Z-Wave Dimmer
 ### v1.0
 - [ ] hueBridgeBulb
 ### v1.1

@@ -1,5 +1,6 @@
 import logging
 import os
+from time import sleep
 
 from dotenv import load_dotenv
 
@@ -70,4 +71,10 @@ def test_device_dimmer():
 
     d = lookup_device(h, test_dev.name)
     assert d
-    # TODO Start dimmer class
+    state = d.level
+    d.set_level(25)
+    assert d.level == 25
+    d.set_level(50)
+    assert d.level ==50
+    d.set_level(state)
+
