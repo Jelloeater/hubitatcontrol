@@ -17,3 +17,4 @@ def lookup_device(hub_in, device_lookup):
         return ZigbeeOutlet(device_from_hub=d, hub=hub_in)
     if d["type"] == "Leviton DZ6HD Z-Wave Dimmer":
         return Bulb(device_from_hub=d, hub=hub_in)
+    return d  # Fall through return
