@@ -46,3 +46,11 @@ Classes
 
     `level: int`
     :
+
+    ### Methods
+
+    `flash(self)`
+    :
+
+    `set_level(self, level: int)`
+    :

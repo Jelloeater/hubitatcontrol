@@ -1,5 +1,6 @@
-import requests
 import time
+
+import requests
 
 
 class Hub:
@@ -15,14 +16,12 @@ class Hub:
 
     @property
     def devices(self) -> list:
-        r = requests.get(
-            url=self.base_url_prefix, params={"access_token": self.token}
-        )
+        r = requests.get(url=self.base_url_prefix, params={"access_token": self.token})
         return r.json()
 
     def get_device(self, name: str):
         for i in self.devices:
-            if i['label'] == name:
+            if i["label"] == name:
                 return i
 
 
@@ -30,10 +29,10 @@ class Device:
     def __init__(self, hub: Hub, device_from_hub: dict):
         self.token = hub.token
         self.base_url_prefix = hub.base_url_prefix
-        self.name = device_from_hub['name']
-        self.label = device_from_hub['label']
-        self.type = device_from_hub['type']
-        self.id = device_from_hub['id']
+        self.name = device_from_hub["name"]
+        self.label = device_from_hub["label"]
+        self.type = device_from_hub["type"]
+        self.id = device_from_hub["id"]
 
     @property
     def commands(self):
@@ -51,17 +50,13 @@ class Device:
 
     @property
     def history(self) -> requests.Response:
-        r = requests.get(
-            url=self.base_url_prefix + "/" + str(self.id) + "/events", params={"access_token": self.token}
-        )
+        r = requests.get(url=self.base_url_prefix + "/" + str(self.id) + "/events", params={"access_token": self.token})
         return r.json()
 
     @property
     def attributes(self) -> requests.Response:
-        r = requests.get(
-            url=self.base_url_prefix + "/" + str(self.id), params={"access_token": self.token}
-        )
-        return r.json()['attributes']
+        r = requests.get(url=self.base_url_prefix + "/" + str(self.id), params={"access_token": self.token})
+        return r.json()["attributes"]
 
     def send_device_command(self, command: str, secondary_command: str = None) -> requests.Response:
         if secondary_command is None:
@@ -70,8 +65,8 @@ class Device:
             )
         else:
             r = requests.get(
-                url=self.base_url_prefix + "/" + str(self.id) + "/" + command + '/' + secondary_command,
-                params={"access_token": self.token}
+                url=self.base_url_prefix + "/" + str(self.id) + "/" + command + "/" + secondary_command,
+                params={"access_token": self.token},
             )
-        time.sleep(.5)
+        time.sleep(0.5)
         return r.json()
