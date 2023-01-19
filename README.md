@@ -1,4 +1,4 @@
-# Hubitat Control
+from main import get_hubfrom main import lookup_device# Hubitat Control
 
 Hubitat Elevation Maker API Interface (with Requests)
 
@@ -29,10 +29,13 @@ Hubitat Elevation Maker API Interface (with Requests)
 ## Development setup
 **Tooling**
 - Need Python > 3.10 Installed
-- Doc gen w/ pdoc3 and pylint
+- Doc gen w/ pdoc3 and pyreverse
 - Poetry for package management + Build
 - Code Complexity with Radon and Xenon
 - isort for imports
+- Black for formatting
+- Vulture for dead code
+- Bandit for security
 - Testing with PyTest
 
 - **Setup**
