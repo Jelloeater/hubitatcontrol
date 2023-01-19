@@ -4,6 +4,7 @@ vars:
 tasks:
     default:
         - poetry install
+        - task: pre_test
         - task: test
         - task: build
     setup:
@@ -14,6 +15,21 @@ tasks:
         - rm -rf dist
         - poetry cache clear _default_cache --all  --no-interaction
         - poetry cache clear PyPI --all  --no-interaction
+    test:
+        silent: false
+        interactive: true
+        cmds:
+            - poetry run isort --atomic {{.BUILD_DIR}}
+            - poetry run black {{.BUILD_DIR}} --diff --color
+            - poetry run bandit --silent -r {{.BUILD_DIR}}
+            - poetry run vulture --min-confidence 100 {{.BUILD_DIR}}
+            - poetry run xenon --max-absolute B --max-modules B --max-average B {{.BUILD_DIR}}
+            - poetry run pytest --cov --cov-fail-under=80
+    docs:
+        - rm -rf docs
+        - poetry run pdoc3 hubitatcontrol -o docs -f
+        - poetry run pyreverse hubitatcontrol -d docs
+        - git add docs
     build:
         env:
             PIPENV_IGNORE_VIRTUALENVS: 1
@@ -21,47 +37,7 @@ tasks:
             - task: docs
         cmds:
             - poetry check
-            - poetry install
             - poetry show
             - task: docs
             - poetry build
-    docs:
-        - rm -rf docs
-        - poetry run pdoc3 hubitatcontrol -o docs -f
-        - poetry run pyreverse hubitatcontrol -d docs
-        - git add docs
-    pre_test:
-        - poetry run isort --diff .
-        - poetry run xenon --max-absolute B --max-modules B --max-average B {{.BUILD_DIR}}
-        - poetry run bandit -r {{.BUILD_DIR}}
-    test:
-        silent: false
-        interactive: true
-        deps:
-            - task: pre_test
-        cmds:
-            - poetry install
-            - poetry run isort --diff .
-            - poetry run pytest --cov
-            - poetry run xenon --max-absolute B --max-modules B --max-average B {{.BUILD_DIR}}
-            - poetry run radon mi {{.BUILD_DIR}}
-
-    cc:
-        env:
-            PIPENV_VERBOSITY: -1
-            PIPENV_IGNORE_VIRTUALENVS: 1
-        cmds:
-            - poetry run radon raw {{.BUILD_DIR}}
-            - poetry run radon hal {{.BUILD_DIR}}
             - poetry run radon cc {{.BUILD_DIR}} -a
-            - poetry run radon mi {{.BUILD_DIR}}
-#    wily:
-#        - pipenv run wily clean -y
-#        - pipenv run wily build {{.BUILD_DIR}}
-#        - pipenv run wily rank {{.BUILD_DIR}} mi --threshold=50
-#        - pipenv run wily rank {{.BUILD_DIR}} complexity --threshold=15
-#        - pipenv run wily rank {{.BUILD_DIR}} rank
-    install:
-        - flit install --user
-    uninstall:
-        - pip uninstall hubitatcontrol -y

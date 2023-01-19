@@ -12,18 +12,19 @@ requests = "*"
 
 
 [tool.poetry.group.dev.dependencies]
-flit = "*"
+setuptools = "*"
+mypy = "*"
+vulture = "*"
 isort = "*"
 pytest = "*"
 pytest-cov = "*"
 pytest-pycharm = "*"
 python-dotenv = "*"
 pdoc3 = "*"
-pylint = "*"
 radon = "*"
 xenon = "*"
 bandit = "*"
-
+black = "*"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
