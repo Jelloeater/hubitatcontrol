@@ -23,18 +23,33 @@ tasks:
         silent: false
         interactive: true
         cmds:
+            - task: format
             - poetry run bandit --silent -r {{.BUILD_DIR}}
             - poetry run vulture --min-confidence 100 {{.BUILD_DIR}}
             - poetry run xenon --max-absolute B --max-modules B --max-average B {{.BUILD_DIR}}
             - poetry run pytest --cov --cov-fail-under=80 #--typeguard-packages={{.BUILD_DIR}}
+    format:
+        - poetry run isort --atomic {{.BUILD_DIR}}
+        - poetry run black {{.BUILD_DIR}} --color #--diff
     docs:
         - rm -rf docs
         - poetry run pdoc3 hubitatcontrol -o docs -f
         - poetry run pyreverse hubitatcontrol -d docs
         - git add docs
+    commit:
+        - task: format
+        - task: docs
     build:
         env:
             PIPENV_IGNORE_VIRTUALENVS: 1
         deps: [docs, clean]
         cmds:
             - poetry build
+    install-hooks:
+        cmds:
+            - poetry run pre-commit install
+    remove-hooks:
+        ignore_error: true
+        cmds:
+            - poetry run pre-commit uninstall
+            - rm .git/hooks -rf
