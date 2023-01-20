@@ -10,7 +10,7 @@ class Bulb(Switch):
 
     def set_level(self, level: int):
         self.send_device_command(command="setLevel", secondary_command=str(level))
-        sleep(1)  # Wait for bulb to actually change to level
+        sleep(2)  # Wait for bulb to actually change to level
 
     def flash(self):
         self.send_device_command(command="flash")
