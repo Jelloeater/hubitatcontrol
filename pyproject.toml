@@ -28,6 +28,7 @@ xenon = "*"
 bandit = "*"
 black = "*"
 typeguard ="*"
+pre-commit = "*"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
