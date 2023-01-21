@@ -1,6 +1,8 @@
 version: '3'
 vars:
-  BUILD_DIR: hubitatcontrol
+    BUILD_DIR: hubitatcontrol
+    IMAGE_NAME: hubitatcontrol
+    DOCKER_FILE: Dockerfile
 tasks:
     default:
         - poetry install
@@ -50,3 +52,9 @@ tasks:
         cmds:
             - poetry run pre-commit uninstall
             - rm .git/hooks -rf
+    docker:
+        desc: Build and run Docker image
+        # dotenv: [ '.env', '{{.ENV}}/.env.', '{{.HOME}}/.env' ] # Setup env vars from file for docker run
+        cmds:
+            - docker build . -t {{.IMAGE_NAME}}:latest -f {{.DOCKER_FILE}}
+            - docker run --env-file .env --rm --name {{.IMAGE_NAME}} {{.IMAGE_NAME}}:latest
