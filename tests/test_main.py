@@ -1,17 +1,21 @@
-import logging
 import os
-from time import sleep
 
 from dotenv import load_dotenv
 
 import hubitatcontrol
 from hubitatcontrol import *
-from hubitatcontrol import Device
 
 load_dotenv()
 host_env = os.getenv("HUBITAT_HOST")
 token_env = os.getenv("HUBITAT_API_TOKEN")
 app_id_env = os.getenv("HUBITAT_API_APP_ID")
+
+
+def get_device_of_type(device_type: str):
+    h = Hub(host=host_env, token=token_env, app_id=app_id_env)
+    for i in h.devices:
+        if i['type'] == device_type:
+            return hubitatcontrol.lookup_device(h, i['label'])
 
 
 def test_creds():
@@ -29,15 +33,7 @@ def test_hub_get():
 
 
 def test_device_bulb():
-    test_dev = None
-    h = Hub(host=host_env, token=token_env, app_id=app_id_env)
-    for i in h.devices:
-        if i['type'] == 'Advanced Zigbee RGBW Bulb':
-            test_dev: Device = Device(h, i)
-            assert test_dev
-            break
-
-    test_bulb = lookup_device(h, test_dev.label)
+    test_bulb = get_device_of_type('Advanced Zigbee RGBW Bulb')
     state = test_bulb.switch
     test_bulb.turn_on()
     assert test_bulb.switch == 'on'
@@ -52,16 +48,7 @@ def test_device_bulb():
 
 
 def test_device_outlet():
-    test_dev = None
-    h = Hub(host=host_env, token=token_env, app_id=app_id_env)
-    for i in h.devices:
-        if i['type'] == 'Generic Zigbee Outlet':
-            test_dev: Device = Device(h, i)
-            assert test_dev
-            break
-
-    t = lookup_device(h, test_dev.label)
-
+    t = get_device_of_type('Generic Zigbee Outlet')
     state = t.switch
     t.turn_off()
     assert t.switch == 'off'
@@ -74,21 +61,11 @@ def test_device_outlet():
 
 
 def test_device_dimmer():
-    test_dev = None
-    h = Hub(host=host_env, token=token_env, app_id=app_id_env)
-
-    for i in h.devices:
-        if i['type'] == 'Leviton DZ6HD Z-Wave Dimmer':
-            test_dev: Device = Device(h, i)
-            assert test_dev
-            break
-
-    d = lookup_device(h, test_dev.label)
+    d = get_device_of_type('Leviton DZ6HD Z-Wave Dimmer')
     assert d
     state = d.level
     d.set_level(25)
     assert d.level == 25
     d.set_level(50)
-    assert d.level ==50
+    assert d.level == 50
     d.set_level(state)
-
