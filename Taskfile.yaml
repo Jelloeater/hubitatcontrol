@@ -29,7 +29,7 @@ tasks:
             - poetry run bandit --silent -r {{.BUILD_DIR}}
             - poetry run vulture --min-confidence 100 {{.BUILD_DIR}}
             - poetry run xenon --max-absolute B --max-modules B --max-average B {{.BUILD_DIR}}
-            - poetry run pytest v #--typeguard-packages={{.BUILD_DIR}}
+            - poetry run pytest --cov --cov-fail-under=80 #--typeguard-packages={{.BUILD_DIR}} # Leave typeguard off for now
     docs:
         - rm -rf docs
         - poetry run pdoc3 {{.BUILD_DIR}} -o docs -f
@@ -56,5 +56,6 @@ tasks:
         desc: Build and run Docker image
         #dotenv: [ '.env', '{{.ENV}}/.env.', '{{.HOME}}/.env' ] # Setup env vars from file for docker run
         cmds:
+            - py3clean .
             - docker build . -t {{.IMAGE_NAME}}:latest -f {{.DOCKER_FILE}}
             - docker run --env-file .env --rm --name {{.IMAGE_NAME}} {{.IMAGE_NAME}}:latest
