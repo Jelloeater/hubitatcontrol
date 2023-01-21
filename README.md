@@ -63,7 +63,7 @@ Specific_Device --> Abstract_Device_Class --> Device--> Hub
 ```
 
 ## Development setup
-Testing is done with PyTest, you will need to set up the correct env vars for your local (or cloud) Hubitat API.
+Testing is done with PyTest, you will need to set up the correct env vars for your local (or cloud) Hubitat API
 See `.env.example`
 
 **Setup**
