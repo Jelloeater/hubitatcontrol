@@ -8,9 +8,7 @@ readme = "README.md"
 homepage = "https://github.com/Jelloeater/hubitatcontrol"
 
 [tool.pytest.ini_options]
-pythonpath = [
-  "."
-]
+pythonpath = ["."]
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -19,22 +17,24 @@ requests = "*"
 [tool.black]
 line-length = 120
 
-[tool.poetry.group.dev.dependencies]
+[tool.poetry.group.test.dependencies]
 setuptools = "*"
+pytest = "*"
+pytest-cov = "*"
+python-dotenv = "*"
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "*"
+pytest-pycharm = "*"
 mypy = "*"
 vulture = "*"
 isort = "*"
-pytest = "*"
-pytest-cov = "*"
-pytest-pycharm = "*"
-python-dotenv = "*"
 pdoc3 = "*"
 radon = "*"
 xenon = "*"
 bandit = "*"
 black = "*"
 typeguard ="*"
-pre-commit = "*"
 
 [build-system]
 requires = ["poetry-core"]
