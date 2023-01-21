@@ -15,7 +15,6 @@ tasks:
         - python3 -m pip install pipx
         - python3 -m pipx ensurepath
         - pipx install poetry
-        - task: install-hooks
     clean:
         - rm -rf dist
         - rm -rf .mypy_cache
