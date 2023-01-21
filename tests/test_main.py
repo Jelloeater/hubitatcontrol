@@ -29,8 +29,15 @@ def test_hub_get():
 
 
 def test_device_bulb():
-    h = get_hub(host=host_env, token=token_env, app_id=app_id_env)
-    test_bulb = lookup_device(h, 'Porch')
+    test_dev = None
+    h = Hub(host=host_env, token=token_env, app_id=app_id_env)
+    for i in h.devices:
+        if i['type'] == 'Advanced Zigbee RGBW Bulb':
+            test_dev: Device = Device(h, i)
+            assert test_dev
+            break
+
+    test_bulb = lookup_device(h, test_dev.label)
     state = test_bulb.switch
     test_bulb.turn_on()
     assert test_bulb.switch == 'on'
@@ -45,8 +52,15 @@ def test_device_bulb():
 
 
 def test_device_outlet():
+    test_dev = None
     h = Hub(host=host_env, token=token_env, app_id=app_id_env)
-    t = lookup_device(h, 'Den Outlet')
+    for i in h.devices:
+        if i['type'] == 'Generic Zigbee Outlet':
+            test_dev: Device = Device(h, i)
+            assert test_dev
+            break
+
+    t = lookup_device(h, test_dev.label)
 
     state = t.switch
     t.turn_off()
@@ -69,7 +83,7 @@ def test_device_dimmer():
             assert test_dev
             break
 
-    d = lookup_device(h, test_dev.name)
+    d = lookup_device(h, test_dev.label)
     assert d
     state = d.level
     d.set_level(25)
