@@ -2,6 +2,16 @@ from main import get_hubfrom main import lookup_device# Hubitat Control
 
 Hubitat Elevation Maker API Interface (with Requests)
 
+## Usage
+```python
+from hubitatcontrol import *
+h = get_hub(host='Hubitat_IP_or_Hostname', token='Maker_Token', app_id='Maker_App_ID')
+d = lookup_device(h, 'Device_Name')
+print(d.switch)
+d.turn_on()
+print(d.switch)
+```
+
 ## Roadmap
 ### v0.5
 - [X] Advanced Zigbee RGBW Bulb
@@ -52,14 +62,4 @@ Hub --> Device --> Abstract_Device_Class --> Specific_Device
 
 ```sh
 task
-```
-
-## Usage
-```python
-from hubitatcontrol import *
-h = get_hub(host='Hubitat_IP_or_Hostname', token='Maker_Token', app_id='Maker_App_ID')
-d = lookup_device(h, 'Device_Name')
-print(d.switch)
-d.turn_on()
-print(d.switch)
 ```
