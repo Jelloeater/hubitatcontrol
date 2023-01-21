@@ -17,13 +17,19 @@
 
 
 ## Usage
+```shell
+pip install hubitatcontrol
+```
+
 ```python
-from hubitatcontrol import *
-h = get_hub(host='Hubitat_IP_or_Hostname', token='Maker_Token', app_id='Maker_App_ID')
-d = lookup_device(h, 'Device_Name')
-print(d.switch)
-d.turn_on()
-print(d.switch)
+import hubitatcontrol as hc
+
+hub = hc.get_hub(host='Hubitat_IP_or_Hostname', token='Maker_Token', app_id='Maker_App_ID')
+device = hc.lookup_device(hub, 'Device_Name')
+
+print(device.switch)
+device.turn_on()
+print(device.switch)
 ```
 
 ## Roadmap
@@ -49,31 +55,22 @@ print(d.switch)
 - [ ] Generic Zigbee Contact Sensor (no temp)
 - [ ] Sonoff Zigbee Button Controller
 
-
-## Development setup
-**Tooling**
-- Need Python > 3.10 Installed
-- Doc gen w/ pdoc3 and pyreverse
-- Poetry for package management + Build
-- Code Complexity with Radon and Xenon
-- isort for imports
-- Black for formatting
-- Vulture for dead code
-- Bandit for security
-- Testing with PyTest
-
-- **Setup**
-- Install Go-Task (<https://taskfile.dev/>)
-- Run `task setup`
-- Run `task`
 ## Structure
 
 ```mermaid
 flowchart LR
-Hub --> Device --> Abstract_Device_Class --> Specific_Device
+Specific_Device --> Abstract_Device_Class --> Device--> Hub
 ```
-## Test
 
-```sh
+## Development setup
+Testing is done with PyTest, you will need to set up the correct env vars for your local (or cloud) Hubitat API.
+See `.env.example`
+
+**Setup**
+
+Install Go-Task --> <https://taskfile.dev/installation/>
+
+```shell
+task setup
 task
 ```

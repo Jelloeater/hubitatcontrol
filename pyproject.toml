@@ -7,15 +7,24 @@ license = "MIT License"
 readme = "README.md"
 homepage = "https://github.com/Jelloeater/hubitatcontrol"
 
-[tool.pytest.ini_options]
-pythonpath = ["."]
 
 [tool.poetry.dependencies]
 python = "^3.10"
 requests = "*"
 
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = "test/"
+
 [tool.black]
 line-length = 120
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = "True"
+force_grid_wrap = 0
+use_parentheses = "True"
+line_length = 120
 
 [tool.poetry.group.test.dependencies]
 setuptools = "*"
