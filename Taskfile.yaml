@@ -13,11 +13,13 @@ tasks:
         - python3 -m pip install pipx
         - python3 -m pipx ensurepath
         - pipx install poetry
+        - task: install-hooks
     clean:
         - rm -rf dist
         - poetry cache clear _default_cache --all  --no-interaction
         - poetry cache clear PyPI --all  --no-interaction
         - poetry check
+        - py3clean .
     format:
         - poetry run isort --atomic {{.BUILD_DIR}}
         - poetry run black {{.BUILD_DIR}} --color #--diff
@@ -54,8 +56,7 @@ tasks:
             - rm .git/hooks -rf
     docker:
         desc: Build and run Docker image
-        #dotenv: [ '.env', '{{.ENV}}/.env.', '{{.HOME}}/.env' ] # Setup env vars from file for docker run
         cmds:
-            - py3clean .
+            - task: clean
             - docker build . -t {{.IMAGE_NAME}}:latest -f {{.DOCKER_FILE}}
             - docker run --env-file .env --rm --name {{.IMAGE_NAME}} {{.IMAGE_NAME}}:latest
