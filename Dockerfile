@@ -18,18 +18,13 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update && apt-get install -y --no-install-recommends gcc git tree
 RUN python -m venv venv
 RUN pip install poetry
-COPY pyproject.toml poetry.lock ./
+#COPY pyproject.toml poetry.lock ./
 RUN poetry config virtualenvs.create false
-RUN poetry install --no-interaction --no-root
-
-
-#FROM base AS runtime
-#WORKDIR /app
 
 # Install application into container
 # Don't forget to check the .dockerignore
-#COPY --from=python-deps /app/venv venv
 COPY . .
+RUN poetry install --no-interaction --no-root
 
 # Create and switch to a new user
 RUN useradd --create-home appuser
@@ -37,5 +32,4 @@ USER appuser
 RUN tree /app/hubitatcontrol
 RUN tree /app/tests
 # Run the executable
-RUN pip freeze
-CMD [ "pytest" ]
+CMD [ "pytest", "--ff" ]
