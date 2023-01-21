@@ -1,13 +1,13 @@
 # Hubitat Elevation Maker API Interface (with Requests)
 
-![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/jelloeater/hubitatcontrol/test.yml?branch=main)
-![GitHub issues by-label](https://img.shields.io/github/issues/jelloeater/hubitatcontrol/bug)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/jelloeater/hubitatcontrol)
+[![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/jelloeater/hubitatcontrol/test.yml?branch=main)](https://github.com/Jelloeater/hubitatcontrol/actions/workflows/test.yml)
+[![GitHub issues by-label](https://img.shields.io/github/issues/jelloeater/hubitatcontrol/bug)](https://github.com/Jelloeater/hubitatcontrol/labels/bug)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/jelloeater/hubitatcontrol)](https://github.com/Jelloeater/hubitatcontrol/pulls)
 [![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/pypi/hubitatcontrol)](https://libraries.io/pypi/hubitatcontrol)
-![GitHub](https://img.shields.io/github/license/jelloeater/hubitatcontrol)
+[![GitHub](https://img.shields.io/github/license/jelloeater/hubitatcontrol)](https://github.com/Jelloeater/hubitatcontrol/blob/main/LICENSE)
 
 [![Packaged with Poetry](https://img.shields.io/badge/packaging-poetry-cyan.svg)](https://python-poetry.org/)
-[![PyPI version](https://badge.fury.io/py/hubitatcontrol.svg)](https://badge.fury.io/py/hubitatcontrol)
+[![PyPI](https://img.shields.io/pypi/v/hubitatcontrol)](https://pypi.org/project/hubitatcontrol/)
 ![PyPI - Format](https://img.shields.io/pypi/format/hubitatcontrol)
 ![PyPI - Status](https://img.shields.io/pypi/status/hubitatcontrol)
 [![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org)
