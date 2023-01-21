@@ -64,8 +64,8 @@ print(d.switch)
 
 - **Setup**
 - Install Go-Task (<https://taskfile.dev/>)
+- Run `task setup`
 - Run `task`
-
 ## Structure
 
 ```mermaid

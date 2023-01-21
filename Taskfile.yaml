@@ -5,10 +5,12 @@ vars:
     DOCKER_FILE: Dockerfile
 tasks:
     default:
-        - poetry install
-        - task: format
-        - task: test
-        - task: build
+        silent: true
+        interactive: false
+        cmds:
+            - poetry install
+            - task: format
+            - task: test
     setup:
         - python3 -m pip install pipx
         - python3 -m pipx ensurepath
@@ -21,13 +23,15 @@ tasks:
         - poetry check
         - py3clean .
     format:
-        - poetry run isort --atomic {{.BUILD_DIR}}
-        - poetry run black {{.BUILD_DIR}} --color #--diff
-    test:
-        silent: false
-        interactive: true
+        silent: true
+        interactive: false
         cmds:
-            - task: format
+            - poetry run isort --atomic {{.BUILD_DIR}}
+            - poetry run black {{.BUILD_DIR}} --color #--diff
+    test:
+        silent: true
+        interactive: false
+        cmds:
             - poetry run bandit --silent -r {{.BUILD_DIR}}
             - poetry run vulture --min-confidence 100 {{.BUILD_DIR}}
             - poetry run xenon --max-absolute B --max-modules B --max-average B {{.BUILD_DIR}}
