@@ -2,6 +2,7 @@
 
 ![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/jelloeater/hubitatcontrol/test.yml?branch=main)
 ![GitHub issues by-label](https://img.shields.io/github/issues/jelloeater/hubitatcontrol/bug)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/jelloeater/hubitatcontrol)
 [![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/pypi/hubitatcontrol)](https://libraries.io/pypi/hubitatcontrol)
 ![GitHub](https://img.shields.io/github/license/jelloeater/hubitatcontrol)
 
@@ -62,8 +63,8 @@ print(d.switch)
 - Testing with PyTest
 
 - **Setup**
-- Install Go-Task (<https://taskfile.dev/>)(Optional, it's NEAT!)
-  - Linux (`sudo snap install task --classic`)
+- Install Go-Task (<https://taskfile.dev/>)
+- Run `task`
 
 ## Structure
 
