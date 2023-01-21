@@ -1,10 +1,11 @@
 [tool.poetry]
 name = "hubitatcontrol"
-version = "0.8"
+version = "0.8.1.3"
 description = "Hubitat Maker API Interface"
 authors = ["Jesse Schoepfer <jelloeater@gmail.com>"]
 license = "MIT License"
 readme = "README.md"
+homepage = "https://github.com/Jelloeater/hubitatcontrol"
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -29,6 +30,7 @@ bandit = "*"
 black = "*"
 typeguard ="*"
 pre-commit = "*"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
