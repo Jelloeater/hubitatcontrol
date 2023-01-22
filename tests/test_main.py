@@ -64,9 +64,14 @@ def test_device_outlet():
 def test_device_dimmer():
     d = get_device_of_type('Leviton DZ6HD Z-Wave Dimmer')
     assert d
+    state_l = d.switch # To set light back where they were
     state = d.level
     d.set_level(25)
     assert d.level == 25
     d.set_level(50)
     assert d.level == 50
     d.set_level(state)
+    if state_l == 'on':
+        d.turn_on()
+    else:
+        d.turn_off()
