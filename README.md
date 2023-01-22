@@ -1,4 +1,4 @@
-# Hubitat Elevation Maker API Interface (with Requests)
+# Hubitat Elevation Maker API Interface
 
 [![Test](https://github.com/Jelloeater/hubitatcontrol/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/Jelloeater/hubitatcontrol/actions/workflows/test.yml)
 [![CodeQL](https://github.com/Jelloeater/hubitatcontrol/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/Jelloeater/hubitatcontrol/actions/workflows/codeql.yml)
@@ -15,6 +15,12 @@
 pip install hubitatcontrol
 ```
 
+**Or if you want a copy direct from source**
+
+```shell
+pip install git+https://github.com/Jelloeater/hubitatcontrol.git
+```
+
 ```python
 import hubitatcontrol as hc
 
@@ -25,6 +31,12 @@ print(device.switch)
 device.turn_on()
 print(device.switch)
 ```
+
+## Docs
+
+[Located in /docs folder](docs)
+
+You will need a .dot file browser for the class diagrams
 
 ## Roadmap
 
