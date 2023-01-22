@@ -1,22 +1,14 @@
 # Hubitat Elevation Maker API Interface (with Requests)
 
 [![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/jelloeater/hubitatcontrol/test.yml?branch=main)](https://github.com/Jelloeater/hubitatcontrol/actions/workflows/test.yml)
-[![GitHub issues by-label](https://img.shields.io/github/issues/jelloeater/hubitatcontrol/bug)](https://github.com/Jelloeater/hubitatcontrol/labels/bug)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/jelloeater/hubitatcontrol)](https://github.com/Jelloeater/hubitatcontrol/pulls)
+![PyPI - Status](https://img.shields.io/pypi/status/hubitatcontrol)
+[![PyPI](https://img.shields.io/pypi/v/hubitatcontrol)](https://pypi.org/project/hubitatcontrol/)
 [![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/pypi/hubitatcontrol)](https://libraries.io/pypi/hubitatcontrol)
 [![GitHub](https://img.shields.io/github/license/jelloeater/hubitatcontrol)](https://github.com/Jelloeater/hubitatcontrol/blob/main/LICENSE)
-
-[![Packaged with Poetry](https://img.shields.io/badge/packaging-poetry-cyan.svg)](https://python-poetry.org/)
-[![PyPI](https://img.shields.io/pypi/v/hubitatcontrol)](https://pypi.org/project/hubitatcontrol/)
-![PyPI - Format](https://img.shields.io/pypi/format/hubitatcontrol)
-![PyPI - Status](https://img.shields.io/pypi/status/hubitatcontrol)
 [![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org)
-![GitHub top language](https://img.shields.io/github/languages/top/jelloeater/hubitatcontrol)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/jelloeater/hubitatcontrol)
-![Lines of code](https://img.shields.io/tokei/lines/github/jelloeater/hubitatcontrol)
-
 
 ## Usage
+
 ```shell
 pip install hubitatcontrol
 ```
@@ -33,25 +25,45 @@ print(device.switch)
 ```
 
 ## Roadmap
+
 ### v0.5
+
 - [X] Advanced Zigbee RGBW Bulb
+
 ### v0.7
+
 - [X] Generic Zigbee Outlet
+
 ### v0.8
+
 - [X] Leviton DZ6HD Z-Wave Dimmer
+
 ### v1.0
+
 - [ ] hueBridgeBulb
+
 ### v1.1
+
 - [ ] hueBridgeBulbCT
+
 ### v1.2
+
 - [ ] hueBridgeBulbRGBW
+
 ### v1.5
+
 - [ ] Ecobee Thermostat
+
 ### v2.0
+
 - [ ] Generic Z-Wave Lock
+
 ### v2.5
+
 - [ ] Generic Z-Wave Plus Scene Switch
+
 ### v2.6
+
 - [ ] Generic Zigbee Contact Sensor (no temp)
 - [ ] Sonoff Zigbee Button Controller
 
@@ -63,6 +75,7 @@ Specific_Device --> Abstract_Device_Class --> Device--> Hub
 ```
 
 ## Development setup
+
 Testing is done with PyTest, you will need to set up the correct env vars for your local (or cloud) Hubitat API
 See `.env.example`
 
