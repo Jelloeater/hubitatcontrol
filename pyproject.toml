@@ -1,11 +1,18 @@
 [tool.poetry]
 name = "hubitatcontrol"
-version = "0.8.1.4"
+version = "0.8.1.6"
 description = "Hubitat Maker API Interface"
 authors = ["Jesse Schoepfer <jelloeater@gmail.com>"]
 license = "MIT License"
 readme = "README.md"
 homepage = "https://github.com/Jelloeater/hubitatcontrol"
+keywords = ["hubitat", "makerapi","requests"]
+classifiers = ["Development Status :: 4 - Beta",
+ "Environment :: No Input/Output (Daemon)",
+ "Topic :: Home Automation",
+ "Intended Audience :: Developers",
+ "Operating System :: OS Independent",
+]
 
 
 [tool.poetry.dependencies]
