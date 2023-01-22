@@ -11,10 +11,29 @@ tasks:
             - poetry install
             - task: format
             - task: test
+    commit:
+        - task: format
+        - task: docs
+    build:
+        env:
+            PIPENV_IGNORE_VIRTUALENVS: 1
+        deps: [docs, clean]
+        cmds:
+            - poetry build
     setup:
         - python3 -m pip install pipx
         - python3 -m pipx ensurepath
         - pipx install poetry
+    test:
+        silent: true
+        interactive: false
+        cmds:
+            - poetry run bandit --silent -r {{.BUILD_DIR}}
+            - poetry run vulture --min-confidence 100 {{.BUILD_DIR}}
+            - poetry run xenon --max-absolute B --max-modules B --max-average B {{.BUILD_DIR}}
+#            - poetry run mypy --install-types --non-interactive
+#            - poetry run mypy {{.BUILD_DIR}} # Little too aggressive
+            - poetry run pytest --cov --cov-fail-under=80 #--typeguard-packages={{.BUILD_DIR}} # Leave typeguard off for now
     clean:
         - rm -rf dist
         - rm -rf .mypy_cache
@@ -28,30 +47,11 @@ tasks:
         cmds:
             - poetry run isort --atomic {{.BUILD_DIR}}
             - poetry run black {{.BUILD_DIR}} --color #--diff
-    test:
-        silent: true
-        interactive: false
-        cmds:
-            - poetry run bandit --silent -r {{.BUILD_DIR}}
-            - poetry run vulture --min-confidence 100 {{.BUILD_DIR}}
-            - poetry run xenon --max-absolute B --max-modules B --max-average B {{.BUILD_DIR}}
-#            - poetry run mypy --install-types --non-interactive
-#            - poetry run mypy {{.BUILD_DIR}} # Little too aggressive
-            - poetry run pytest --cov --cov-fail-under=80 #--typeguard-packages={{.BUILD_DIR}} # Leave typeguard off for now
     docs:
         - rm -rf docs
         - poetry run pdoc3 {{.BUILD_DIR}} -o docs -f
         - poetry run pyreverse {{.BUILD_DIR}} -d docs
         - git add docs
-    commit:
-        - task: format
-        - task: docs
-    build:
-        env:
-            PIPENV_IGNORE_VIRTUALENVS: 1
-        deps: [docs, clean]
-        cmds:
-            - poetry build
     install-hooks:
         cmds:
             - poetry run pre-commit install
@@ -64,13 +64,6 @@ tasks:
         - task: clean
         - docker build . -t {{.IMAGE_NAME}}:latest -f {{.DOCKER_FILE}}
         - docker run --env-file .env --rm --name {{.IMAGE_NAME}} {{.IMAGE_NAME}}:latest
-    docker-deploy:
-        - task: clean
-        - docker rm -f {{.IMAGE_NAME}}
-        - docker build . -t {{.IMAGE_NAME}}:latest -f {{.DOCKER_FILE}}
-        - docker run --env-file .env -d --name {{.IMAGE_NAME}} {{.IMAGE_NAME}}:latest
-        - docker logs {{.IMAGE_NAME}}
-    docker-purge: docker system prune -a -f --volumes
     show_secrets:
         - git secret reveal -f
     save_secrets:

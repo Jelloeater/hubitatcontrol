@@ -35,7 +35,6 @@ python-dotenv = "*"
 [tool.poetry.group.dev.dependencies]
 pre-commit = "*"
 pytest-pycharm = "*"
-mypy = "*"
 vulture = "*"
 isort = "*"
 pdoc3 = "*"
@@ -43,7 +42,8 @@ radon = "*"
 xenon = "*"
 bandit = "*"
 black = "*"
-typeguard ="*"
+#typeguard ="*"
+#mypy = "*"
 
 [build-system]
 requires = ["poetry-core"]
