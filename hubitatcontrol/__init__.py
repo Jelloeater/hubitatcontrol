@@ -18,3 +18,5 @@ def lookup_device(hub_in, device_lookup):
     if d["type"] == "Leviton DZ6HD Z-Wave Dimmer":
         return Bulb(device_from_hub=d, hub=hub_in)
     return d  # Fall through return
+
+# TODO Add dynamic device return based on capabilities / actions
