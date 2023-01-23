@@ -52,6 +52,9 @@ You will need a .dot file browser for the class diagrams
 
 - [X] Leviton DZ6HD Z-Wave Dimmer
 
+### v0.9
+- [ ] Dynamic Generic Device return for outlets and bulbs
+
 ### v1.0
 
 - [ ] hueBridgeBulb
