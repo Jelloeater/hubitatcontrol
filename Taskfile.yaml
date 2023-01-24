@@ -33,7 +33,7 @@ tasks:
             - poetry run xenon --max-absolute B --max-modules B --max-average B {{.BUILD_DIR}}
 #            - poetry run mypy --install-types --non-interactive
 #            - poetry run mypy {{.BUILD_DIR}} # Little too aggressive
-            - poetry run pytest --cov --cov-fail-under=80 #--typeguard-packages={{.BUILD_DIR}} # Leave typeguard off for now
+            - poetry run pytest --cov --cov-fail-under=85 #--typeguard-packages={{.BUILD_DIR}} # Leave typeguard off for now
     clean:
         - rm -rf dist
         - rm -rf .mypy_cache

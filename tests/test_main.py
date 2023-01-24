@@ -37,12 +37,32 @@ def test_hub_get():
 def test_device_bulb():
     test_bulb = get_device_of_type('Advanced Zigbee RGBW Bulb')
     state = test_bulb.switch
+    temp = test_bulb.color_temp
+    hue = temp = test_bulb.hue
+    sat = temp = test_bulb.saturation
+
     test_bulb.turn_on()
     assert test_bulb.switch == 'on'
     test_bulb.turn_off()
     assert test_bulb.switch == 'off'
     test_bulb.turn_on()
     assert test_bulb.switch == 'on'
+
+    test_bulb.set_color_temp(3205)
+    assert test_bulb.color_temp == 3205
+    test_bulb.set_color_temp(temp)
+
+    test_bulb.set_hue(200)
+    assert test_bulb.hue == 200
+    test_bulb.set_hue(hue)
+
+    test_bulb.set_saturation(10)
+    assert test_bulb.saturation == 10
+    test_bulb.set_saturation(80)
+    assert test_bulb.saturation == 80
+    test_bulb.set_hue(sat)
+
+
     if state == 'on':
         test_bulb.turn_on()
     else:
