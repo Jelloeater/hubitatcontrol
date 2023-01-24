@@ -23,4 +23,5 @@ def lookup_device(hub_in, device_lookup):
         return Switch(device_from_hub=d, hub=hub_in)
     return d  # Fall through return
 
+
 # TODO Add dynamic device return based on capabilities / actions

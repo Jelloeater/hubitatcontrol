@@ -52,20 +52,10 @@ You will need a .dot file browser for the class diagrams
 
 - [X] Leviton DZ6HD Z-Wave Dimmer
 
-### v0.9
-- [ ] Dynamic Generic Device return for outlets and bulbs
-
 ### v1.0
-
-- [ ] hueBridgeBulb
-
-### v1.1
-
-- [ ] hueBridgeBulbCT
-
-### v1.2
-
-- [ ] hueBridgeBulbRGBW
+- [X] hueBridgeBulb
+- [X] hueBridgeBulbRGBW
+- [X] hueBridgeBulbCT
 
 ### v1.5
 
@@ -92,33 +82,6 @@ You will need a .dot file browser for the class diagrams
 flowchart LR
 Specific_Device --> Abstract_Device_Class --> Device--> Hub
 ```
-
-**Capability Model**
-
-*Bulb*
-
-```mermaid
-flowchart TD
-subgraph Advanced_Zigbee_RGBW_Bulb
-ColorControl & ColorMode
-end
-subgraph ColorTempBulb
-end
-ColorTemperature
-subgraph Bulb
-ChangeLevel
-end
-
-Advanced_Zigbee_RGBW_Bulb --> ColorTempBulb --> Bulb
-```
-
-*Outlet*
-
-```mermaid
-flowchart TD
-Outlet & Actuator & Switch
-```
-
 
 ## Development setup
 
