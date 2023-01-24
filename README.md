@@ -86,10 +86,39 @@ You will need a .dot file browser for the class diagrams
 
 ## Structure
 
+**Class Model**
+
 ```mermaid
 flowchart LR
 Specific_Device --> Abstract_Device_Class --> Device--> Hub
 ```
+
+**Capability Model**
+
+*Bulb*
+
+```mermaid
+flowchart TD
+subgraph Advanced_Zigbee_RGBW_Bulb
+ColorControl & ColorMode
+end
+subgraph ColorTempBulb
+end
+ColorTemperature
+subgraph Bulb
+ChangeLevel
+end
+
+Advanced_Zigbee_RGBW_Bulb --> ColorTempBulb --> Bulb
+```
+
+*Outlet*
+
+```mermaid
+flowchart TD
+Outlet & Actuator & Switch
+```
+
 
 ## Development setup
 
