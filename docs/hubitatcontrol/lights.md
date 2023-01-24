@@ -73,6 +73,9 @@ Classes
     `hue: int`
     :
 
+    `saturation: str`
+    :
+
     ### Methods
 
     `set_color(self, level: str)`

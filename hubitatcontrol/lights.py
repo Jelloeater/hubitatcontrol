@@ -40,6 +40,10 @@ class RGBWBulb(ColorTempBulb):
     def color_name(self) -> str:
         return [x for x in self.attributes if "colorName" in x["name"]][0]["currentValue"]
 
+    @property
+    def saturation(self) -> str:
+        return [x for x in self.attributes if "saturation" in x["name"]][0]["currentValue"]
+
     def set_hue(self, level: int):
         self.send_device_command(command="setHue", secondary_command=str(level))
         sleep(2)
