@@ -38,8 +38,8 @@ def test_device_bulb():
     test_bulb = get_device_of_type('Advanced Zigbee RGBW Bulb')
     state = test_bulb.switch
     temp = test_bulb.color_temp
-    hue = temp = test_bulb.hue
-    sat = temp = test_bulb.saturation
+    hue = test_bulb.hue
+    sat = test_bulb.saturation
 
     test_bulb.turn_on()
     assert test_bulb.switch == 'on'
@@ -61,7 +61,6 @@ def test_device_bulb():
     test_bulb.set_saturation(80)
     assert test_bulb.saturation == 80
     test_bulb.set_hue(sat)
-
 
     if state == 'on':
         test_bulb.turn_on()
@@ -85,7 +84,7 @@ def test_device_outlet():
 def test_device_dimmer():
     d = get_device_of_type('Leviton DZ6HD Z-Wave Dimmer')
     assert d
-    state_l = d.switch # To set light back where they were
+    state_l = d.switch  # To set light back where they were
     state = d.level
     d.set_level(25)
     assert d.level == 25
