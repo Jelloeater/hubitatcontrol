@@ -4,11 +4,34 @@ Module hubitatcontrol.lights
 Classes
 -------
 
-`Advanced_Zigbee_RGBW_Bulb(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
+`Bulb(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
 :   
 
     ### Ancestors (in MRO)
 
+    * hubitatcontrol.generic.Switch
+    * hubitatcontrol.hub.Device
+
+    ### Descendants
+
+    * hubitatcontrol.lights.ColorTempBulb
+
+    ### Instance variables
+
+    `level: int`
+    :
+
+    ### Methods
+
+    `set_level(self, level: int)`
+    :
+
+`BulbRGBW(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
+:   
+
+    ### Ancestors (in MRO)
+
+    * hubitatcontrol.lights.ColorTempBulb
     * hubitatcontrol.lights.Bulb
     * hubitatcontrol.generic.Switch
     * hubitatcontrol.hub.Device
@@ -24,33 +47,23 @@ Classes
     `color_name: str`
     :
 
-    `color_temp: int`
-    :
-
     `hue: int`
     :
 
-`Bulb(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
+`ColorTempBulb(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
 :   
 
     ### Ancestors (in MRO)
 
+    * hubitatcontrol.lights.Bulb
     * hubitatcontrol.generic.Switch
     * hubitatcontrol.hub.Device
 
     ### Descendants
 
-    * hubitatcontrol.lights.Advanced_Zigbee_RGBW_Bulb
+    * hubitatcontrol.lights.BulbRGBW
 
     ### Instance variables
 
-    `level: int`
-    :
-
-    ### Methods
-
-    `flash(self)`
-    :
-
-    `set_level(self, level: int)`
+    `color_temp: int`
     :
