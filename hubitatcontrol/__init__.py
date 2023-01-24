@@ -12,7 +12,7 @@ def get_hub(host, token, app_id) -> Hub:
 def lookup_device(hub_in, device_lookup):
     d = hub_in.get_device(device_lookup)
     if "ColorControl" in d["capabilities"] and "ColorMode" in d["capabilities"]:
-        return BulbRGBW(device_from_hub=d, hub=hub_in)
+        return RGBWBulb(device_from_hub=d, hub=hub_in)
     if "ColorTemperature" in d["capabilities"]:
         return ColorTempBulb(device_from_hub=d, hub=hub_in)
     if "ChangeLevel" in d["capabilities"]:
