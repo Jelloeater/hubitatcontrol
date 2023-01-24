@@ -26,7 +26,30 @@ Classes
     `set_level(self, level: int)`
     :
 
-`BulbRGBW(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
+`ColorTempBulb(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
+:   
+
+    ### Ancestors (in MRO)
+
+    * hubitatcontrol.lights.Bulb
+    * hubitatcontrol.generic.Switch
+    * hubitatcontrol.hub.Device
+
+    ### Descendants
+
+    * hubitatcontrol.lights.RGBWBulb
+
+    ### Instance variables
+
+    `color_temp: int`
+    :
+
+    ### Methods
+
+    `set_color_temp(self, level: int)`
+    :
+
+`RGBWBulb(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
 :   
 
     ### Ancestors (in MRO)
@@ -50,20 +73,13 @@ Classes
     `hue: int`
     :
 
-`ColorTempBulb(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
-:   
+    ### Methods
 
-    ### Ancestors (in MRO)
+    `set_color(self, level: str)`
+    :
 
-    * hubitatcontrol.lights.Bulb
-    * hubitatcontrol.generic.Switch
-    * hubitatcontrol.hub.Device
+    `set_hue(self, level: int)`
+    :
 
-    ### Descendants
-
-    * hubitatcontrol.lights.BulbRGBW
-
-    ### Instance variables
-
-    `color_temp: int`
+    `set_saturation(self, level: int)`
     :
