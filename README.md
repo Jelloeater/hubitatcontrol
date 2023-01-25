@@ -40,36 +40,36 @@ You will need a .dot file browser for the class diagrams
 
 ## Roadmap
 
-### v0.5
+### v0.5.0
 
 - [X] Advanced Zigbee RGBW Bulb
 
-### v0.7
+### v0.7.0
 
 - [X] Generic Zigbee Outlet
 
-### v0.8
+### v0.8.0
 
 - [X] Leviton DZ6HD Z-Wave Dimmer
 
-### v1.0
+### v1.0.0
 - [X] hueBridgeBulb
 - [X] hueBridgeBulbRGBW
 - [X] hueBridgeBulbCT
 
-### v1.5
+### v1.1.0
 
 - [ ] Ecobee Thermostat
 
-### v2.0
+### v1.1.1
 
 - [ ] Generic Z-Wave Lock
 
-### v2.5
+### v1.1.2
 
 - [ ] Generic Z-Wave Plus Scene Switch
 
-### v2.6
+### v1.1.3
 
 - [ ] Generic Zigbee Contact Sensor (no temp)
 - [ ] Sonoff Zigbee Button Controller
