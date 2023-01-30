@@ -88,6 +88,8 @@ Specific_Device --> Abstract_Device_Class --> Device--> Hub
 Testing is done with PyTest, you will need to set up the correct env vars for your local (or cloud) Hubitat API
 See `.env.example`
 
+If you are using a local API endpoint, please leave `HUBITAT_CLOUD_ID` blank in the `.env` file.
+
 **Setup**
 
 Install Go-Task --> <https://taskfile.dev/installation/>
