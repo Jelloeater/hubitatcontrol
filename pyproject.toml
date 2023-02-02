@@ -14,13 +14,6 @@ classifiers = ["Development Status :: 5 - Production/Stable",
  "Operating System :: OS Independent",
 ]
 
-[tool.setuptools]
-package-dir = {"" = "src"}
-
-[tool.setuptools.packages.find]
-where = ["src"]
-packages = [{ include = "hubitatcontrol", from = "src" }]
-
 [tool.poetry.dependencies]
 python = "^3.10"
 requests = "*"
