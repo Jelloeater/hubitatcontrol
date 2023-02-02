@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "hubitatcontrol"
-version = "1.0.6"
+version = "1.0.7"
 description = "Hubitat Maker API Interface"
 authors = ["Jesse Schoepfer <jelloeater@gmail.com>"]
 license = "MIT License"
@@ -14,13 +14,12 @@ classifiers = ["Development Status :: 5 - Production/Stable",
  "Operating System :: OS Independent",
 ]
 
-
 [tool.poetry.dependencies]
 python = "^3.10"
 requests = "*"
 
 [tool.pytest.ini_options]
-pythonpath = ["."]
+pythonpath = ["src"]
 testpaths = "test/"
 
 [tool.black]

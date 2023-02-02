@@ -1,10 +1,7 @@
-import logging
 import os
-import sys
 
 from dotenv import load_dotenv
 
-import hubitatcontrol
 from hubitatcontrol import *
 
 load_dotenv()
@@ -17,7 +14,7 @@ def get_device_of_type(device_type: str):
     h = Hub(host=host_env, token=token_env, app_id=app_id_env)
     for i in h.devices:
         if i['type'] == device_type:
-            return hubitatcontrol.lookup_device(h, i['label'])
+            return lookup_device(h, i['label'])
 
 
 def test_creds():
