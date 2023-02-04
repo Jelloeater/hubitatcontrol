@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "hubitatcontrol"
-version = "1.0.7"
+version = "1.0.8"
 description = "Hubitat Maker API Interface"
 authors = ["Jesse Schoepfer <jelloeater@gmail.com>"]
 license = "MIT License"
