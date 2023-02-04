@@ -48,10 +48,13 @@ tasks:
             - poetry run isort --atomic {{.BUILD_DIR}}
             - poetry run black {{.BUILD_DIR}} --color #--diff
     docs:
-        - rm -rf docs
-        - poetry run pdoc3 {{.BUILD_DIR}} -o docs -f
-        - poetry run pyreverse {{.BUILD_DIR}} -d docs
-        - git add docs
+        silent: true
+        interactive: false
+        cmds:
+            - rm -rf docs
+            - poetry run pdoc3 {{.BUILD_DIR}} -o docs -f
+            - poetry run pyreverse {{.BUILD_DIR}} -d docs
+            - git add docs
     install-hooks:
         cmds:
             - poetry run pre-commit install
