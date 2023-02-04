@@ -9,7 +9,19 @@
 [![GitHub](https://img.shields.io/github/license/jelloeater/hubitatcontrol)](https://github.com/Jelloeater/hubitatcontrol/blob/main/LICENSE)
 [![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org)
 
-## Usage
+## Intro
+
+This guide assumes you own a **Hubitat Elevation** home automation controller.
+
+If you are interested in purchasing one, you can purchase a unit from the manufactures website at [hubitat.com](https://hubitat.com/products) or from [Amazon.com](https://www.amazon.com/Hubitat-Elevation-Home-Automation-Hub/dp/B07D19VVTX/)
+
+## Setup
+
+To get the required API keys, you will need to log in to your Hubitat admin interface.
+
+See [Maker API Documentation](https://docs2.hubitat.com/en/apps/maker-api) for how to add the `MakerAPI` application and to generate new API keys
+
+## Install
 
 ```shell
 pip install hubitatcontrol
@@ -20,6 +32,8 @@ pip install hubitatcontrol
 ```shell
 pip install git+https://github.com/Jelloeater/hubitatcontrol.git
 ```
+
+## Usage
 
 ```python
 import hubitatcontrol as hc
@@ -53,6 +67,7 @@ You will need a .dot file browser for the class diagrams
 - [X] Leviton DZ6HD Z-Wave Dimmer
 
 ### v1.0.0
+
 - [X] hueBridgeBulb
 - [X] hueBridgeBulbRGBW
 - [X] hueBridgeBulbCT
