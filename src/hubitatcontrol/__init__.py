@@ -15,7 +15,7 @@ def lookup_device(hub_in, device_lookup):
         return RGBWBulb(device_from_hub=d, hub=hub_in)
     if "ColorTemperature" in d["capabilities"]:
         return ColorTempBulb(device_from_hub=d, hub=hub_in)
-    if "ChangeLevel" in d["capabilities"]:
+    if "ChangeLevel" in d["capabilities"] or "SwitchLevel" in d["capabilities"]:
         return Bulb(device_from_hub=d, hub=hub_in)
     if "PowerMeter" in d["capabilities"] and "Outlet" in d["capabilities"]:
         return ZigbeeOutlet(device_from_hub=d, hub=hub_in)
