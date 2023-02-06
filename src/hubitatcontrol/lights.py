@@ -10,7 +10,7 @@ class Bulb(Switch):
 
     def set_level(self, level: int):
         self.send_device_command(command="setLevel", secondary_command=str(level))
-        sleep(2)
+        sleep(2.5)
 
 
 class ColorTempBulb(Bulb):
