@@ -21,6 +21,8 @@ To get the required API keys, you will need to log in to your Hubitat admin inte
 
 See [Maker API Documentation](https://docs2.hubitat.com/en/apps/maker-api) for how to add the `MakerAPI` application and to generate new API keys
 
+If you are using the cloud API endpoint for access, you will ALSO need to include the Cloud API key when setting up a new Hub object.
+
 ## Install
 
 ```shell
@@ -35,10 +37,25 @@ pip install git+https://github.com/Jelloeater/hubitatcontrol.git
 
 ## Usage
 
+**Local Example**
 ```python
 import hubitatcontrol as hc
 
-hub = hc.get_hub(host='Hubitat_IP_or_Hostname', token='Maker_Token', app_id='Maker_App_ID')
+hub = hc.get_hub(host='http://192.168.1.100', token='Maker_Token', 
+                 app_id='Maker_App_ID')
+device = hc.lookup_device(hub, 'Device_Name')
+
+print(device.switch)
+device.turn_on()
+print(device.switch)
+```
+
+**Cloud Example**
+```python
+import hubitatcontrol as hc
+
+hub = hc.get_hub(host='https://cloud.hubitat.com', token='Maker_Token', 
+                 app_id='Maker_App_ID', cloud_token='Cloud_API_token')
 device = hc.lookup_device(hub, 'Device_Name')
 
 print(device.switch)

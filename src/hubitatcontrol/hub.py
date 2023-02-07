@@ -4,13 +4,13 @@ import requests
 
 
 class Hub:
-    def __init__(self, host, token, app_id, cloud_id=None):
+    def __init__(self, host, token, app_id, cloud_token=None):
         self.host = host
-        self.cloud_id = cloud_id
+        self.cloud_token = cloud_token
         self.token = token
         self.app_id = app_id
-        if cloud_id:
-            self.base_url_prefix = self.host + "/api/" + self.cloud_id + "/apps/" + self.app_id + "/devices"
+        if cloud_token:
+            self.base_url_prefix = self.host + "/api/" + self.cloud_token + "/apps/" + self.app_id + "/devices"
         else:
             self.base_url_prefix = self.host + "/apps/api/" + self.app_id + "/devices"
 
