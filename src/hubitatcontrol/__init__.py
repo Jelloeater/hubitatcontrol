@@ -5,8 +5,8 @@ from hubitatcontrol.hub import Hub
 from hubitatcontrol.lights import *
 
 
-def get_hub(host, token, app_id) -> Hub:
-    return Hub(host=host, token=token, app_id=app_id)
+def get_hub(host, token, app_id, cloud_token=None) -> Hub:
+    return Hub(host=host, token=token, app_id=app_id, cloud_token=cloud_token)
 
 
 def lookup_device(hub_in, device_lookup):

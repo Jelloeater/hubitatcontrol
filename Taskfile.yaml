@@ -45,8 +45,8 @@ tasks:
         silent: true
         interactive: false
         cmds:
-            - poetry run isort --atomic {{.BUILD_DIR}}
-            - poetry run black {{.BUILD_DIR}} --color #--diff
+            - poetry run isort --atomic .
+            - poetry run black . --color #--diff
     docs:
         silent: true
         interactive: false
