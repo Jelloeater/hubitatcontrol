@@ -8,42 +8,36 @@ load_dotenv()
 host_env = os.getenv("HUBITAT_HOST")
 token_env = os.getenv("HUBITAT_API_TOKEN")
 app_id_env = os.getenv("HUBITAT_API_APP_ID")
+cloud_token = os.getenv("HUBITAT_CLOUD_TOKEN")
 
 
 def get_device_of_type(device_type: str):
-    h = Hub(host=host_env, token=token_env, app_id=app_id_env)
+    h = Hub(host=host_env, token=token_env, app_id=app_id_env, cloud_token=cloud_token)
     for i in h.devices:
-        if i['type'] == device_type:
-            return lookup_device(h, i['label'])
+        if i["type"] == device_type:
+            return lookup_device(h, i["label"])
 
 
 def test_creds():
     import os
+
     assert os.getenv("HUBITAT_API_APP_ID") is not None
     assert os.getenv("HUBITAT_API_TOKEN") is not None
 
 
-def test_hub_get():
-    h = Hub(host=host_env, token=token_env, app_id=app_id_env)
-    if h.devices is not None:
-        assert True
-    else:
-        assert False
-
-
 def test_device_bulb():
-    test_bulb = get_device_of_type('Virtual RGBW Light')
+    test_bulb = get_device_of_type("Virtual RGBW Light")
     state = test_bulb.switch
     temp = test_bulb.color_temp
     hue = test_bulb.hue
     sat = test_bulb.saturation
 
     test_bulb.turn_on()
-    assert test_bulb.switch == 'on'
+    assert test_bulb.switch == "on"
     test_bulb.turn_off()
-    assert test_bulb.switch == 'off'
+    assert test_bulb.switch == "off"
     test_bulb.turn_on()
-    assert test_bulb.switch == 'on'
+    assert test_bulb.switch == "on"
 
     test_bulb.set_color_temp(3205)
     assert test_bulb.color_temp == 3205
@@ -59,27 +53,27 @@ def test_device_bulb():
     assert test_bulb.saturation == 80
     test_bulb.set_hue(sat)
 
-    if state == 'on':
+    if state == "on":
         test_bulb.turn_on()
     else:
         test_bulb.turn_off()
 
 
 def test_device_outlet():
-    t = get_device_of_type('Virtual Switch')
+    t = get_device_of_type("Virtual Switch")
     state = t.switch
     t.turn_off()
-    assert t.switch == 'off'
+    assert t.switch == "off"
     t.turn_on()
-    assert t.switch == 'on'
-    if state == 'on':
+    assert t.switch == "on"
+    if state == "on":
         t.turn_on()
     else:
         t.turn_off()
 
 
 def test_device_dimmer():
-    d = get_device_of_type('Virtual Dimmer')
+    d = get_device_of_type("Virtual Dimmer")
     assert d
     state_l = d.switch  # To set light back where they were
     state = d.level
@@ -88,7 +82,7 @@ def test_device_dimmer():
     d.set_level(50)
     assert d.level == 50
     d.set_level(state)
-    if state_l == 'on':
+    if state_l == "on":
         d.turn_on()
     else:
         d.turn_off()
