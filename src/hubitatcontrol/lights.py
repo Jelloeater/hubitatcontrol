@@ -3,7 +3,7 @@ from time import sleep
 from hubitatcontrol.generic import Switch
 
 
-class Bulb(Switch):
+class Dimmer(Switch):
     @property
     def level(self) -> int:
         return [x for x in self.attributes if "level" in x["name"]][0]["currentValue"]
@@ -11,6 +11,11 @@ class Bulb(Switch):
     def set_level(self, level: int):
         self.send_device_command(command="setLevel", secondary_command=str(level))
         sleep(2.5)
+
+
+class Bulb(Dimmer):
+    pass
+    # TODO May need to add more methods, as bulbs might have more functionality
 
 
 class ColorTempBulb(Bulb):
