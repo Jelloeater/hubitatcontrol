@@ -15,3 +15,6 @@ Hubitat Maker API
 
 `lookup_device(hub_in, device_lookup)`
 :
+
+`print_device_list_types(hub_in)`
+:

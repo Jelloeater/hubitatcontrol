@@ -26,3 +26,23 @@ def lookup_device(hub_in, device_lookup):
     if "Switch" in d["capabilities"]:
         return hubitatcontrol.generic.Switch(device_from_hub=d, hub=hub_in)
     return d  # Fall through return
+
+
+def print_device_list_types(hub_in):
+    import os
+
+    from dotenv import load_dotenv
+
+    envs = load_dotenv()
+    if envs:
+        host_env = os.getenv("HUBITAT_HOST")
+        token_env = os.getenv("HUBITAT_API_TOKEN")
+        app_id_env = os.getenv("HUBITAT_API_APP_ID")
+    else:
+        # TODO Add CLI input if .env not present
+        host_env = ""
+        token_env = ""
+        app_id_env = ""
+    h = get_hub(host=host_env, token=token_env, app_id=app_id_env)
+    for i in hub_in.devices:
+        d = hub_in.get_device(i)
