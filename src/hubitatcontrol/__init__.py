@@ -11,6 +11,8 @@ def get_hub(host, token, app_id, cloud_token=None) -> Hub:
 
 def lookup_device(hub_in, device_lookup):
     d = hub_in.get_device(device_lookup)
+    if d is None:
+        raise Exception("Device Not Found")
     if "ColorControl" in d["capabilities"] and "ColorMode" in d["capabilities"]:
         return RGBWBulb(device_from_hub=d, hub=hub_in)
     if "ColorTemperature" in d["capabilities"]:

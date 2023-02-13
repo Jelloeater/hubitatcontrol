@@ -30,7 +30,7 @@ Classes
     `send_device_command(self, command: str, secondary_command: str = None) ‑> requests.models.Response`
     :
 
-`Hub(host, token, app_id, cloud_id=None)`
+`Hub(host, token, app_id, cloud_token=None)`
 :   
 
     ### Instance variables

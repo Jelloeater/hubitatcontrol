@@ -12,7 +12,7 @@ Functions
 ---------
 
     
-`get_hub(host, token, app_id) ‑> hubitatcontrol.hub.Hub`
+`get_hub(host, token, app_id, cloud_token=None) ‑> hubitatcontrol.hub.Hub`
 :   
 
     
