@@ -1,10 +1,10 @@
 digraph "packages" {
 rankdir=BT
 charset="utf-8"
-"hubitatcontrol" [color="black", label="hubitatcontrol", shape="box", style="solid"];
-"hubitatcontrol.generic" [color="black", label="hubitatcontrol.generic", shape="box", style="solid"];
-"hubitatcontrol.hub" [color="black", label="hubitatcontrol.hub", shape="box", style="solid"];
-"hubitatcontrol.lights" [color="black", label="hubitatcontrol.lights", shape="box", style="solid"];
+"hubitatcontrol" [color="black", label=<hubitatcontrol>, shape="box", style="solid"];
+"hubitatcontrol.generic" [color="black", label=<hubitatcontrol.generic>, shape="box", style="solid"];
+"hubitatcontrol.hub" [color="black", label=<hubitatcontrol.hub>, shape="box", style="solid"];
+"hubitatcontrol.lights" [color="black", label=<hubitatcontrol.lights>, shape="box", style="solid"];
 "hubitatcontrol" -> "hubitatcontrol.generic" [arrowhead="open", arrowtail="none"];
 "hubitatcontrol" -> "hubitatcontrol.hub" [arrowhead="open", arrowtail="none"];
 "hubitatcontrol" -> "hubitatcontrol.lights" [arrowhead="open", arrowtail="none"];
