@@ -9,6 +9,7 @@ Classes
 
     ### Ancestors (in MRO)
 
+    * hubitatcontrol.lights.Dimmer
     * hubitatcontrol.generic.Switch
     * hubitatcontrol.hub.Device
 
@@ -16,22 +17,13 @@ Classes
 
     * hubitatcontrol.lights.ColorTempBulb
 
-    ### Instance variables
-
-    `level: int`
-    :
-
-    ### Methods
-
-    `set_level(self, level: int)`
-    :
-
 `ColorTempBulb(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
 :   
 
     ### Ancestors (in MRO)
 
     * hubitatcontrol.lights.Bulb
+    * hubitatcontrol.lights.Dimmer
     * hubitatcontrol.generic.Switch
     * hubitatcontrol.hub.Device
 
@@ -49,6 +41,28 @@ Classes
     `set_color_temp(self, level: int)`
     :
 
+`Dimmer(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
+:   
+
+    ### Ancestors (in MRO)
+
+    * hubitatcontrol.generic.Switch
+    * hubitatcontrol.hub.Device
+
+    ### Descendants
+
+    * hubitatcontrol.lights.Bulb
+
+    ### Instance variables
+
+    `level: int`
+    :
+
+    ### Methods
+
+    `set_level(self, level: int)`
+    :
+
 `RGBWBulb(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
 :   
 
@@ -56,6 +70,7 @@ Classes
 
     * hubitatcontrol.lights.ColorTempBulb
     * hubitatcontrol.lights.Bulb
+    * hubitatcontrol.lights.Dimmer
     * hubitatcontrol.generic.Switch
     * hubitatcontrol.hub.Device
 
