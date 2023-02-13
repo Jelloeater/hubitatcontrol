@@ -21,6 +21,10 @@ requests = "*"
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = "test/"
+log_cli = true
+log_cli_level = "DEBUG"
+log_cli_format = "[%(asctime)s] [%(levelname)8s] --- %(message)s (%(filename)s:%(funcName)s():%(lineno)s)"
+log_cli_date_format = "%Y-%m-%d %H:%M:%S"
 
 [tool.black]
 line-length = 120
@@ -39,18 +43,20 @@ pytest-cov = "*"
 python-dotenv = "*"
 
 [tool.poetry.group.dev.dependencies]
-pre-commit = "*"
 pytest-pycharm = "*"
+pre-commit = "*"
 vulture = "*"
 isort = "*"
-pdoc3 = "*"
 radon = "*"
 xenon = "*"
-bandit = "*"
 black = "*"
 typing_extensions ="*"
-#typeguard ="*"
-#mypy = "*"
+#typeguard ="*" # Typing
+#mypy = "*" # Typing
+pdoc3 = "*"
+pylint = "*"
+bandit = "*"
+whispers = "*"
 
 [build-system]
 requires = ["poetry-core"]
