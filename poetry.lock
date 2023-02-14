@@ -434,6 +434,24 @@ pycodestyle = ">=2.10.0,<2.11.0"
 pyflakes = ">=3.0.0,<3.1.0"
 
 [[package]]
+name = "flake8-pyproject"
+version = "1.2.2"
+description = "Flake8 plug-in loading the configuration from pyproject.toml"
+category = "dev"
+optional = false
+python-versions = ">= 3.6"
+files = [
+    {file = "flake8_pyproject-1.2.2-py3-none-any.whl", hash = "sha256:52d412219e7db6227faa654675b1435947b11d49b453f3eced760f19bdd6f06a"},
+]
+
+[package.dependencies]
+Flake8 = ">=5"
+TOMLi = {version = "*", markers = "python_version < \"3.11\""}
+
+[package.extras]
+dev = ["pyTest", "pyTest-cov"]
+
+[[package]]
 name = "future"
 version = "0.18.3"
 description = "Clean single-source support for Python 3 and 2"
@@ -1707,4 +1725,4 @@ requests = ">=2.0,<3.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "5b09a7c5f957881d9f2da46c3eab931e4aa7dd70e1bcc0369d26a95472210c67"
+content-hash = "e8fb35af50e4fc7f77e9a4570e09c96bd5b6def91ba7eb3e8aca6cfeecd8573c"

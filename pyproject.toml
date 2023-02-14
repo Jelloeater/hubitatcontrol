@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "hubitatcontrol"
-version = "1.0.9"
+version = "1.0.10"
 description = "Hubitat Maker API Interface"
 authors = ["Jesse Schoepfer <jelloeater@gmail.com>"]
 license = "MIT License"
@@ -28,6 +28,16 @@ log_cli_date_format = "%Y-%m-%d %H:%M:%S"
 
 [tool.black]
 line-length = 120
+
+[tool.flake8]
+ignore = ['E231', 'E241']
+exclude =['./tests']
+max-line-length = 120
+count = false
+statistics = true
+diff = true
+format = "pylint"
+
 
 [tool.isort]
 multi_line_output = 3
@@ -60,6 +70,7 @@ whispers = "*"
 mdformat-gfm ="*"
 mdformat-frontmatter ="*"
 flake8 = "*"
+Flake8-pyproject="*"
 
 [build-system]
 requires = ["poetry-core"]
