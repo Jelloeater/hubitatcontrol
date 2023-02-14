@@ -25,7 +25,7 @@ tasks:
         - python3 -m pipx ensurepath
         - pipx install poetry
     test:
-        silent: true
+        silent: false
         interactive: false
         cmds:
             - poetry run whispers {{.BUILD_DIR}}
@@ -43,11 +43,12 @@ tasks:
         - poetry check
         - py3clean .
     format:
-        silent: true
+        silent: false
         interactive: false
         cmds:
             - poetry run isort --atomic .
             - poetry run black . --color #--diff
+            - poetry run flake8
     docs:
         silent: false
         interactive: false
