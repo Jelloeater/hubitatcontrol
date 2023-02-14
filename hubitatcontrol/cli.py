@@ -19,6 +19,7 @@ def print_device_list_types():
         h = hub_creds()
     for i in h.devices:
         d = h.get_device(i)
+        # TODO Need to finish device type output
 
 
 # https://click.palletsprojects.com/en/8.1.x/setuptools/#setuptools-integration
