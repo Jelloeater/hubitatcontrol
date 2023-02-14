@@ -4,10 +4,10 @@
 [![CodeQL](https://github.com/Jelloeater/hubitatcontrol/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/Jelloeater/hubitatcontrol/actions/workflows/codeql.yml)
 [![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/pypi/hubitatcontrol)](https://libraries.io/pypi/hubitatcontrol)
 
+[![hubitatcontrol](https://snyk.io/advisor/python/hubitatcontrol/badge.svg)](https://snyk.io/advisor/python/hubitatcontrol)
 ![PyPI - Status](https://img.shields.io/pypi/status/hubitatcontrol)
 [![PyPI](https://img.shields.io/pypi/v/hubitatcontrol)](https://pypi.org/project/hubitatcontrol/)
 [![GitHub](https://img.shields.io/github/license/jelloeater/hubitatcontrol)](https://github.com/Jelloeater/hubitatcontrol/blob/main/LICENSE)
-[![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org)
 
 ## Intro
 
@@ -41,7 +41,7 @@ pip install git+https://github.com/Jelloeater/hubitatcontrol.git
 ```python
 import hubitatcontrol as hc
 
-hub = hc.get_hub(host='http://192.168.1.100', token='Maker_Token', 
+hub = hc.get_hub(host='http://192.168.1.100', token='Maker_Token',
                  app_id='Maker_App_ID')
 device = hc.lookup_device(hub, 'Device_Name')
 
@@ -54,7 +54,7 @@ print(device.switch)
 ```python
 import hubitatcontrol as hc
 
-hub = hc.get_hub(host='https://cloud.hubitat.com', token='Maker_Token', 
+hub = hc.get_hub(host='https://cloud.hubitat.com', token='Maker_Token',
                  app_id='Maker_App_ID', cloud_token='Cloud_API_token')
 device = hc.lookup_device(hub, 'Device_Name')
 
