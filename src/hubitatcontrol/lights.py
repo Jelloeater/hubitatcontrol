@@ -15,6 +15,7 @@ class Dimmer(Switch):
 
 class Bulb(Dimmer):
     pass
+    # TODO May need to add more methods, as bulbs might have more functionality
 
 
 class ColorTempBulb(Bulb):
