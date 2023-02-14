@@ -7,7 +7,6 @@ charset="utf-8"
 "hubitatcontrol.lights" [color="black", label=<hubitatcontrol.lights>, shape="box", style="solid"];
 "hubitatcontrol" -> "hubitatcontrol.generic" [arrowhead="open", arrowtail="none"];
 "hubitatcontrol" -> "hubitatcontrol.hub" [arrowhead="open", arrowtail="none"];
-"hubitatcontrol" -> "hubitatcontrol.lights" [arrowhead="open", arrowtail="none"];
 "hubitatcontrol.generic" -> "hubitatcontrol.hub" [arrowhead="open", arrowtail="none"];
 "hubitatcontrol.lights" -> "hubitatcontrol.generic" [arrowhead="open", arrowtail="none"];
 }
