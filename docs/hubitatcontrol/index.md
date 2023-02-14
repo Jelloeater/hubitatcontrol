@@ -4,6 +4,10 @@ Hubitat Maker API
 
 ## Sub-modules
 
+<<<<<<< HEAD
+=======
+- hubitatcontrol.cli
+>>>>>>> d949ef7 (Rebase from main)
 - hubitatcontrol.generic
 - hubitatcontrol.hub
 - hubitatcontrol.lights
@@ -15,6 +19,9 @@ Hubitat Maker API
 
 `lookup_device(hub_in, device_lookup)`
 :
+<<<<<<< HEAD
 
 `print_device_list_types(hub_in)`
 :
+=======
+>>>>>>> d949ef7 (Rebase from main)
