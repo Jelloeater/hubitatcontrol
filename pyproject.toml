@@ -57,6 +57,9 @@ pdoc3 = "*"
 pylint = "*"
 bandit = "*"
 whispers = "*"
+mdformat-gfm ="*"
+mdformat-frontmatter ="*"
+flake8 = "*"
 
 [build-system]
 requires = ["poetry-core"]
