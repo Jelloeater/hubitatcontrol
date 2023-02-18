@@ -1,6 +1,6 @@
 version: '3'
 vars:
-    BUILD_DIR: src/hubitatcontrol
+    BUILD_DIR: hubitatcontrol
     IMAGE_NAME: hubitatcontrol
     DOCKER_FILE: Dockerfile
 tasks:
