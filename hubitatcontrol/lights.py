@@ -9,6 +9,9 @@ class Dimmer(Switch):
         return [x for x in self.attributes if "level" in x["name"]][0]["currentValue"]
 
     def set_level(self, level: int):
+        """0-100 valid range"""
+        if level < 0 or level > 100:
+            raise Exception("Invalid range")
         self.send_device_command(command="setLevel", secondary_command=str(level))
         sleep(2.5)
 
@@ -24,6 +27,7 @@ class ColorTempBulb(Bulb):
         return [x for x in self.attributes if "colorTemperature" in x["name"]][0]["currentValue"]
 
     def set_color_temp(self, level: int):
+        """Degrees Kelvin"""
         self.send_device_command(command="setColorTemperature", secondary_command=str(level))
         sleep(2)
 
@@ -49,14 +53,22 @@ class RGBWBulb(ColorTempBulb):
     def saturation(self) -> str:
         return [x for x in self.attributes if "saturation" in x["name"]][0]["currentValue"]
 
-    def set_hue(self, level: int):
-        self.send_device_command(command="setHue", secondary_command=str(level))
+    def set_hue(self, hue: int):
+        """0-100 valid range"""
+        if hue < 0 or hue > 100:
+            raise Exception("Invalid range")
+        self.send_device_command(command="setHue", secondary_command=str(hue))
         sleep(2)
 
-    def set_saturation(self, level: int):
-        self.send_device_command(command="setSaturation", secondary_command=str(level))
+    def set_saturation(self, saturation: int):
+        """0-100 valid range"""
+        if saturation < 0 or saturation > 100:
+            raise Exception("Invalid range")
+        self.send_device_command(command="setSaturation", secondary_command=str(saturation))
         sleep(2)
 
-    def set_color(self, level: str):
-        self.send_device_command(command="setColor", secondary_command=str(level))
-        sleep(2)
+    def set_color(self):
+        raise NotImplementedError
+        # TODO Need to implement HSL mapping
+        # self.send_device_command(command="setColor", secondary_command=str(color))
+        # sleep(2)
