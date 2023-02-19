@@ -25,11 +25,14 @@ RUN poetry config virtualenvs.create false
 
 # Install application into container
 # Don't forget to check the .dockerignore
-COPY . .
-RUN tree /app
 # Install ALL packages
-RUN poetry install --no-interaction --no-root --without dev
+RUN poetry init
+RUN poetry add pytest
+RUN poetry add python-dotenv
+RUN poetry add git+https://github.com/jelloeater/hubitatcontrol.git
 
+COPY tests tests
+RUN tree
 # Create and switch to a new user
 RUN useradd --create-home appuser
 USER appuser
