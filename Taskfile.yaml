@@ -14,6 +14,7 @@ tasks:
     commit:
         - task: format
         - task: docs
+        - poetry run tartufo scan-local-repo .
     build:
         env:
             PIPENV_IGNORE_VIRTUALENVS: 1
