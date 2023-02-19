@@ -10,11 +10,12 @@ tasks:
         cmds:
             - poetry install
             - task: format
+            - task: security
             - task: test
     commit:
         - task: format
         - task: docs
-        - poetry run tartufo scan-local-repo .
+        - task: security
     build:
         env:
             PIPENV_IGNORE_VIRTUALENVS: 1
@@ -59,6 +60,10 @@ tasks:
             - poetry run pyreverse {{.BUILD_DIR}} -d docs
             - poetry run mdformat docs
             - git add docs
+    security:
+        - poetry run whispers {{.BUILD_DIR}} # Check for security issues
+        - poetry run bandit --silent -r {{.BUILD_DIR}}
+        - poetry run tartufo scan-local-repo .
     install-hooks:
         cmds:
             - poetry run pre-commit install
