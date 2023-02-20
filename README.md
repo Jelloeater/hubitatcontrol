@@ -40,7 +40,7 @@ pip install git+https://github.com/Jelloeater/hubitatcontrol.git
 **CLI Interface**
 ```bash
 # If you do not have a .env file to load, you will have to input the required vars via CLI
-python3 hubitatcontrol/cli.py
+python3 hubitatcontrol
 ```
 
 **Local Example**

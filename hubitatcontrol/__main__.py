@@ -32,4 +32,5 @@ def hub_creds(host_env, token_env, app_id_env):
 
 
 if __name__ == "__main__":
+    print('Welcome!')
     print_device_list_types()
