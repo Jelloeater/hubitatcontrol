@@ -40,7 +40,11 @@
 ### Methods
 
 `set_color_temp(self, level: int)`
+<<<<<<< HEAD
 :   Degrees Kelvin
+=======
+:
+>>>>>>> d949ef7 (Rebase from main)
 ```
 
 `Dimmer(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
@@ -64,7 +68,11 @@
 ### Methods
 
 `set_level(self, level: int)`
+<<<<<<< HEAD
 :   0-100 valid range
+=======
+:
+>>>>>>> d949ef7 (Rebase from main)
 ```
 
 `RGBWBulb(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
@@ -98,6 +106,7 @@
 
 ### Methods
 
+<<<<<<< HEAD
 `set_color(self)`
 :
 
@@ -106,4 +115,14 @@
 
 `set_saturation(self, saturation: int)`
 :   0-100 valid range
+=======
+`set_color(self, level: str)`
+:
+
+`set_hue(self, level: int)`
+:
+
+`set_saturation(self, level: int)`
+:
+>>>>>>> d949ef7 (Rebase from main)
 ```

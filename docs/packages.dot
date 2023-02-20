@@ -2,11 +2,19 @@ digraph "packages" {
 rankdir=BT
 charset="utf-8"
 "hubitatcontrol" [color="black", label=<hubitatcontrol>, shape="box", style="solid"];
+<<<<<<< HEAD
+=======
+"hubitatcontrol.cli" [color="black", label=<hubitatcontrol.cli>, shape="box", style="solid"];
+>>>>>>> d949ef7 (Rebase from main)
 "hubitatcontrol.generic" [color="black", label=<hubitatcontrol.generic>, shape="box", style="solid"];
 "hubitatcontrol.hub" [color="black", label=<hubitatcontrol.hub>, shape="box", style="solid"];
 "hubitatcontrol.lights" [color="black", label=<hubitatcontrol.lights>, shape="box", style="solid"];
 "hubitatcontrol" -> "hubitatcontrol.generic" [arrowhead="open", arrowtail="none"];
 "hubitatcontrol" -> "hubitatcontrol.hub" [arrowhead="open", arrowtail="none"];
+<<<<<<< HEAD
+=======
+"hubitatcontrol.cli" -> "hubitatcontrol" [arrowhead="open", arrowtail="none"];
+>>>>>>> d949ef7 (Rebase from main)
 "hubitatcontrol.generic" -> "hubitatcontrol.hub" [arrowhead="open", arrowtail="none"];
 "hubitatcontrol.lights" -> "hubitatcontrol.generic" [arrowhead="open", arrowtail="none"];
 }
