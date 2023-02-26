@@ -19,3 +19,31 @@ class ZigbeeOutlet(Switch):
     def power(self) -> int:
         """Returns power usage"""
         return [x for x in self.attributes if "power" in x["name"]][0]["currentValue"]
+
+
+class Thermostat(Device):
+    def set_temperature(self):
+        raise NotImplementedError
+
+
+class EcoBee(Thermostat):
+    # TODO Need to implement generic and EcoBee specific functions
+    pass
+
+
+class GenericZWaveLock(Device):
+    # TODO Add ZWave lock
+    def lock(self):
+        raise NotImplementedError
+
+    def unlock(self):
+        raise NotImplementedError
+
+
+class Button(Device):
+    pass
+
+
+class SonoffZigbeeButtonController(Button):
+    # TODO Add button properties
+    pass

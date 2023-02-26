@@ -5,8 +5,10 @@ charset="utf-8"
 "hubitatcontrol.generic" [color="black", label=<hubitatcontrol.generic>, shape="box", style="solid"];
 "hubitatcontrol.hub" [color="black", label=<hubitatcontrol.hub>, shape="box", style="solid"];
 "hubitatcontrol.lights" [color="black", label=<hubitatcontrol.lights>, shape="box", style="solid"];
+"hubitatcontrol.sensors" [color="black", label=<hubitatcontrol.sensors>, shape="box", style="solid"];
 "hubitatcontrol" -> "hubitatcontrol.generic" [arrowhead="open", arrowtail="none"];
 "hubitatcontrol" -> "hubitatcontrol.hub" [arrowhead="open", arrowtail="none"];
 "hubitatcontrol.generic" -> "hubitatcontrol.hub" [arrowhead="open", arrowtail="none"];
 "hubitatcontrol.lights" -> "hubitatcontrol.generic" [arrowhead="open", arrowtail="none"];
+"hubitatcontrol.sensors" -> "hubitatcontrol.hub" [arrowhead="open", arrowtail="none"];
 }

@@ -72,3 +72,8 @@ class RGBWBulb(ColorTempBulb):
         # TODO Need to implement HSL mapping
         # self.send_device_command(command="setColor", secondary_command=str(color))
         # sleep(2)
+
+
+class ZWavePlusSceneSwitch(Bulb):
+    # TODO Add ZWave Plus Scene Switch
+    pass

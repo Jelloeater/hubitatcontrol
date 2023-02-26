@@ -7,6 +7,7 @@ Hubitat Maker API
 - hubitatcontrol.generic
 - hubitatcontrol.hub
 - hubitatcontrol.lights
+- hubitatcontrol.sensors
 
 ## Functions
 
