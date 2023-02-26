@@ -8,7 +8,11 @@
 ```
 ### Descendants
 
+* hubitatcontrol.generic.Button
+* hubitatcontrol.generic.GenericZWaveLock
 * hubitatcontrol.generic.Switch
+* hubitatcontrol.generic.Thermostat
+* hubitatcontrol.sensors.ContactSensor
 
 ### Instance variables
 

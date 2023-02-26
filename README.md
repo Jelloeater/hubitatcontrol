@@ -69,42 +69,10 @@ print(device.switch)
 
 You will need a .dot file browser for the class diagrams
 
-## Roadmap
+## Issues / Features
+See: 
 
-### v0.5.0
-
-- [X] Advanced Zigbee RGBW Bulb
-
-### v0.7.0
-
-- [X] Generic Zigbee Outlet
-
-### v0.8.0
-
-- [X] Leviton DZ6HD Z-Wave Dimmer
-
-### v1.0.0
-
-- [X] hueBridgeBulb
-- [X] hueBridgeBulbRGBW
-- [X] hueBridgeBulbCT
-
-### v1.1.0
-
-- [ ] Ecobee Thermostat
-
-### v1.1.1
-
-- [ ] Generic Z-Wave Lock
-
-### v1.1.2
-
-- [ ] Generic Z-Wave Plus Scene Switch
-
-### v1.1.3
-
-- [ ] Generic Zigbee Contact Sensor (no temp)
-- [ ] Sonoff Zigbee Button Controller
+https://github.com/Jelloeater/hubitatcontrol/issues
 
 ## Structure
 
