@@ -2,6 +2,7 @@
 
 import hubitatcontrol.generic
 import hubitatcontrol.lights
+import hubitatcontrol.sensors
 from hubitatcontrol.hub import Hub
 
 
@@ -25,4 +26,6 @@ def lookup_device(hub_in, device_lookup):
         return hubitatcontrol.generic.ZigbeeOutlet(device_from_hub=d, hub=hub_in)
     if "Switch" in d["capabilities"]:
         return hubitatcontrol.generic.Switch(device_from_hub=d, hub=hub_in)
+    if "TemperatureMeasurement" in d["capabilities"]:
+        return hubitatcontrol.sensors.TemperatureSensor(device_from_hub=d, hub=hub_in)
     return d  # Fall through return # pragma: no cover
