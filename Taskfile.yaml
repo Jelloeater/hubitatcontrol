@@ -16,6 +16,12 @@ tasks:
         - task: format
         - task: docs
         - task: security
+    publish:
+        - task: format
+        - task: security
+        - task: test
+        - task: build
+        - poetry publish
     build:
         env:
             PIPENV_IGNORE_VIRTUALENVS: 1

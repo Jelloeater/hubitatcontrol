@@ -16,7 +16,7 @@ class Hub:
 
     @property
     def devices(self) -> list:
-        r = requests.get(url=self.base_url_prefix + "/all", params={"access_token": self.token})
+        r = requests.get(url=self.base_url_prefix + "/all", params={"access_token": self.token}, timeout=10)
         return r.json()
 
     def get_device(self, name: str):
