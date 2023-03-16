@@ -13,6 +13,7 @@
 * hubitatcontrol.generic.Switch
 * hubitatcontrol.generic.Thermostat
 * hubitatcontrol.sensors.ContactSensor
+* hubitatcontrol.sensors.TemperatureSensor
 
 ### Instance variables
 
