@@ -86,3 +86,8 @@ def test_device_dimmer():
         d.turn_on()
     else:
         d.turn_off()
+
+
+def test_temp_sensor():
+    d = get_device_of_type("Virtual Temperature Sensor")
+    assert d.temperature == 72
