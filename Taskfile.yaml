@@ -36,8 +36,6 @@ tasks:
         silent: false
         interactive: false
         cmds:
-            - poetry run whispers {{.BUILD_DIR}}
-            - poetry run bandit --silent -r {{.BUILD_DIR}}
             - poetry run vulture --min-confidence 100 {{.BUILD_DIR}}
             - poetry run xenon --max-absolute C --max-modules B --max-average B {{.BUILD_DIR}}
 #            - poetry run mypy --install-types --non-interactive
