@@ -12,13 +12,9 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             - run: tree
-            - run: |
-                  python3 -m pip install pipx
-                  python3 -m pipx ensurepath
-                  pipx install poetry
-                  poetry config virtualenvs.create false
-                  poetry install
-                  poetry run pytest --cov --cov-fail-under=85
+            - run: sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d
+            - run: task setup
+            - run: task
               env: # These need to be set in the repo or the builds will fail
                   HUBITAT_API_APP_ID: ${{ secrets.HUBITAT_API_APP_ID }}
                   HUBITAT_API_TOKEN: ${{ secrets.HUBITAT_API_TOKEN }}
