@@ -12,7 +12,7 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             - run: tree
-            - run: sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d
+            - run: sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin
             - run: task setup
             - run: task
               env: # These need to be set in the repo or the builds will fail
