@@ -1,4 +1,5 @@
 import os
+import random
 
 from dotenv import load_dotenv
 
@@ -91,3 +92,15 @@ def test_device_dimmer():
 def test_temp_sensor():
     d = get_device_of_type("Virtual Temperature Sensor")
     assert d.temperature == 72
+
+
+def test_set_color_map():
+    test_bulb = get_device_of_type("Virtual RGBW Light")
+    hue = random.randint(0, 100)
+    saturation = random.randint(0, 100)
+    level = random.randint(0, 100)
+
+    test_bulb.set_color(hue=hue, saturation=saturation, level=level)
+    assert test_bulb.level == level
+    assert test_bulb.hue == hue
+    assert test_bulb.saturation == saturation
