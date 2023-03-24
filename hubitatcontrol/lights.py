@@ -1,3 +1,4 @@
+import json
 from time import sleep
 
 from hubitatcontrol.generic import Switch
@@ -67,11 +68,17 @@ class RGBWBulb(ColorTempBulb):
         self.send_device_command(command="setSaturation", secondary_command=str(saturation))
         sleep(2)
 
-    def set_color(self):
-        raise NotImplementedError
-        # TODO Need to implement HSL mapping
-        # self.send_device_command(command="setColor", secondary_command=str(color))
-        # sleep(2)
+    def set_color(self, hue: int, saturation: int, level: int):
+        if saturation < 0 or saturation > 100:
+            raise Exception("Invalid range")
+        if level < 0 or level > 100:
+            raise Exception("Invalid range")
+        if hue < 0 or hue > 100:
+            raise Exception("Invalid range")
+
+        color_map = json.dumps({"hue": hue, "saturation": saturation, "level": level})
+        self.send_device_command(command="setColor", secondary_command=str(color_map))
+        sleep(2)
 
 
 class ZWavePlusSceneSwitch(Bulb):
