@@ -99,7 +99,7 @@
 
 ### Methods
 
-`set_color(self)`
+`set_color(self, hue: int, saturation: int, level: int)`
 :
 
 `set_hue(self, hue: int)`
