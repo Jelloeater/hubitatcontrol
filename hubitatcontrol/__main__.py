@@ -36,6 +36,9 @@ def print_device_list_types(hub_in):
         del i['capabilities']
         del i['attributes']
         del i['commands']
+        del i['model']
+        del i['manufacturer']
+        del i['date']
 
     print(prettytable.from_json(json.dumps(obj_to_table)))
 
