@@ -19,6 +19,7 @@ classifiers = ["Development Status :: 5 - Production/Stable",
 python = "^3.10"
 requests = "*"
 typer = "*"
+prettytable = "*"
 
 [tool.pytest.ini_options]
 pythonpath = ["."]

@@ -26,9 +26,18 @@ def print_devices_cli(host_env, token_env, app_id_env: int, cloud_token_env=type
 
 
 def print_device_list_types(hub_in):
-    for i in hub_in.devices:
-        d = hub_in.get_device(i)
-        # TODO Need to finish device type output
+    """Converts hub object input to pretty table console output"""
+    import prettytable
+    import json
+
+    obj_to_table = hub_in.devices
+    for i in obj_to_table:
+        # Clear out extra info
+        del i['capabilities']
+        del i['attributes']
+        del i['commands']
+
+    print(prettytable.from_json(json.dumps(obj_to_table)))
 
 
 def hub_creds(host_env, token_env, app_id_env):
