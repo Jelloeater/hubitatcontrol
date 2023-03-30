@@ -104,3 +104,9 @@ def test_set_color_map():
     assert test_bulb.level == level
     assert test_bulb.hue == hue
     assert test_bulb.saturation == saturation
+
+
+def test_cli():
+    import hubitatcontrol.__main__ as cli
+
+    cli.print_devices_env()
