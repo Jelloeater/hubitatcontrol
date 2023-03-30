@@ -107,6 +107,6 @@ def test_set_color_map():
 
 
 def test_cli():
-    from hubitatcontrol.__main__ import print_device_list_types
+    import hubitatcontrol.__main__ as cli
 
-    print_device_list_types()
+    cli.print_devices_env()
