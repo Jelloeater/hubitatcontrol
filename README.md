@@ -37,6 +37,7 @@ pip install git+https://github.com/Jelloeater/hubitatcontrol.git
 
 ## Usage
 
+### API
 **Local Example**
 ```python
 import hubitatcontrol as hc
@@ -61,6 +62,13 @@ device = hc.lookup_device(hub, 'Device_Name')
 print(device.switch)
 device.turn_on()
 print(device.switch)
+```
+
+### CLI Interface (WIP)
+- If you have all the needed env vars loaded you can use the env related options
+  - If not, just use the cli arg based approach
+```bash
+python3 -m hubitatcontrol
 ```
 
 ## Docs
