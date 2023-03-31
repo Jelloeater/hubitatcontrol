@@ -66,9 +66,9 @@ print(device.switch)
 
 ### CLI Interface (WIP)
 - If you have all the needed env vars loaded you can use the env related options
-  - If not, just use the cli arg based approach
+  - If not, just use the cli arg based approach, this should be installed system wide
 ```bash
-python3 -m hubitatcontrol print-devices-env
+hubitatcontrol print-devices-env
 ```
 
 ## Docs

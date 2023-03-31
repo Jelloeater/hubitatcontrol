@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "hubitatcontrol"
-version = "1.1.1"
+version = "1.1.2"
 description = "Hubitat Maker API Interface"
 authors = ["Jesse Schoepfer <jelloeater@gmail.com>"]
 license = "MIT License"
@@ -13,6 +13,9 @@ classifiers = ["Development Status :: 5 - Production/Stable",
  "Intended Audience :: Developers",
  "Operating System :: OS Independent",
 ]
+
+[tool.poetry.scripts]
+hubitatcontrol = "hubitatcontrol.__main__:app"
 
 
 [tool.poetry.dependencies]
