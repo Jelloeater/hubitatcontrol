@@ -1,3 +1,4 @@
+import logging
 from importlib import metadata
 
 import typer
@@ -65,7 +66,12 @@ def ls():
 @app.command()
 def on(device_id: int):
     hub_in = hub_from_keyring()
-    hub_in.get_device_id(device_id)
+    device = hub_in.get_device_id(device_id)
+    import hubitatcontrol.hub
+
+    hubitatcontrol.hub.Device(hub_in, device)
+
+    device.turn_on()
 
 
 @app.command()
