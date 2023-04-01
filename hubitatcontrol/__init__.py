@@ -11,6 +11,9 @@ def get_hub(host, token, app_id, cloud_token=None) -> Hub:
 
 
 def lookup_device(hub_in, device_lookup):
+    """
+    Takes device NAME, not ID for lookup
+    """
     d = hub_in.get_device(device_lookup)
     if d is None:
         raise Exception("Device Not Found")
