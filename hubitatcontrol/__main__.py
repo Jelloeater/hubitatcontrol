@@ -41,6 +41,44 @@ def print_devices_cli(host_env, token_env, app_id_env: int, cloud_token_env=type
     print_device_list_types(h)
 
 
+@app.command()
+def ls():
+    """
+    Prints current devices from system keyring
+    """
+    import keyring
+
+    host_env = keyring.get_password("hubitatcontrol", "HUBITAT_HOST")
+    token_env = keyring.get_password("hubitatcontrol", "HUBITAT_API_TOKEN")
+    app_id_env = keyring.get_password("hubitatcontrol", "HUBITAT_API_APP_ID")
+    cloud_token_env = keyring.get_password("hubitatcontrol", "HUBITAT_CLOUD_TOKEN")
+    if cloud_token_env == 'None':
+        cloud_token_env = None
+    h = get_hub(host=host_env, token=token_env, app_id=app_id_env, cloud_token=cloud_token_env)
+    print_device_list_types(h)
+
+
+@app.command()
+def load_env_to_keyring():
+    """
+    Load .env to keyring
+    """
+
+    import os
+    from dotenv import load_dotenv
+
+    # load_dotenv()
+    load_dotenv()
+
+    import keyring
+
+    app_name = "hubitatcontrol"
+    key_list = ['HUBITAT_HOST', 'HUBITAT_API_TOKEN', 'HUBITAT_API_APP_ID', 'HUBITAT_CLOUD_TOKEN']
+    for i in key_list:
+        if i is not None:
+            keyring.set_password(app_name, i, str(os.getenv(i)))
+
+
 def print_device_list_types(hub_in):
     """Converts hub object input to pretty table console output"""
     import json
