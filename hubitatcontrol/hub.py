@@ -26,6 +26,11 @@ class Hub:
             if i["label"] == name:
                 return i
 
+    def get_device_id(self, dev_id: int):
+        for i in self.devices:
+            if i["id"] == dev_id:
+                return i
+
 
 class Device:
     def __init__(self, hub: Hub, device_from_hub: dict):

@@ -116,4 +116,4 @@ def test_cli_keyring():
     import hubitatcontrol.__main__ as cli
 
     cli.load_env_to_keyring()
-    cli.print_devices_keyring()
+    cli.ls()

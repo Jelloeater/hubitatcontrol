@@ -41,11 +41,7 @@ def print_devices_cli(host_env, token_env, app_id_env: int, cloud_token_env=type
     print_device_list_types(h)
 
 
-@app.command()
-def ls():
-    """
-    Prints current devices from system keyring
-    """
+def hub_from_keyring():
     import keyring
 
     host_env = keyring.get_password("hubitatcontrol", "HUBITAT_HOST")
@@ -54,8 +50,22 @@ def ls():
     cloud_token_env = keyring.get_password("hubitatcontrol", "HUBITAT_CLOUD_TOKEN")
     if cloud_token_env == 'None':
         cloud_token_env = None
-    h = get_hub(host=host_env, token=token_env, app_id=app_id_env, cloud_token=cloud_token_env)
-    print_device_list_types(h)
+    return get_hub(host=host_env, token=token_env, app_id=app_id_env, cloud_token=cloud_token_env)
+
+
+@app.command()
+def ls():
+    """
+    Prints current devices from system keyring
+    """
+
+    print_device_list_types(hub_from_keyring())
+
+
+@app.command()
+def on(device_id: int):
+    hub_in = hub_from_keyring()
+    hub_in.get_device_id(device_id)
 
 
 @app.command()
@@ -67,7 +77,6 @@ def load_env_to_keyring():
     import os
     from dotenv import load_dotenv
 
-    # load_dotenv()
     load_dotenv()
 
     import keyring
