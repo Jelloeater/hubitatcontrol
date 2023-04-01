@@ -69,9 +69,9 @@ def on(device_id: int):
     device = hub_in.get_device_id(device_id)
     import hubitatcontrol.hub
 
-    hubitatcontrol.hub.Device(hub_in, device)
+    dev = hubitatcontrol.lookup_device(hub_in, device['name'])
 
-    device.turn_on()
+    dev.turn_on()
 
 
 @app.command()
