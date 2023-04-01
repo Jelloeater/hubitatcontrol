@@ -28,7 +28,7 @@ class Hub:
 
     def get_device_id(self, dev_id: int):
         for i in self.devices:
-            if i["id"] == dev_id:
+            if i["id"] == str(dev_id):
                 return i
 
 

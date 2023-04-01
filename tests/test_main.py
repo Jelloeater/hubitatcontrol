@@ -117,3 +117,4 @@ def test_cli_keyring():
 
     cli.load_env_to_keyring()
     cli.ls()
+    cli.on(1)
