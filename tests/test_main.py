@@ -110,3 +110,10 @@ def test_cli():
     import hubitatcontrol.__main__ as cli
 
     cli.print_devices_env()
+
+
+def test_cli_keyring():
+    import hubitatcontrol.__main__ as cli
+
+    cli.load_env_to_keyring()
+    cli.print_devices_keyring()
