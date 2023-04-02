@@ -1,6 +1,7 @@
 import os
 import random
 
+import pytest
 from dotenv import load_dotenv
 
 from hubitatcontrol import *
@@ -106,15 +107,11 @@ def test_set_color_map():
     assert test_bulb.saturation == saturation
 
 
-def test_cli():
-    import hubitatcontrol.__main__ as cli
-
-    cli.print_devices_env()
-
-
+# CLI Tests
+@pytest.mark.skipif(load_dotenv() is False, reason='No env file found')
 def test_cli_keyring():
     import hubitatcontrol.__main__ as cli
 
     cli.load_env_to_keyring()
     cli.ls()
-    cli.on(1)
+    cli.on(257)

@@ -14,34 +14,6 @@ app = typer.Typer(
 )
 
 
-@app.command()
-def print_devices_env():
-    """
-    Loads .env file at current location and prints current devices
-    """
-    import os
-
-    from dotenv import load_dotenv
-
-    load_dotenv()
-
-    host_env = os.getenv("HUBITAT_HOST")
-    token_env = os.getenv("HUBITAT_API_TOKEN")
-    app_id_env = os.getenv("HUBITAT_API_APP_ID")
-    cloud_token_env = os.getenv("HUBITAT_CLOUD_TOKEN")
-    h = get_hub(host=host_env, token=token_env, app_id=app_id_env, cloud_token=cloud_token_env)
-    print_device_list_types(h)
-
-
-@app.command()
-def print_devices_cli(host_env, token_env, app_id_env: int, cloud_token_env=typer.Argument(None)):
-    """
-    Prints current devices from CLI input
-    """
-    h = get_hub(host=host_env, token=token_env, app_id=app_id_env, cloud_token=cloud_token_env)
-    print_device_list_types(h)
-
-
 def hub_from_keyring():
     import keyring
 
@@ -65,6 +37,8 @@ def ls():
 
 @app.command()
 def on(device_id: int):
+    """Turn on a device via it's Device ID"""
+
     hub_in = hub_from_keyring()
     device = hub_in.get_device_id(device_id)
     import hubitatcontrol.hub
