@@ -20,4 +20,4 @@ def test_cli_keyring():
 @pytest.mark.skipif(load_dotenv() is False, reason='No env file found')
 def test_cli_on():
     cli.load_env_to_keyring()
-    cli.on(257)
+    cli.on(2)
