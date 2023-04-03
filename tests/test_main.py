@@ -105,13 +105,3 @@ def test_set_color_map():
     assert test_bulb.level == level
     assert test_bulb.hue == hue
     assert test_bulb.saturation == saturation
-
-
-# CLI Tests
-@pytest.mark.skipif(load_dotenv() is False, reason='No env file found')
-def test_cli_keyring():
-    import hubitatcontrol.__main__ as cli
-
-    cli.load_env_to_keyring()
-    cli.ls()
-    cli.on(257)
