@@ -1,11 +1,16 @@
 import logging
 from importlib import metadata
+from importlib.metadata import PackageNotFoundError
 
 import typer
 
 from hubitatcontrol import get_hub
 
-version = metadata.version("hubitatcontrol")
+try:
+    version = metadata.version("hubitatcontrol")
+except PackageNotFoundError:
+    logging.warning('Package not installed')
+    version = '0'
 
 app = typer.Typer(
     no_args_is_help=True,
@@ -46,6 +51,32 @@ def on(device_id: int):
     dev = hubitatcontrol.lookup_device(hub_in, device['name'])
 
     dev.turn_on()
+
+
+@app.command()
+def off(device_id: int):
+    """Turn on a device via it's Device ID"""
+
+    hub_in = hub_from_keyring()
+    device = hub_in.get_device_id(device_id)
+    import hubitatcontrol.hub
+
+    dev = hubitatcontrol.lookup_device(hub_in, device['name'])
+
+    dev.turn_off()
+
+
+@app.command()
+def level(device_id: int, level: int):
+    """Turn on a device via it's Device ID"""
+
+    hub_in = hub_from_keyring()
+    device = hub_in.get_device_id(device_id)
+    import hubitatcontrol.hub
+
+    dev = hubitatcontrol.lookup_device(hub_in, device['name'])
+
+    dev.set_level(level)
 
 
 @app.command()
