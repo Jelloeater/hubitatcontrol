@@ -48,4 +48,7 @@
 
 `get_device(self, name: str)`
 :
+
+`get_device_id(self, dev_id: int)`
+:
 ```

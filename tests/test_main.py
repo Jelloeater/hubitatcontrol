@@ -1,5 +1,6 @@
 import os
 import random
+import time
 
 import pytest
 from dotenv import load_dotenv
@@ -50,8 +51,10 @@ def test_device_bulb():
     test_bulb.set_hue(hue)
 
     test_bulb.set_saturation(10)
+    time.sleep(1)
     assert test_bulb.saturation == 10
     test_bulb.set_saturation(80)
+    time.sleep(1)
     assert test_bulb.saturation == 80
     test_bulb.set_hue(sat)
 
