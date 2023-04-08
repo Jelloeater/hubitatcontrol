@@ -42,7 +42,9 @@ def ls():
 
 @app.command()
 def on(device_id: int):
-    """Turn on a device via it's Device ID"""
+    """
+    Turn on a device via it's Device ID
+    """
 
     hub_in = hub_from_keyring()
     device = hub_in.get_device_id(device_id)
@@ -55,7 +57,9 @@ def on(device_id: int):
 
 @app.command()
 def off(device_id: int):
-    """Turn on a device via it's Device ID"""
+    """
+    Turn on a device via it's Device ID
+    """
 
     hub_in = hub_from_keyring()
     device = hub_in.get_device_id(device_id)
@@ -82,21 +86,41 @@ def level(device_id: int, level: int):
 @app.command()
 def load_env_to_keyring():
     """
-    Load .env to keyring
+    Load .env file at exec location to keyring
     """
 
     import os
+    if not os.path.exists('.env'):
+        raise FileNotFoundError('.env file missing')
+
+    import keyring
+
     from dotenv import load_dotenv
 
-    load_dotenv()
+    load_dotenv('.env')
+    app_name = "hubitatcontrol"
+    # Check for empty keys
+    for i in ['HUBITAT_HOST', 'HUBITAT_API_TOKEN', 'HUBITAT_API_APP_ID']:
+        if os.getenv(i) is None:
+            raise Exception('Please fill in .env file')
+
+    # Set keys
+    for i in ['HUBITAT_HOST', 'HUBITAT_API_TOKEN', 'HUBITAT_API_APP_ID', 'HUBITAT_CLOUD_TOKEN']:
+        keyring.set_password(app_name, i, str(os.getenv(i)))
+
+
+@app.command()
+def clear_keyring():
+    """
+    Clear Keyring passwords
+    """
 
     import keyring
 
     app_name = "hubitatcontrol"
     key_list = ['HUBITAT_HOST', 'HUBITAT_API_TOKEN', 'HUBITAT_API_APP_ID', 'HUBITAT_CLOUD_TOKEN']
     for i in key_list:
-        if i is not None:
-            keyring.set_password(app_name, i, str(os.getenv(i)))
+        keyring.delete_password(app_name, i)
 
 
 def print_device_list_types(hub_in):

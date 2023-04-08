@@ -64,12 +64,16 @@ device.turn_on()
 print(device.switch)
 ```
 
-### CLI Interface (WIP)
-- If you have all the needed env vars loaded you can use the env related options
-  - If not, just use the cli arg based approach, this should be installed system wide
+### CLI Interface
+- If you have all the needed API keys added to your .env file, all you need to do is add them to your keyring
+
 ```bash
-hubitatcontrol print-devices-env
+hubitatcontrol --help
+hubitatcontrol load-env-to-keyring
+hubitatcontrol ls
 ```
+
+
 
 ## Docs
 
