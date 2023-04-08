@@ -36,7 +36,7 @@ def hub_from_keyring():
     token_env = keyring.get_password("hubitatcontrol", "HUBITAT_API_TOKEN")
     app_id_env = keyring.get_password("hubitatcontrol", "HUBITAT_API_APP_ID")
     cloud_token_env = keyring.get_password("hubitatcontrol", "HUBITAT_CLOUD_TOKEN")
-    if cloud_token_env == 'None':
+    if cloud_token_env is None:
         cloud_token_env = None
     return get_hub(host=host_env, token=token_env, app_id=app_id_env, cloud_token=cloud_token_env)
 
