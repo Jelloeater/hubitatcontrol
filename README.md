@@ -64,11 +64,41 @@ device.turn_on()
 print(device.switch)
 ```
 
-### CLI Interface (WIP)
-- If you have all the needed env vars loaded you can use the env related options
-  - If not, just use the cli arg based approach, this should be installed system wide
+### CLI Interface
+- If you have all the needed API keys added to your .env file, all you need to do is add them to your keyring
+- Once loaded into the keyring, you can run the CLI from anywhere on your system
+
 ```bash
-hubitatcontrol print-devices-env
+hubitatcontrol --help
+hubitatcontrol load-env-to-keyring
+hubitatcontrol ls
+```
+
+```text
+❯ hubitatcontrol
+
+ Usage: hubitatcontrol [OPTIONS] COMMAND [ARGS]...
+
+ Hubitat Control CLI Interface
+
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --install-completion        [bash|zsh|fish|powershell|pwsh]  Install completion for the specified shell. │
+│                                                              [default: None]                             │
+│ --show-completion           [bash|zsh|fish|powershell|pwsh]  Show completion for the specified shell, to │
+│                                                              copy it or customize the installation.      │
+│                                                              [default: None]                             │
+│ --help                                                       Show this message and exit.                 │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ───────────────────────────────────────────────────────────────────────────────────────────────╮
+│ clear-keyring                      Clear Keyring passwords                                               │
+│ level                              Turn on a device via it's Device ID                                   │
+│ load-env-to-keyring                Load .env file at exec location to keyring                            │
+│ ls                                 Prints current devices from system keyring                            │
+│ off                                Turn on a device via it's Device ID                                   │
+│ on                                 Turn on a device via it's Device ID                                   │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ Version: 1.1.2   Project: https://github.com/Jelloeater/hubitatcontrol
 ```
 
 ## Docs
