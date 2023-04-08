@@ -1,13 +1,18 @@
 import logging
+import os
 from importlib import metadata
 from importlib.metadata import PackageNotFoundError
 
+import keyring
 import typer
+from dotenv import load_dotenv
 
 from hubitatcontrol import get_hub
 
+app_name = "hubitatcontrol"
+
 try:
-    version = metadata.version("hubitatcontrol")
+    version = metadata.version(app_name)
 except PackageNotFoundError:
     logging.warning('Package not installed')
     version = '0'
@@ -19,9 +24,14 @@ app = typer.Typer(
 )
 
 
-def hub_from_keyring():
-    import keyring
+def check_keyring():
+    for i in ['HUBITAT_HOST', 'HUBITAT_API_TOKEN', 'HUBITAT_API_APP_ID']:
+        if keyring.get_password(app_name, i) is None:
+            raise Exception('Empty Keyring')
 
+
+def hub_from_keyring():
+    check_keyring()
     host_env = keyring.get_password("hubitatcontrol", "HUBITAT_HOST")
     token_env = keyring.get_password("hubitatcontrol", "HUBITAT_API_TOKEN")
     app_id_env = keyring.get_password("hubitatcontrol", "HUBITAT_API_APP_ID")
@@ -89,16 +99,10 @@ def load_env_to_keyring():
     Load .env file at exec location to keyring
     """
 
-    import os
     if not os.path.exists('.env'):
         raise FileNotFoundError('.env file missing')
 
-    import keyring
-
-    from dotenv import load_dotenv
-
     load_dotenv('.env')
-    app_name = "hubitatcontrol"
     # Check for empty keys
     for i in ['HUBITAT_HOST', 'HUBITAT_API_TOKEN', 'HUBITAT_API_APP_ID']:
         if os.getenv(i) is None:
@@ -114,8 +118,6 @@ def clear_keyring():
     """
     Clear Keyring passwords
     """
-
-    import keyring
 
     app_name = "hubitatcontrol"
     key_list = ['HUBITAT_HOST', 'HUBITAT_API_TOKEN', 'HUBITAT_API_APP_ID', 'HUBITAT_CLOUD_TOKEN']
