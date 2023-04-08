@@ -27,6 +27,8 @@ tasks:
         deps: [docs, clean]
         cmds:
             - poetry build
+    install:
+        - pip install . --upgrade
     setup:
         - python3 -m pip install pipx
         - python3 -m pipx ensurepath
@@ -80,7 +82,3 @@ tasks:
         - task: clean
         - docker build . -t {{.IMAGE_NAME}}:latest -f {{.DOCKER_FILE}}
         - docker run --env-file .env --rm --name {{.IMAGE_NAME}} {{.IMAGE_NAME}}:latest
-    show_secrets:
-        - git secret reveal -f
-    save_secrets:
-        - git secret hide -m -d
