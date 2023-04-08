@@ -27,6 +27,8 @@ tasks:
         deps: [docs, clean]
         cmds:
             - poetry build
+    install:
+        - pip install . --upgrade
     setup:
         - python3 -m pip install pipx
         - python3 -m pipx ensurepath
