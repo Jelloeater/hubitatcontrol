@@ -15,4 +15,4 @@ Hubitat Maker API
 :
 
 `lookup_device(hub_in, device_lookup)`
-:
+:   Takes device NAME, not ID for lookup
