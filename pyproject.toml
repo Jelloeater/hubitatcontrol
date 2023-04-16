@@ -45,6 +45,14 @@ statistics = true
 diff = true
 format = "pylint"
 
+[tool.autoflake]
+check = true
+in-place = true
+expand-star-imports = false
+remove-unused-variables = true
+remove-duplicate-keys = true
+ignore-init-module-imports = false
+recursive = true
 
 [tool.isort]
 multi_line_output = 3
@@ -80,10 +88,10 @@ python-dotenv = "*"
 
 [tool.poetry.group.dev.dependencies]
 pytest-pycharm = "*"
+autoflake = "*"
 pre-commit = "*"
 vulture = "*"
 isort = "*"
-radon = "*"
 xenon = "*"
 black = "*"
 typing_extensions ="*"

@@ -55,7 +55,8 @@ tasks:
         interactive: false
         cmds:
             - poetry run isort --atomic .
-            - poetry run black . --color #--diff
+            - poetry run black .
+            - poetry run autoflake .
             - poetry run flake8
     docs:
         silent: false
