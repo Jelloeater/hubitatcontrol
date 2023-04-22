@@ -30,6 +30,7 @@ tasks:
     install:
         - pip install . --upgrade
     setup:
+        - sudo apt-get install git-extras -y
         - python3 -m pip install pipx
         - python3 -m pipx ensurepath
         - pipx install poetry
@@ -67,6 +68,9 @@ tasks:
             - poetry run pyreverse {{.BUILD_DIR}} -d docs
             - poetry run mdformat docs
             - git add docs
+            - git-changelog -p -a -x >> CHANGELOG.md
+#            - poetry run mdformat CHANGELOG.md
+            - git add CHANGELOG.md
     security:
         - poetry run whispers {{.BUILD_DIR}} # Check for security issues
         - poetry run bandit --silent -r {{.BUILD_DIR}}
