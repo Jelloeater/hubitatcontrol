@@ -11,6 +11,7 @@ def get_hub(host, token, app_id, cloud_token=None) -> Hub:
 
 
 def lookup_device(hub_in, device_lookup):
+    # TODO Refactor to use ID, and and add interface for name search
     """
     Takes device NAME, not ID for lookup
     """
@@ -32,3 +33,11 @@ def lookup_device(hub_in, device_lookup):
     if "TemperatureMeasurement" in d["capabilities"]:
         return hubitatcontrol.sensors.TemperatureSensor(device_from_hub=d, hub=hub_in)
     return d  # Fall through return # pragma: no cover
+
+
+def get_all_devices(hub_in: hub) -> list[hubitatcontrol.hub.Device]:
+    """Returns list of all hub devices with associated helper functions"""
+    device_list = []
+    for i in hub_in.devices:
+        device_list.append(lookup_device(hub_in, i['name']))
+    return device_list
