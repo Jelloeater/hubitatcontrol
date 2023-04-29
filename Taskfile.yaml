@@ -27,6 +27,8 @@ tasks:
         deps: [docs, clean]
         cmds:
             - poetry version $(git describe --tags --abbrev=0)
+            - git-changelog -p -a -x >> CHANGELOG.md
+            - git add CHANGELOG.md
             - poetry build
     install:
         - pip install . --upgrade
