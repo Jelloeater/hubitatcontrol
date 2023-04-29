@@ -26,6 +26,7 @@ tasks:
             PIPENV_IGNORE_VIRTUALENVS: 1
         deps: [docs, clean]
         cmds:
+            - poetry version $(git describe --tags --abbrev=0)
             - poetry build
     install:
         - pip install . --upgrade
