@@ -2,6 +2,8 @@
 n.n.n / 2023-04-29
 ==================
 
+  * Adjusted cov for GH action not having .env file
+  * Added note to readme about change log
   * dev: Added auto release gen
   * dev: Updated taskfile build
 
