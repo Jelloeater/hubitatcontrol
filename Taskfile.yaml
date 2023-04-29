@@ -66,14 +66,15 @@ tasks:
         silent: false
         interactive: false
         cmds:
+            - rm -f CHANGELOG.md
+            - git-changelog -a -x >> CHANGELOG.md
+#            - poetry run mdformat CHANGELOG.md
+            - git add CHANGELOG.md
             - rm -rf docs
             - poetry run pdoc3 {{.BUILD_DIR}} -o docs -f
             - poetry run pyreverse {{.BUILD_DIR}} -d docs
             - poetry run mdformat docs
             - git add docs
-            - git-changelog -p -a -x >> CHANGELOG.md
-#            - poetry run mdformat CHANGELOG.md
-            - git add CHANGELOG.md
     security:
         - poetry run whispers {{.BUILD_DIR}} # Check for security issues
         - poetry run bandit --silent -r {{.BUILD_DIR}}
