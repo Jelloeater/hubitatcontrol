@@ -15,8 +15,10 @@ charset="utf-8"
 "hubitatcontrol.generic.Switch" [color="black", fontcolor="black", label=<{Switch|switch<br ALIGN="LEFT"/>|turn_off()<br ALIGN="LEFT"/>turn_on()<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
 "hubitatcontrol.sensors.TemperatureSensor" [color="black", fontcolor="black", label=<{TemperatureSensor|temperature<br ALIGN="LEFT"/>|}>, shape="record", style="solid"];
 "hubitatcontrol.generic.Thermostat" [color="black", fontcolor="black", label=<{Thermostat|<br ALIGN="LEFT"/>|<I>set_temperature</I>()<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
+"hubitatcontrol.environment.Thermostat" [color="black", fontcolor="black", label=<{Thermostat|<br ALIGN="LEFT"/>|}>, shape="record", style="solid"];
 "hubitatcontrol.lights.ZWavePlusSceneSwitch" [color="black", fontcolor="black", label=<{ZWavePlusSceneSwitch|<br ALIGN="LEFT"/>|}>, shape="record", style="solid"];
 "hubitatcontrol.generic.ZigbeeOutlet" [color="black", fontcolor="black", label=<{ZigbeeOutlet|power<br ALIGN="LEFT"/>|}>, shape="record", style="solid"];
+"hubitatcontrol.environment.Thermostat" -> "hubitatcontrol.sensors.TemperatureSensor" [arrowhead="empty", arrowtail="none"];
 "hubitatcontrol.generic.Button" -> "hubitatcontrol.hub.Device" [arrowhead="empty", arrowtail="none"];
 "hubitatcontrol.generic.EcoBee" -> "hubitatcontrol.generic.Thermostat" [arrowhead="empty", arrowtail="none"];
 "hubitatcontrol.generic.GenericZWaveLock" -> "hubitatcontrol.hub.Device" [arrowhead="empty", arrowtail="none"];

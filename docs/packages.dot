@@ -3,6 +3,7 @@ rankdir=BT
 charset="utf-8"
 "hubitatcontrol" [color="black", label=<hubitatcontrol>, shape="box", style="solid"];
 "hubitatcontrol.__main__" [color="black", label=<hubitatcontrol.__main__>, shape="box", style="solid"];
+"hubitatcontrol.environment" [color="black", label=<hubitatcontrol.environment>, shape="box", style="solid"];
 "hubitatcontrol.generic" [color="black", label=<hubitatcontrol.generic>, shape="box", style="solid"];
 "hubitatcontrol.hub" [color="black", label=<hubitatcontrol.hub>, shape="box", style="solid"];
 "hubitatcontrol.lights" [color="black", label=<hubitatcontrol.lights>, shape="box", style="solid"];
@@ -11,6 +12,7 @@ charset="utf-8"
 "hubitatcontrol" -> "hubitatcontrol.hub" [arrowhead="open", arrowtail="none"];
 "hubitatcontrol.__main__" -> "hubitatcontrol" [arrowhead="open", arrowtail="none"];
 "hubitatcontrol.__main__" -> "hubitatcontrol.hub" [arrowhead="open", arrowtail="none"];
+"hubitatcontrol.environment" -> "hubitatcontrol.sensors" [arrowhead="open", arrowtail="none"];
 "hubitatcontrol.generic" -> "hubitatcontrol.hub" [arrowhead="open", arrowtail="none"];
 "hubitatcontrol.lights" -> "hubitatcontrol.generic" [arrowhead="open", arrowtail="none"];
 "hubitatcontrol.sensors" -> "hubitatcontrol.hub" [arrowhead="open", arrowtail="none"];
