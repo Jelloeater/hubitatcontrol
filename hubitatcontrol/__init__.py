@@ -35,9 +35,10 @@ def lookup_device(hub_in, device_lookup):
     return d  # Fall through return # pragma: no cover
 
 
-def get_all_devices(hub_in: hub) -> list[hubitatcontrol.hub.Device]:
+def get_all_temperature_sensors(hub_in: hubitatcontrol.hub) -> list[hubitatcontrol.sensors.TemperatureSensor]:
     """Returns list of all hub devices with associated helper functions"""
     device_list = []
     for i in hub_in.devices:
-        device_list.append(lookup_device(hub_in, i['name']))
+        if "TemperatureMeasurement" in i["capabilities"]:
+            device_list.append(lookup_device(hub_in, i['name']))
     return device_list
