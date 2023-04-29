@@ -14,6 +14,7 @@ cloud_token = os.getenv("HUBITAT_CLOUD_TOKEN")
 
 
 # CLI Tests
+# TODO Add .env file generator for GH Actions test coverage
 @pytest.mark.skipif(load_dotenv('.env') is False, reason='No env file found')
 def test_cli_keyring():
     cli.load_env_to_keyring()
