@@ -6,14 +6,13 @@ on:
       - "v[0-9]+.[0-9]+.[0-9]+"
 
 jobs:
-  release:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Create GitHub release
-        uses: Roang-zero1/github-create-release-action@v3
-        with:
-          version_regex: ^v[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+
-          update_existing: true
-        #   changelog_heading: h1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    build:
+        runs-on: ubuntu-latest
+        permissions:
+          contents: write
+        steps:
+        - uses: actions/checkout@v3
+        - uses: ncipollo/release-action@v1
+          with:
+            allowUpdates: true
+            generateReleaseNotes: true
