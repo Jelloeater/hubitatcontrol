@@ -1,7 +1,8 @@
 
-n.n.n / 2023-04-29
+n.n.n / 2023-04-30
 ==================
 
+  * Added commit actions to run in parellel
   * Added retry to actions
 
 v2.1.0 / 2023-04-29
