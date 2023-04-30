@@ -9,15 +9,21 @@ on:
 jobs:
     test:
         runs-on: "ubuntu-latest"
+        env: # These need to be set in the repo or the builds will fail
+          HUBITAT_API_APP_ID: ${{ secrets.HUBITAT_API_APP_ID }}
+          HUBITAT_API_TOKEN: ${{ secrets.HUBITAT_API_TOKEN }}
+          HUBITAT_HOST: ${{ secrets.HUBITAT_HOST }}
+          HUBITAT_CLOUD_TOKEN: ${{ secrets.HUBITAT_CLOUD_TOKEN }}
         steps:
             - uses: actions/checkout@v2
             - run: tree
             - run: sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin
             - run: task setup
             - run: task security
-            - run: task test
-              env: # These need to be set in the repo or the builds will fail
-                  HUBITAT_API_APP_ID: ${{ secrets.HUBITAT_API_APP_ID }}
-                  HUBITAT_API_TOKEN: ${{ secrets.HUBITAT_API_TOKEN }}
-                  HUBITAT_HOST: ${{ secrets.HUBITAT_HOST }}
-                  HUBITAT_CLOUD_TOKEN: ${{ secrets.HUBITAT_CLOUD_TOKEN }}
+            - uses: nick-fields/retry@v2
+              with:
+                timeout_minutes: 5
+                max_attempts: 3
+                retry_on: error
+                command: task test
+

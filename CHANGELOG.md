@@ -7,6 +7,7 @@ n.n.n / 2023-04-29
 v2.1.0 / 2023-04-29
 ===================
 
+  * Testing new release action
   * Updated action and change log formating
   * Add update existing to tag
   * Updated test run for seperate modules
