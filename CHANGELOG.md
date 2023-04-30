@@ -2,15 +2,18 @@
 n.n.n / 2023-04-29
 ==================
 
+
+
+v2.1.0 / 2023-04-29
+===================
+
+  * Updated action and change log formating
+  * Add update existing to tag
   * Updated test run for seperate modules
   * Adjusted cov for GH action not having .env file
   * Added note to readme about change log
   * dev: Added auto release gen
   * dev: Updated taskfile build
-
-v2.1.0 / 2023-04-28
-===================
-
   * Added Poetry version based on Git Tag
   * feat: Added Temprature sensor get method wip: Started on Thermostat
   * Added get all devices api call
