@@ -7,14 +7,17 @@ tasks:
     default:
         silent: true
         interactive: false
-        cmds:
+        deps:
             - task: format
             - task: security
+        cmds:
             - task: test
     commit:
-        - task: format
-        - task: docs
-        - task: security
+        # Run all actions at same time
+        deps:
+            - task: format
+            - task: security
+            - task: docs
     publish:
         - task: format
         - task: security
