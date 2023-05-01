@@ -19,6 +19,10 @@
 
 * hubitatcontrol.hub.Device
 
+### Descendants
+
+* hubitatcontrol.environment.Thermostat
+
 ### Instance variables
 
 `temperature: int`
