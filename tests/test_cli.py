@@ -13,16 +13,26 @@ app_id_env = os.getenv("HUBITAT_API_APP_ID")
 cloud_token = os.getenv("HUBITAT_CLOUD_TOKEN")
 
 
-# CLI Tests
-# TODO Add .env file generator for GH Actions test coverage
-@pytest.mark.skipif(load_dotenv('.env') is False, reason='No env file found')
-def test_cli_keyring():
-    cli.load_env_to_keyring()
-    cli.ls()
+class TestCLI:
+    @classmethod
+    def setup_class(cls):
+        try:
+            cli.clear_keyring()
+        except:
+            pass
+        cli.load_env_to_keyring()
 
+    @classmethod
+    def teardown_class(cls):
+        cli.clear_keyring()
 
-@pytest.mark.skipif(load_dotenv('.env') is False, reason='No env file found')
-def test_cli_on():
-    cli.load_env_to_keyring()
-    test_bulb = get_device_of_type("Virtual RGBW Light")
-    cli.on(test_bulb.id)
+    # CLI Tests
+    # TODO Add .env file generator for GH Actions test coverage
+    @pytest.mark.skipif(load_dotenv('.env') is False, reason='No env file found')
+    def test_cli_keyring(self):
+        cli.ls()
+
+    @pytest.mark.skipif(load_dotenv('.env') is False, reason='No env file found')
+    def test_cli_on(self):
+        test_bulb = get_device_of_type("Virtual RGBW Light")
+        cli.on(test_bulb.id)

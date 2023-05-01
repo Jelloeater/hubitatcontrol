@@ -2,6 +2,7 @@
 n.n.n / 2023-04-30
 ==================
 
+  * wip: Fixed temp data pull, now geting cli errors
   * wip: Added note about EcoBee test failing
   * Added commit actions to run in parellel
   * Added retry to actions
