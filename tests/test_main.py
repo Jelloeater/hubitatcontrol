@@ -1,9 +1,11 @@
 import os
 import random
+import time
 
 import pytest
 from dotenv import load_dotenv
 
+import hubitatcontrol
 from hubitatcontrol import *
 
 load_dotenv()
@@ -18,6 +20,13 @@ def get_device_of_type(device_type: str):
     for i in h.devices:
         if i["type"] == device_type:
             return lookup_device(h, i["label"])
+
+
+def test_get_all_temprature_sensors():
+    h = Hub(host=host_env, token=token_env, app_id=app_id_env, cloud_token=cloud_token)
+    x = hubitatcontrol.get_all_temperature_sensors(h)
+    # TODO -> Fix temp data get from EcoBee <-
+    assert x is not None
 
 
 def test_creds():
@@ -50,8 +59,10 @@ def test_device_bulb():
     test_bulb.set_hue(hue)
 
     test_bulb.set_saturation(10)
+    time.sleep(1)
     assert test_bulb.saturation == 10
     test_bulb.set_saturation(80)
+    time.sleep(1)
     assert test_bulb.saturation == 80
     test_bulb.set_hue(sat)
 
