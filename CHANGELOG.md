@@ -2,12 +2,9 @@
 n.n.n / 2023-04-30
 ==================
 
+  * wip: Added note about EcoBee test failing
   * Added commit actions to run in parellel
   * Added retry to actions
-
-v2.1.0 / 2023-04-29
-===================
-
   * Testing new release action
   * Updated action and change log formating
   * Add update existing to tag
