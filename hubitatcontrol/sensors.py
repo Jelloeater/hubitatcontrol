@@ -11,3 +11,8 @@ class TemperatureSensor(Device):
     def temperature(self) -> int:
         """Returns either (on or off)"""
         return [x for x in self.attributes if "temperature" in x["name"]][0]["currentValue"]
+
+    @property
+    def humidity(self) -> int:
+        """Returns either (on or off)"""
+        return [x for x in self.attributes if "humidity" in x["name"]][0]["currentValue"]

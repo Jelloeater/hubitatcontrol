@@ -25,6 +25,9 @@
 
 ### Instance variables
 
+`humidity: int`
+:   Returns either (on or off)
+
 `temperature: int`
 :   Returns either (on or off)
 ```
