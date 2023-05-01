@@ -21,7 +21,10 @@ def get_device_type(device_in: hubitatcontrol.hub.Device, hub_in: hubitatcontrol
         return hubitatcontrol.generic.ZigbeeOutlet(device_from_hub=device_in, hub=hub_in)
     if "Switch" in device_in["capabilities"]:
         return hubitatcontrol.generic.Switch(device_from_hub=device_in, hub=hub_in)
-    if "TemperatureMeasurement" in device_in["capabilities"]:
+    if (
+        "TemperatureMeasurement" in device_in["capabilities"]
+        and "RelativeHumidityMeasurement" in device_in["capabilities"]
+    ):
         return hubitatcontrol.sensors.TemperatureSensor(device_from_hub=device_in, hub=hub_in)
 
 
