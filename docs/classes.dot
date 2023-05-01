@@ -13,7 +13,7 @@ charset="utf-8"
 "hubitatcontrol.lights.RGBWBulb" [color="black", fontcolor="black", label=<{RGBWBulb|color<br ALIGN="LEFT"/>color_mode<br ALIGN="LEFT"/>color_name<br ALIGN="LEFT"/>hue<br ALIGN="LEFT"/>saturation<br ALIGN="LEFT"/>|set_color(hue: int, saturation: int, level: int)<br ALIGN="LEFT"/>set_hue(hue: int)<br ALIGN="LEFT"/>set_saturation(saturation: int)<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
 "hubitatcontrol.generic.SonoffZigbeeButtonController" [color="black", fontcolor="black", label=<{SonoffZigbeeButtonController|<br ALIGN="LEFT"/>|}>, shape="record", style="solid"];
 "hubitatcontrol.generic.Switch" [color="black", fontcolor="black", label=<{Switch|switch<br ALIGN="LEFT"/>|turn_off()<br ALIGN="LEFT"/>turn_on()<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
-"hubitatcontrol.sensors.TemperatureSensor" [color="black", fontcolor="black", label=<{TemperatureSensor|temperature<br ALIGN="LEFT"/>|}>, shape="record", style="solid"];
+"hubitatcontrol.sensors.TemperatureSensor" [color="black", fontcolor="black", label=<{TemperatureSensor|humidity<br ALIGN="LEFT"/>temperature<br ALIGN="LEFT"/>|}>, shape="record", style="solid"];
 "hubitatcontrol.generic.Thermostat" [color="black", fontcolor="black", label=<{Thermostat|<br ALIGN="LEFT"/>|<I>set_temperature</I>()<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
 "hubitatcontrol.environment.Thermostat" [color="black", fontcolor="black", label=<{Thermostat|<br ALIGN="LEFT"/>|}>, shape="record", style="solid"];
 "hubitatcontrol.lights.ZWavePlusSceneSwitch" [color="black", fontcolor="black", label=<{ZWavePlusSceneSwitch|<br ALIGN="LEFT"/>|}>, shape="record", style="solid"];
