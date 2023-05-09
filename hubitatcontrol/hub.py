@@ -19,8 +19,9 @@ class Hub:
     @property
     def devices(self) -> list:
         r = requests.get(url=self.base_url_prefix + "/all", params={"access_token": self.token}, timeout=timeout)
-        if r.status_code == 403:
-            raise Exception("Check credentials")
+        err = [401, 403, 404, 405]
+        if r.status_code in err:
+            raise Exception(f"Check credentials - Status code: {r.status_code}, Invalid codes: {err}")
         return r.json()
 
     def get_device(self, name: str):
