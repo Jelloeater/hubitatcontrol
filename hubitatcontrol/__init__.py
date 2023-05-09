@@ -25,6 +25,8 @@ def get_device_type(device_in: hubitatcontrol.hub.Device, hub_in: hubitatcontrol
         "TemperatureMeasurement" in device_in["capabilities"]
         and "RelativeHumidityMeasurement" in device_in["capabilities"]
     ):
+        return hubitatcontrol.sensors.EnvironmentalSensor(device_from_hub=device_in, hub=hub_in)
+    if "TemperatureMeasurement" in device_in["capabilities"]:
         return hubitatcontrol.sensors.TemperatureSensor(device_from_hub=device_in, hub=hub_in)
 
 
@@ -44,17 +46,27 @@ def lookup_device(hub_in, device_lookup):
 
 def lookup_device_id(hub_in, device_id):
     """
-    Takes device NAME, not ID for lookup
+    Takes device ID for lookup
     """
     return get_device_type(
         device_in=hub_in.get_device_id(device_id), hub_in=hub_in
     )  # Fall through return # pragma: no cover
 
 
+# TODO Refactor this to be dry
 def get_all_temperature_sensors(hub_in: hubitatcontrol.hub) -> list[hubitatcontrol.sensors.TemperatureSensor]:
     """Returns list of all hub devices with associated helper functions"""
     device_list = []
     for i in hub_in.devices:
         if "TemperatureMeasurement" in i["capabilities"]:
-            device_list.append(lookup_device_id(hub_in, i['id']))
+            device_list.append(get_device_type(i, hub_in))
+    return device_list
+
+
+def get_all_env_sensors(hub_in: hubitatcontrol.hub) -> list[hubitatcontrol.sensors.EnvironmentalSensor]:
+    """Returns list of all hub devices with associated helper functions"""
+    device_list = []
+    for i in hub_in.devices:
+        if ("RelativeHumidityMeasurement" in i["capabilities"]) and ("TemperatureMeasurement" in i["capabilities"]):
+            device_list.append(get_device_type(i, hub_in))
     return device_list

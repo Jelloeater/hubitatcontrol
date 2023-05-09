@@ -11,6 +11,21 @@
 * hubitatcontrol.hub.Device
 ```
 
+`EnvironmentalSensor(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
+:
+
+```
+### Ancestors (in MRO)
+
+* hubitatcontrol.sensors.TemperatureSensor
+* hubitatcontrol.hub.Device
+
+### Instance variables
+
+`humidity: int`
+:
+```
+
 `TemperatureSensor(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
 :
 
@@ -22,12 +37,10 @@
 ### Descendants
 
 * hubitatcontrol.environment.Thermostat
+* hubitatcontrol.sensors.EnvironmentalSensor
 
 ### Instance variables
 
-`humidity: int`
-:   Returns either (on or off)
-
 `temperature: int`
-:   Returns either (on or off)
+:
 ```
