@@ -9,10 +9,10 @@ class ContactSensor(Device):
 class TemperatureSensor(Device):
     @property
     def temperature(self) -> int:
-        """Returns either (on or off)"""
         return [x for x in self.attributes if "temperature" in x["name"]][0]["currentValue"]
 
+
+class EnvironmentalSensor(TemperatureSensor):
     @property
     def humidity(self) -> int:
-        """Returns either (on or off)"""
         return [x for x in self.attributes if "humidity" in x["name"]][0]["currentValue"]

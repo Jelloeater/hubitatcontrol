@@ -12,6 +12,9 @@ Hubitat Maker API
 
 ## Functions
 
+`get_all_env_sensors(hub_in: <module 'hubitatcontrol.hub' from '/home/jesse/CodingWorkspace/hubitatcontrol/hubitatcontrol/hub.py'>) ‑> list[hubitatcontrol.sensors.EnvironmentalSensor]`
+:   Returns list of all hub devices with associated helper functions
+
 `get_all_temperature_sensors(hub_in: <module 'hubitatcontrol.hub' from '/home/jesse/CodingWorkspace/hubitatcontrol/hubitatcontrol/hub.py'>) ‑> list[hubitatcontrol.sensors.TemperatureSensor]`
 :   Returns list of all hub devices with associated helper functions
 
@@ -25,4 +28,4 @@ Hubitat Maker API
 :   Takes device NAME, not ID for lookup
 
 `lookup_device_id(hub_in, device_id)`
-:   Takes device NAME, not ID for lookup
+:   Takes device ID for lookup
