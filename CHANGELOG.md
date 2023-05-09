@@ -1,7 +1,9 @@
 
-n.n.n / 2023-05-01
+n.n.n / 2023-05-08
 ==================
 
+  * fix: Added specific device type of temp and env sensors
+  * fix: Added check for correct attribute
   * feat: Added humidity attribute
 
 v2.2.0 / 2023-04-30
