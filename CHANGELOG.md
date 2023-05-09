@@ -1,5 +1,5 @@
 
-n.n.n / 2023-05-08
+n.n.n / 2023-05-09
 ==================
 
 
@@ -7,7 +7,6 @@ n.n.n / 2023-05-08
 v2.3.0 / 2023-05-08
 ===================
 
-  * Release v2.3.0
   * Release v2.3.0
   * Merge branch 'fix/temp-sensor-missing'
   * fix: Added specific device type of temp and env sensors
