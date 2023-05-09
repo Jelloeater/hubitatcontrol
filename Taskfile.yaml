@@ -8,26 +8,26 @@ tasks:
         silent: true
         interactive: false
         deps:
-            - task: format
-            - task: security
+            -   task: format
+            -   task: security
         cmds:
-            - task: test
+            -   task: test
     commit:
         # Run all actions at same time
         deps:
-            - task: format
-            - task: security
-            - task: docs
+            -   task: format
+            -   task: security
+            -   task: docs
     publish:
-        - task: format
-        - task: security
-        - task: test
-        - task: build
+        -   task: format
+        -   task: security
+        -   task: test
+        -   task: build
         - poetry publish
     build:
         env:
             PIPENV_IGNORE_VIRTUALENVS: 1
-        deps: [docs, clean]
+        deps: [ docs, clean ]
         cmds:
             - poetry version $(git describe --tags --abbrev=0)
             - git-changelog -p -a -x >> CHANGELOG.md
@@ -47,8 +47,8 @@ tasks:
         cmds:
             - poetry run vulture --min-confidence 100 {{.BUILD_DIR}}
             - poetry run xenon --max-absolute C --max-modules B --max-average B {{.BUILD_DIR}}
-#            - poetry run mypy --install-types --non-interactive
-#            - poetry run mypy {{.BUILD_DIR}} # Little too aggressive
+            #            - poetry run mypy --install-types --non-interactive
+            #            - poetry run mypy {{.BUILD_DIR}} # Little too aggressive
             - poetry run pytest --cov --cov-fail-under=80 tests/test_main.py
             - poetry run pytest --cov --cov-fail-under=35 tests/test_cli.py #--typeguard-packages={{.BUILD_DIR}} # Leave typeguard off for now
     clean:
@@ -92,6 +92,6 @@ tasks:
             - poetry run pre-commit uninstall
             - rm .git/hooks -rf
     docker:
-        - task: clean
+        -   task: clean
         - docker build . -t {{.IMAGE_NAME}}:latest -f {{.DOCKER_FILE}}
         - docker run --env-file .env --rm --name {{.IMAGE_NAME}} {{.IMAGE_NAME}}:latest
