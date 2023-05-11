@@ -63,7 +63,7 @@ def get_all_temperature_sensors(hub_in: hubitatcontrol.hub) -> list[hubitatcontr
     return device_list
 
 
-def get_all_env_sensors(hub_in: hubitatcontrol.hub) -> list[hubitatcontrol.sensors.EnvironmentalSensor]:
+def get_all_environmental_sensors(hub_in: hubitatcontrol.hub) -> list[hubitatcontrol.sensors.EnvironmentalSensor]:
     """Returns list of all hub devices with associated helper functions"""
     device_list = []
     for i in hub_in.devices:
