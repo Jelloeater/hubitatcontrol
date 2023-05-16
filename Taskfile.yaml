@@ -78,6 +78,7 @@ tasks:
             - poetry run pdoc3 {{.BUILD_DIR}} -o docs -f
             - poetry run pyreverse {{.BUILD_DIR}} -d docs
             - poetry run mdformat docs
+            - poetry run mdToRst README.md >> ./docs/index.rst
             - git add docs
     security:
         - poetry run whispers {{.BUILD_DIR}} # Check for security issues

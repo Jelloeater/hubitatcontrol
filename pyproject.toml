@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "hubitatcontrol"
-version = "v2.3.2"
+version = "v2.3.3"
 description = "Hubitat Maker API Interface"
 authors = ["Jesse Schoepfer <jelloeater@gmail.com>"]
 license = "MIT License"
@@ -106,6 +106,7 @@ mdformat-frontmatter ="*"
 flake8 = "*"
 Flake8-pyproject="*"
 tartufo="*"
+mdToRst = "*"
 
 [build-system]
 requires = ["poetry-core"]
