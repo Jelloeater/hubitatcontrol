@@ -7,6 +7,7 @@ import keyring
 import typer
 from dotenv import load_dotenv
 
+import hubitatcontrol
 from hubitatcontrol import Hub
 
 app_name = "hubitatcontrol"
@@ -41,25 +42,6 @@ def hub_from_keyring():
     return get_hub(host=host_env, token=token_env, app_id=app_id_env, cloud_token=cloud_token_env)
 
 
-def lookup_device(hub_in, device_lookup):
-    """
-    Takes device NAME, not ID for lookup
-    """
-
-    return get_device_type(
-        device_in=hub_in.get_device(device_lookup), hub_in=hub_in
-    )  # Fall through return # pragma: no cover
-
-
-def lookup_device_id(hub_in, device_id):
-    """
-    Takes device ID for lookup
-    """
-    return get_device_type(
-        device_in=hub_in.get_device_id(device_id), hub_in=hub_in
-    )  # Fall through return # pragma: no cover
-
-
 @app.command()
 def ls():
     """
@@ -70,18 +52,17 @@ def ls():
 
 
 @app.command()
-def on(device_id: int):
+def on(device_id: int) -> hubitatcontrol.lights.Switch:
     """
     Turn on a device via it's Device ID
     """
 
     hub_in = hub_from_keyring()
-    device = hub_in.get_device_id(device_id)
-    import hubitatcontrol.hub
+    dev = hubitatcontrol.GetDevices(hub_in).Switch()
 
-    dev = lookup_device(hub_in, device['name'])
-
-    dev.turn_on()
+    for i in dev:
+        if i.id == device_id:
+            i.turn_on()
 
 
 @app.command()
@@ -91,12 +72,11 @@ def off(device_id: int):
     """
 
     hub_in = hub_from_keyring()
-    device = hub_in.get_device_id(device_id)
-    import hubitatcontrol.hub
+    dev = hubitatcontrol.GetDevices(hub_in).Switch()
 
-    dev = lookup_device(hub_in, device['name'])
-
-    dev.turn_off()
+    for i in dev:
+        if i.id == device_id:
+            i.turn_off()
 
 
 @app.command()
@@ -104,10 +84,7 @@ def level(device_id: int, level: int):
     """Turn on a device via it's Device ID"""
 
     hub_in = hub_from_keyring()
-    device = hub_in.get_device_id(device_id)
-    import hubitatcontrol.hub
-
-    dev = lookup_device(hub_in, device['name'])
+    dev = hub_in.get_device_id(device_id)
 
     dev.set_level(level)
 

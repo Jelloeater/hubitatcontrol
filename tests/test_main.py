@@ -2,7 +2,6 @@ import os
 import random
 import time
 
-from __main__ import lookup_device
 from dotenv import load_dotenv
 
 import hubitatcontrol
@@ -19,7 +18,7 @@ def get_device_of_type(device_type: str):
     h = Hub(host=host_env, token=token_env, app_id=app_id_env, cloud_token=cloud_token)
     for i in h.devices:
         if i["type"] == device_type:
-            return lookup_device(h, i["label"])
+            return i
 
 
 def test_creds():
