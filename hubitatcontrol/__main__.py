@@ -41,6 +41,25 @@ def hub_from_keyring():
     return get_hub(host=host_env, token=token_env, app_id=app_id_env, cloud_token=cloud_token_env)
 
 
+def lookup_device(hub_in, device_lookup):
+    """
+    Takes device NAME, not ID for lookup
+    """
+
+    return get_device_type(
+        device_in=hub_in.get_device(device_lookup), hub_in=hub_in
+    )  # Fall through return # pragma: no cover
+
+
+def lookup_device_id(hub_in, device_id):
+    """
+    Takes device ID for lookup
+    """
+    return get_device_type(
+        device_in=hub_in.get_device_id(device_id), hub_in=hub_in
+    )  # Fall through return # pragma: no cover
+
+
 @app.command()
 def ls():
     """
