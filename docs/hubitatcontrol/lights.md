@@ -1,122 +1,114 @@
-# Module hubitatcontrol.lights
+Module hubitatcontrol.lights
+============================
 
-## Classes
+Classes
+-------
 
 `Bulb(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
-:
+:   
 
-```
-### Ancestors (in MRO)
+    ### Ancestors (in MRO)
 
-* hubitatcontrol.lights.Dimmer
-* hubitatcontrol.generic.Switch
-* hubitatcontrol.hub.Device
+    * hubitatcontrol.lights.Dimmer
+    * hubitatcontrol.generic.Switch
+    * hubitatcontrol.hub.Device
 
-### Descendants
+    ### Descendants
 
-* hubitatcontrol.lights.ColorTempBulb
-* hubitatcontrol.lights.ZWavePlusSceneSwitch
-```
+    * hubitatcontrol.lights.ColorTempBulb
+    * hubitatcontrol.lights.ZWavePlusSceneSwitch
 
 `ColorTempBulb(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
-:
+:   
 
-```
-### Ancestors (in MRO)
+    ### Ancestors (in MRO)
 
-* hubitatcontrol.lights.Bulb
-* hubitatcontrol.lights.Dimmer
-* hubitatcontrol.generic.Switch
-* hubitatcontrol.hub.Device
+    * hubitatcontrol.lights.Bulb
+    * hubitatcontrol.lights.Dimmer
+    * hubitatcontrol.generic.Switch
+    * hubitatcontrol.hub.Device
 
-### Descendants
+    ### Descendants
 
-* hubitatcontrol.lights.RGBWBulb
+    * hubitatcontrol.lights.RGBWBulb
 
-### Instance variables
+    ### Instance variables
 
-`color_temp: int`
-:
+    `color_temp: int`
+    :
 
-### Methods
+    ### Methods
 
-`set_color_temp(self, level: int)`
-:   Degrees Kelvin
-```
+    `set_color_temp(self, level: int)`
+    :   Degrees Kelvin
 
 `Dimmer(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
-:
+:   
 
-```
-### Ancestors (in MRO)
+    ### Ancestors (in MRO)
 
-* hubitatcontrol.generic.Switch
-* hubitatcontrol.hub.Device
+    * hubitatcontrol.generic.Switch
+    * hubitatcontrol.hub.Device
 
-### Descendants
+    ### Descendants
 
-* hubitatcontrol.lights.Bulb
+    * hubitatcontrol.lights.Bulb
 
-### Instance variables
+    ### Instance variables
 
-`level: int`
-:
+    `level: int`
+    :
 
-### Methods
+    ### Methods
 
-`set_level(self, level: int)`
-:   0-100 valid range
-```
+    `set_level(self, level: int)`
+    :   0-100 valid range
 
 `RGBWBulb(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
-:
+:   
 
-```
-### Ancestors (in MRO)
+    ### Ancestors (in MRO)
 
-* hubitatcontrol.lights.ColorTempBulb
-* hubitatcontrol.lights.Bulb
-* hubitatcontrol.lights.Dimmer
-* hubitatcontrol.generic.Switch
-* hubitatcontrol.hub.Device
+    * hubitatcontrol.lights.ColorTempBulb
+    * hubitatcontrol.lights.Bulb
+    * hubitatcontrol.lights.Dimmer
+    * hubitatcontrol.generic.Switch
+    * hubitatcontrol.hub.Device
 
-### Instance variables
+    ### Instance variables
 
-`color: str`
-:
+    `color: str`
+    :
 
-`color_mode: str`
-:
+    `color_mode: str`
+    :
 
-`color_name: str`
-:
+    `color_name: str`
+    :
 
-`hue: int`
-:
+    `hue: int`
+    :
 
-`saturation: str`
-:
+    `saturation: str`
+    :
 
-### Methods
+    ### Methods
 
-`set_color(self, hue: int, saturation: int, level: int)`
-:
+    `set_color(self, hue: int, saturation: int, level: int)`
+    :
 
-`set_hue(self, hue: int)`
-:   0-100 valid range
+    `set_hue(self, hue: int)`
+    :   0-100 valid range
 
-`set_saturation(self, saturation: int)`
-:   0-100 valid range
-```
+    `set_saturation(self, saturation: int)`
+    :   0-100 valid range
 
 `ZWavePlusSceneSwitch(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
-:
+:   
 
-```
-### Ancestors (in MRO)
+    ### Ancestors (in MRO)
 
-* hubitatcontrol.lights.Bulb
-* hubitatcontrol.lights.Dimmer
-* hubitatcontrol.generic.Switch
-* hubitatcontrol.hub.Device
-```
+    * hubitatcontrol.lights.Bulb
+    * hubitatcontrol.lights.Dimmer
+    * hubitatcontrol.generic.Switch
+    * hubitatcontrol.hub.Device
