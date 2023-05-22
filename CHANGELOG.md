@@ -2,6 +2,7 @@
 n.n.n / 2023-05-22
 ==================
 
+  * wip:Started on class refactor
   * Updated doc gen
 
 v2.3.3 / 2023-05-10
