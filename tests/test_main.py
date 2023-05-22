@@ -2,7 +2,7 @@ import os
 import random
 import time
 
-import pytest
+from __main__ import lookup_device
 from dotenv import load_dotenv
 
 import hubitatcontrol
@@ -32,7 +32,7 @@ def test_creds():
 class TestDeviceType:
     def test_get_all_temperature_sensors(self):
         h = Hub(host=host_env, token=token_env, app_id=app_id_env, cloud_token=cloud_token)
-        x = hubitatcontrol.get_all_temperature_sensors(h)
+        x = hubitatcontrol.GetDevices(h).temperature_sensors()
         # TODO -> Fix temp data get from EcoBee <-
         assert x is not None
 

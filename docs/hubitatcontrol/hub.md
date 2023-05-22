@@ -1,54 +1,52 @@
-# Module hubitatcontrol.hub
+Module hubitatcontrol.hub
+=========================
 
-## Classes
+Classes
+-------
 
 `Device(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
-:
+:   
 
-```
-### Descendants
+    ### Descendants
 
-* hubitatcontrol.generic.Button
-* hubitatcontrol.generic.GenericZWaveLock
-* hubitatcontrol.generic.Switch
-* hubitatcontrol.generic.Thermostat
-* hubitatcontrol.sensors.ContactSensor
-* hubitatcontrol.sensors.TemperatureSensor
+    * hubitatcontrol.generic.Button
+    * hubitatcontrol.generic.GenericZWaveLock
+    * hubitatcontrol.generic.Switch
+    * hubitatcontrol.generic.Thermostat
+    * hubitatcontrol.sensors.ContactSensor
+    * hubitatcontrol.sensors.TemperatureSensor
 
-### Instance variables
+    ### Instance variables
 
-`attributes: requests.models.Response`
-:
+    `attributes: requests.models.Response`
+    :
 
-`capabilities`
-:
+    `capabilities`
+    :
 
-`commands`
-:
+    `commands`
+    :
 
-`history: requests.models.Response`
-:
+    `history: requests.models.Response`
+    :
 
-### Methods
+    ### Methods
 
-`send_device_command(self, command: str, secondary_command: str = None) ‑> requests.models.Response`
-:
-```
+    `send_device_command(self, command: str, secondary_command: str = None) ‑> requests.models.Response`
+    :
 
 `Hub(host, token, app_id, cloud_token=None)`
-:
+:   
 
-```
-### Instance variables
+    ### Instance variables
 
-`devices: list`
-:
+    `devices: list`
+    :
 
-### Methods
+    ### Methods
 
-`get_device(self, name: str)`
-:
+    `get_device(self, name: str)`
+    :
 
-`get_device_id(self, dev_id: int)`
-:
-```
+    `get_device_id(self, dev_id: int)`
+    :

@@ -1,31 +1,43 @@
-# Module hubitatcontrol
-
+Module hubitatcontrol
+=====================
 Hubitat Maker API
 
-## Sub-modules
+Sub-modules
+-----------
+* hubitatcontrol.environment
+* hubitatcontrol.generic
+* hubitatcontrol.hub
+* hubitatcontrol.lights
+* hubitatcontrol.sensors
 
-- hubitatcontrol.environment
-- hubitatcontrol.generic
-- hubitatcontrol.hub
-- hubitatcontrol.lights
-- hubitatcontrol.sensors
+Classes
+-------
 
-## Functions
+`GetDevices(hub_in: hubitatcontrol.hub.Hub)`
+:   
 
-`get_all_environmental_sensors(hub_in: <module 'hubitatcontrol.hub' from '/home/jesse/CodingWorkspace/hubitatcontrol/hubitatcontrol/hub.py'>) ‑> list[hubitatcontrol.sensors.EnvironmentalSensor]`
-:   Returns list of all hub devices with associated helper functions
+    ### Methods
 
-`get_all_temperature_sensors(hub_in: <module 'hubitatcontrol.hub' from '/home/jesse/CodingWorkspace/hubitatcontrol/hubitatcontrol/hub.py'>) ‑> list[hubitatcontrol.sensors.TemperatureSensor]`
-:   Returns list of all hub devices with associated helper functions
+    `Bulb(self) ‑> list[hubitatcontrol.lights.Bulb]`
+    :
 
-`get_device_type(device_in: hubitatcontrol.hub.Device, hub_in: <module 'hubitatcontrol.hub' from '/home/jesse/CodingWorkspace/hubitatcontrol/hubitatcontrol/hub.py'>)`
-:
+    `ColorTempBulb(self) ‑> list[hubitatcontrol.lights.ColorTempBulb]`
+    :
 
-`get_hub(host, token, app_id, cloud_token=None) ‑> hubitatcontrol.hub.Hub`
-:
+    `Dimmer(self) ‑> list[hubitatcontrol.lights.Dimmer]`
+    :
 
-`lookup_device(hub_in, device_lookup)`
-:   Takes device NAME, not ID for lookup
+    `EnvironmentalSensor(self) ‑> list[hubitatcontrol.sensors.EnvironmentalSensor]`
+    :
 
-`lookup_device_id(hub_in, device_id)`
-:   Takes device ID for lookup
+    `Outlet(self) ‑> list[hubitatcontrol.generic.ZigbeeOutlet]`
+    :
+
+    `RGBWBulb(self) ‑> list[hubitatcontrol.lights.RGBWBulb]`
+    :
+
+    `Switch(self) ‑> list[hubitatcontrol.generic.Switch]`
+    :
+
+    `TemperatureSensor(self) ‑> list[hubitatcontrol.sensors.TemperatureSensor]`
+    :

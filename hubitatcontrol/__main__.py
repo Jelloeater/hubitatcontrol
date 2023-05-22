@@ -7,7 +7,7 @@ import keyring
 import typer
 from dotenv import load_dotenv
 
-from hubitatcontrol import get_hub
+from hubitatcontrol import Hub
 
 app_name = "hubitatcontrol"
 
@@ -60,7 +60,7 @@ def on(device_id: int):
     device = hub_in.get_device_id(device_id)
     import hubitatcontrol.hub
 
-    dev = hubitatcontrol.lookup_device(hub_in, device['name'])
+    dev = lookup_device(hub_in, device['name'])
 
     dev.turn_on()
 
@@ -75,7 +75,7 @@ def off(device_id: int):
     device = hub_in.get_device_id(device_id)
     import hubitatcontrol.hub
 
-    dev = hubitatcontrol.lookup_device(hub_in, device['name'])
+    dev = lookup_device(hub_in, device['name'])
 
     dev.turn_off()
 
@@ -88,7 +88,7 @@ def level(device_id: int, level: int):
     device = hub_in.get_device_id(device_id)
     import hubitatcontrol.hub
 
-    dev = hubitatcontrol.lookup_device(hub_in, device['name'])
+    dev = lookup_device(hub_in, device['name'])
 
     dev.set_level(level)
 
@@ -150,3 +150,7 @@ def hub_creds(host_env, token_env, app_id_env):
 
 if __name__ == "__main__":
     app()
+
+
+def get_hub(host, token, app_id, cloud_token=None) -> Hub:
+    return Hub(host=host, token=token, app_id=app_id, cloud_token=cloud_token)
