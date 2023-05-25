@@ -1,7 +1,9 @@
 
-n.n.n / 2023-05-22
+n.n.n / 2023-05-25
 ==================
 
+  * wip: Fixing CLI test
+  * Adde missing funcs
   * wip:Started on class refactor
   * Updated doc gen
 

@@ -13,7 +13,7 @@ class GetDevices:
     def __get_devices_from_capabilities__(self, capabilities_list: [str]):
         device_list = []
         for i in self.hub.devices:
-            if capabilities_list == i["capabilities"]:
+            if all([x in i["capabilities"] for x in capabilities_list]):
                 device_list.append(i)
         return device_list
 
