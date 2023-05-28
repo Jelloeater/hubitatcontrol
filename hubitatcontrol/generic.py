@@ -1,7 +1,10 @@
-from hubitatcontrol.hub import Device
+from hubitatcontrol.hub import Device, Hub
 
 
 class Switch(Device):
+    def __init__(self, hub: Hub, device_from_hub: dict):
+        super().__init__(hub, device_from_hub)
+
     @property
     def switch(self) -> str:
         """Returns either (on or off)"""

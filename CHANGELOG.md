@@ -1,7 +1,8 @@
 
-n.n.n / 2023-05-25
+n.n.n / 2023-05-28
 ==================
 
+  * wip: Fixed Search function
   * wip: Fixing CLI test
   * Adde missing funcs
   * wip:Started on class refactor
