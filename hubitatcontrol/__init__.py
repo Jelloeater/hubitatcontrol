@@ -48,9 +48,9 @@ class GetDevice:
         self.device = device_in
 
     def cast_device(self):
+        """The order here is very important that we cast the device properly based on increasing complexity /
+        functionality"""
         c = self.device["capabilities"]
-        if all([x in c for x in ["Switch"]]):
-            return hubitatcontrol.lights.Switch(self.hub, self.device)
 
         if all([x in c for x in sensors.TemperatureSensor.spec]):
             return hubitatcontrol.sensors.TemperatureSensor(self.hub, self.device)
@@ -61,14 +61,17 @@ class GetDevice:
         if all([x in c for x in generic.ZigbeeOutlet.spec]):
             return hubitatcontrol.generic.ZigbeeOutlet(self.hub, self.device)
 
+        if all([x in c for x in lights.RGBWBulb.spec]):
+            return hubitatcontrol.lights.RGBWBulb(self.hub, self.device)
+
+        if all([x in c for x in lights.ColorTempBulb.spec]):
+            return hubitatcontrol.lights.ColorTempBulb(self.hub, self.device)
+
         if all([x in c for x in lights.Dimmer.spec]):
             return hubitatcontrol.lights.Dimmer(self.hub, self.device)
 
         if all([x in c for x in lights.Bulb.spec]):
             return hubitatcontrol.lights.Bulb(self.hub, self.device)
 
-        if all([x in c for x in lights.ColorTempBulb.spec]):
-            return hubitatcontrol.lights.ColorTempBulb(self.hub, self.device)
-
-        if all([x in c for x in lights.RGBWBulb.spec]):
-            return hubitatcontrol.lights.RGBWBulb(self.hub, self.device)
+        if all([x in c for x in ["Switch"]]):
+            return hubitatcontrol.lights.Switch(self.hub, self.device)
