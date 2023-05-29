@@ -6,7 +6,7 @@ from hubitatcontrol.hub import Hub
 
 
 class GetDevices:
-    def __init__(self, hub_in: hubitatcontrol.Hub):
+    def __init__(self, hub_in: Hub):
         self.hub = hub_in
 
     def __get_devices_from_capabilities__(self, capabilities_list: [str]):
@@ -43,7 +43,7 @@ class GetDevices:
 
 
 class GetDevice:
-    def __init__(self, hub_in: hubitatcontrol.hub, device_in: hubitatcontrol.generic.Device):
+    def __init__(self, hub_in: Hub, device_in: hubitatcontrol.generic.Device):
         self.hub = hub_in
         self.device = device_in
 

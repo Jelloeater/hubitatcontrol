@@ -1,4 +1,4 @@
-from hubitatcontrol.hub import Device, Hub
+from hubitatcontrol.hub import Device
 
 
 class ContactSensor(Device):
