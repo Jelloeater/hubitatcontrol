@@ -1,7 +1,11 @@
 
-n.n.n / 2023-05-28
+n.n.n / 2023-05-29
 ==================
 
+  * test: Unit test CICD
+  * Fixed unit tests and device casing woohoo!
+  * wip: Move spec to class ref
+  * wip: Casting working now, still more work to do
   * wip: Fixed Search function
   * wip: Fixing CLI test
   * Adde missing funcs

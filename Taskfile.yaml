@@ -64,7 +64,7 @@ tasks:
         cmds:
             - poetry run isort --atomic .
             - poetry run black .
-            - poetry run autoflake .
+            - poetry run autoflake {{.BUILD_DIR}}
             - poetry run flake8
     docs:
         silent: false
