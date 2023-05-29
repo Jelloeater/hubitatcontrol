@@ -1,5 +1,4 @@
 """Hubitat Maker API"""
-
 import hubitatcontrol.generic
 import hubitatcontrol.lights
 import hubitatcontrol.sensors
@@ -18,31 +17,29 @@ class GetDevices:
                 device_list.append(d)
         return device_list
 
-    # TODO Add Sensor gets
-    # def TemperatureSensor(self) -> list[hubitatcontrol.sensors.TemperatureSensor]:
-    #     return self.__get_devices_from_capabilities__(["TemperatureMeasurement"])
-    #
-    # def EnvironmentalSensor(self) -> list[hubitatcontrol.sensors.EnvironmentalSensor]:
-    #     return self.__get_devices_from_capabilities__(["RelativeHumidityMeasurement", "TemperatureMeasurement"])
-    #
-    def Switch(self) -> list[hubitatcontrol.generic.Switch]:
-        return self.__get_devices_from_capabilities__(["Switch"])
+    def TemperatureSensor(self) -> list[sensors.TemperatureSensor]:
+        return self.__get_devices_from_capabilities__(sensors.TemperatureSensor.spec)
 
-    #
-    # def Outlet(self) -> list[hubitatcontrol.generic.ZigbeeOutlet]:
-    #     return self.__get_devices_from_capabilities__(["PowerMeter", "Outlet"])
-    #
-    # def Dimmer(self) -> list[hubitatcontrol.lights.Dimmer]:
-    #     return self.__get_devices_from_capabilities__(["SwitchLevel"])
-    #
-    # def Bulb(self) -> list[hubitatcontrol.lights.Bulb]:
-    #     return self.__get_devices_from_capabilities__(["ChangeLevel"])
-    #
-    # def ColorTempBulb(self) -> list[hubitatcontrol.lights.ColorTempBulb]:
-    #     return self.__get_devices_from_capabilities__(["ColorTemperature"])
-    #
-    # def RGBWBulb(self) -> list[hubitatcontrol.lights.RGBWBulb]:
-    #     return self.__get_devices_from_capabilities__(["ColorControl", "ColorMode"])
+    def EnvironmentalSensor(self) -> list[sensors.EnvironmentalSensor]:
+        return self.__get_devices_from_capabilities__(sensors.EnvironmentalSensor.spec)
+
+    def Switch(self) -> list[generic.Switch]:
+        return self.__get_devices_from_capabilities__(generic.Switch.spec)
+
+    def Outlet(self) -> list[generic.ZigbeeOutlet]:
+        return self.__get_devices_from_capabilities__(generic.ZigbeeOutlet.spec)
+
+    def Dimmer(self) -> list[lights.Dimmer]:
+        return self.__get_devices_from_capabilities__(lights.Dimmer.spec)
+
+    def Bulb(self) -> list[lights.Bulb]:
+        return self.__get_devices_from_capabilities__(lights.Bulb.spec)
+
+    def ColorTempBulb(self) -> list[lights.ColorTempBulb]:
+        return self.__get_devices_from_capabilities__(lights.ColorTempBulb.spec)
+
+    def RGBWBulb(self) -> list[lights.RGBWBulb]:
+        return self.__get_devices_from_capabilities__(lights.RGBWBulb.spec)
 
 
 class GetDevice:
@@ -51,30 +48,27 @@ class GetDevice:
         self.device = device_in
 
     def cast_device(self):
-        if all([x in self.device["capabilities"] for x in ["Switch"]]):
+        c = self.device["capabilities"]
+        if all([x in c for x in ["Switch"]]):
             return hubitatcontrol.lights.Switch(self.hub, self.device)
 
-        # if ["TemperatureMeasurement"] in c:
-        #     return hubitatcontrol.sensors.TemperatureSensor(self.hub, self.device)
-        #
-        # if ["RelativeHumidityMeasurement", "TemperatureMeasurement"] in c:
-        #     return hubitatcontrol.sensors.TemperatureSensor(self.hub, self.device)
+        if all([x in c for x in sensors.TemperatureSensor.spec]):
+            return hubitatcontrol.sensors.TemperatureSensor(self.hub, self.device)
 
-        # def EnvironmentalSensor(self) -> list[hubitatcontrol.sensors.EnvironmentalSensor]:
-        #     return self.__get_devices_from_capabilities__(["RelativeHumidityMeasurement", "TemperatureMeasurement"])
-        #
-        #
-        # def Outlet(self) -> list[hubitatcontrol.generic.ZigbeeOutlet]:
-        #     return self.__get_devices_from_capabilities__(["PowerMeter", "Outlet"])
-        #
-        # def Dimmer(self) -> list[hubitatcontrol.lights.Dimmer]:
-        #     return self.__get_devices_from_capabilities__(["SwitchLevel"])
-        #
-        # def Bulb(self) -> list[hubitatcontrol.lights.Bulb]:
-        #     return self.__get_devices_from_capabilities__(["ChangeLevel"])
-        #
-        # def ColorTempBulb(self) -> list[hubitatcontrol.lights.ColorTempBulb]:
-        #     return self.__get_devices_from_capabilities__(["ColorTemperature"])
-        #
-        # def RGBWBulb(self) -> list[hubitatcontrol.lights.RGBWBulb]:
-        #     return self.__get_devices_from_capabilities__(["ColorControl", "ColorMode"])
+        if all([x in c for x in sensors.EnvironmentalSensor.spec]):
+            return hubitatcontrol.sensors.EnvironmentalSensor(self.hub, self.device)
+
+        if all([x in c for x in generic.ZigbeeOutlet.spec]):
+            return hubitatcontrol.generic.ZigbeeOutlet(self.hub, self.device)
+
+        if all([x in c for x in lights.Dimmer.spec]):
+            return hubitatcontrol.lights.Dimmer(self.hub, self.device)
+
+        if all([x in c for x in lights.Bulb.spec]):
+            return hubitatcontrol.lights.Bulb(self.hub, self.device)
+
+        if all([x in c for x in lights.ColorTempBulb.spec]):
+            return hubitatcontrol.lights.ColorTempBulb(self.hub, self.device)
+
+        if all([x in c for x in lights.RGBWBulb.spec]):
+            return hubitatcontrol.lights.RGBWBulb(self.hub, self.device)

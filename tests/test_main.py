@@ -31,7 +31,7 @@ def test_creds():
 class TestDeviceType:
     def test_get_all_temperature_sensors(self):
         h = Hub(host=host_env, token=token_env, app_id=app_id_env, cloud_token=cloud_token)
-        x = hubitatcontrol.GetDevices(h).temperature_sensors()
+        x = hubitatcontrol.GetDevices.TemperatureSensor()
         # TODO -> Fix temp data get from EcoBee <-
         assert x is not None
 
