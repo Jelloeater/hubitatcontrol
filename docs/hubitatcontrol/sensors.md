@@ -1,52 +1,56 @@
-Module hubitatcontrol.sensors
-=============================
+# Module hubitatcontrol.sensors
 
-Classes
--------
+## Classes
 
 `ContactSensor(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
-:   
+:
 
-    ### Ancestors (in MRO)
+```
+### Ancestors (in MRO)
 
-    * hubitatcontrol.hub.Device
+* hubitatcontrol.hub.Device
+```
 
 `EnvironmentalSensor(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
-:   
+:
 
-    ### Ancestors (in MRO)
+```
+### Ancestors (in MRO)
 
-    * hubitatcontrol.sensors.TemperatureSensor
-    * hubitatcontrol.hub.Device
+* hubitatcontrol.sensors.TemperatureSensor
+* hubitatcontrol.hub.Device
 
-    ### Class variables
+### Class variables
 
-    `spec`
-    :
+`spec`
+:
 
-    ### Instance variables
+### Instance variables
 
-    `humidity: int`
-    :
+`humidity: int`
+:
+```
 
 `TemperatureSensor(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
-:   
+:
 
-    ### Ancestors (in MRO)
+```
+### Ancestors (in MRO)
 
-    * hubitatcontrol.hub.Device
+* hubitatcontrol.hub.Device
 
-    ### Descendants
+### Descendants
 
-    * hubitatcontrol.environment.Thermostat
-    * hubitatcontrol.sensors.EnvironmentalSensor
+* hubitatcontrol.environment.Thermostat
+* hubitatcontrol.sensors.EnvironmentalSensor
 
-    ### Class variables
+### Class variables
 
-    `spec`
-    :
+`spec`
+:
 
-    ### Instance variables
+### Instance variables
 
-    `temperature: int`
-    :
+`temperature: int`
+:
+```

@@ -1,52 +1,55 @@
-Module hubitatcontrol
-=====================
+# Module hubitatcontrol
+
 Hubitat Maker API
 
-Sub-modules
------------
-* hubitatcontrol.environment
-* hubitatcontrol.generic
-* hubitatcontrol.hub
-* hubitatcontrol.lights
-* hubitatcontrol.sensors
+## Sub-modules
 
-Classes
--------
+- hubitatcontrol.environment
+- hubitatcontrol.generic
+- hubitatcontrol.hub
+- hubitatcontrol.lights
+- hubitatcontrol.sensors
+
+## Classes
 
 `GetDevice(hub_in: hubitatcontrol.hub.Hub, device_in: hubitatcontrol.hub.Device)`
-:   
+:
 
-    ### Methods
+```
+### Methods
 
-    `cast_device(self)`
-    :   The order here is very important that we cast the device properly based on increasing complexity /
-        functionality
+`cast_device(self)`
+:   The order here is very important that we cast the device properly based on increasing complexity /
+    functionality
+```
 
 `GetDevices(hub_in: hubitatcontrol.hub.Hub)`
-:   
+:
 
-    ### Methods
+```
+### Methods
 
-    `Bulb(self) ‑> list[hubitatcontrol.lights.Bulb]`
-    :
+`Bulb(self) ‑> list[hubitatcontrol.lights.Bulb]`
+:
 
-    `ColorTempBulb(self) ‑> list[hubitatcontrol.lights.ColorTempBulb]`
-    :
+`ColorTempBulb(self) ‑> list[hubitatcontrol.lights.ColorTempBulb]`
+:
 
-    `Dimmer(self) ‑> list[hubitatcontrol.lights.Dimmer]`
-    :
+`Dimmer(self) ‑> list[hubitatcontrol.lights.Dimmer]`
+:
 
-    `EnvironmentalSensor(self) ‑> list[hubitatcontrol.sensors.EnvironmentalSensor]`
-    :
+`EnvironmentalSensor(self) ‑> list[hubitatcontrol.sensors.EnvironmentalSensor]`
+:
 
-    `Outlet(self) ‑> list[hubitatcontrol.generic.ZigbeeOutlet]`
-    :
+`Outlet(self) ‑> list[hubitatcontrol.generic.ZigbeeOutlet]`
+:
 
-    `RGBWBulb(self) ‑> list[hubitatcontrol.lights.RGBWBulb]`
-    :
+`RGBWBulb(self) ‑> list[hubitatcontrol.lights.RGBWBulb]`
+:
 
-    `Switch(self) ‑> list[hubitatcontrol.generic.Switch]`
-    :
+`Switch(self) ‑> list[hubitatcontrol.generic.Switch]`
+:
 
-    `TemperatureSensor(self) ‑> list[hubitatcontrol.sensors.TemperatureSensor]`
-    :
+`TemperatureSensor(self) ‑> list[hubitatcontrol.sensors.TemperatureSensor]`
+:
+```

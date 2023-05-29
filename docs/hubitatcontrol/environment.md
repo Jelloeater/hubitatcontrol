@@ -1,13 +1,13 @@
-Module hubitatcontrol.environment
-=================================
+# Module hubitatcontrol.environment
 
-Classes
--------
+## Classes
 
 `Thermostat(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
-:   
+:
 
-    ### Ancestors (in MRO)
+```
+### Ancestors (in MRO)
 
-    * hubitatcontrol.sensors.TemperatureSensor
-    * hubitatcontrol.hub.Device
+* hubitatcontrol.sensors.TemperatureSensor
+* hubitatcontrol.hub.Device
+```
