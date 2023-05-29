@@ -5,6 +5,8 @@ from hubitatcontrol.generic import Switch
 
 
 class Dimmer(Switch):
+    spec = ["SwitchLevel"]
+
     @property
     def level(self) -> int:
         return [x for x in self.attributes if "level" in x["name"]][0]["currentValue"]
@@ -18,11 +20,14 @@ class Dimmer(Switch):
 
 
 class Bulb(Dimmer):
+    spec = ["ChangeLevel"]
     pass
     # TODO May need to add more methods, as bulbs might have more functionality
 
 
 class ColorTempBulb(Bulb):
+    spec = ["ColorTemperature"]
+
     @property
     def color_temp(self) -> int:
         return [x for x in self.attributes if "colorTemperature" in x["name"]][0]["currentValue"]
@@ -34,6 +39,8 @@ class ColorTempBulb(Bulb):
 
 
 class RGBWBulb(ColorTempBulb):
+    spec = ["ColorControl", "ColorMode"]
+
     @property
     def color(self) -> str:
         return [x for x in self.attributes if "color" in x["name"]][0]["currentValue"]

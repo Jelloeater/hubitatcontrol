@@ -2,8 +2,7 @@ from hubitatcontrol.hub import Device, Hub
 
 
 class Switch(Device):
-    def __init__(self, hub: Hub, device_from_hub: dict):
-        super().__init__(hub, device_from_hub)
+    spec = ["Switch"]
 
     @property
     def switch(self) -> str:
@@ -18,6 +17,8 @@ class Switch(Device):
 
 
 class ZigbeeOutlet(Switch):
+    spec = ["PowerMeter", "Outlet"]
+
     @property
     def power(self) -> int:
         """Returns power usage"""
