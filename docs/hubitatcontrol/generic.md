@@ -1,111 +1,123 @@
-Module hubitatcontrol.generic
-=============================
+# Module hubitatcontrol.generic
 
-Classes
--------
+## Classes
 
 `Button(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
-:   
+:
 
-    ### Ancestors (in MRO)
+```
+### Ancestors (in MRO)
 
-    * hubitatcontrol.hub.Device
+* hubitatcontrol.hub.Device
 
-    ### Descendants
+### Descendants
 
-    * hubitatcontrol.generic.SonoffZigbeeButtonController
+* hubitatcontrol.generic.SonoffZigbeeButtonController
+```
 
 `EcoBee(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
-:   
+:
 
-    ### Ancestors (in MRO)
+```
+### Ancestors (in MRO)
 
-    * hubitatcontrol.generic.Thermostat
-    * hubitatcontrol.hub.Device
+* hubitatcontrol.generic.Thermostat
+* hubitatcontrol.hub.Device
+```
 
 `GenericZWaveLock(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
-:   
+:
 
-    ### Ancestors (in MRO)
+```
+### Ancestors (in MRO)
 
-    * hubitatcontrol.hub.Device
+* hubitatcontrol.hub.Device
 
-    ### Methods
+### Methods
 
-    `lock(self)`
-    :
+`lock(self)`
+:
 
-    `unlock(self)`
-    :
+`unlock(self)`
+:
+```
 
 `SonoffZigbeeButtonController(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
-:   
+:
 
-    ### Ancestors (in MRO)
+```
+### Ancestors (in MRO)
 
-    * hubitatcontrol.generic.Button
-    * hubitatcontrol.hub.Device
+* hubitatcontrol.generic.Button
+* hubitatcontrol.hub.Device
+```
 
 `Switch(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
-:   
+:
 
-    ### Ancestors (in MRO)
+```
+### Ancestors (in MRO)
 
-    * hubitatcontrol.hub.Device
+* hubitatcontrol.hub.Device
 
-    ### Descendants
+### Descendants
 
-    * hubitatcontrol.generic.ZigbeeOutlet
-    * hubitatcontrol.lights.Dimmer
+* hubitatcontrol.generic.ZigbeeOutlet
+* hubitatcontrol.lights.Dimmer
 
-    ### Class variables
+### Class variables
 
-    `spec`
-    :
+`spec`
+:
 
-    ### Instance variables
+### Instance variables
 
-    `switch: str`
-    :   Returns either (on or off)
+`switch: str`
+:   Returns either (on or off)
 
-    ### Methods
+### Methods
 
-    `turn_off(self)`
-    :
+`turn_off(self)`
+:
 
-    `turn_on(self)`
-    :
+`turn_on(self)`
+:
+```
 
 `Thermostat(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
-:   
+:
 
-    ### Ancestors (in MRO)
+```
+### Ancestors (in MRO)
 
-    * hubitatcontrol.hub.Device
+* hubitatcontrol.hub.Device
 
-    ### Descendants
+### Descendants
 
-    * hubitatcontrol.generic.EcoBee
+* hubitatcontrol.generic.EcoBee
 
-    ### Methods
+### Methods
 
-    `set_temperature(self)`
-    :
+`set_temperature(self)`
+:
+```
 
 `ZigbeeOutlet(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
-:   
+:
 
-    ### Ancestors (in MRO)
+```
+### Ancestors (in MRO)
 
-    * hubitatcontrol.generic.Switch
-    * hubitatcontrol.hub.Device
+* hubitatcontrol.generic.Switch
+* hubitatcontrol.hub.Device
 
-    ### Class variables
+### Class variables
 
-    `spec`
-    :
+`spec`
+:
 
-    ### Instance variables
+### Instance variables
 
-    `power: int`
-    :   Returns power usage
+`power: int`
+:   Returns power usage
+```

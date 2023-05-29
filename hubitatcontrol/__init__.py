@@ -1,7 +1,7 @@
 """Hubitat Maker API"""
-import hubitatcontrol.generic
-import hubitatcontrol.lights
-import hubitatcontrol.sensors
+import hubitatcontrol.generic as generic
+import hubitatcontrol.lights as lights
+import hubitatcontrol.sensors as sensors
 from hubitatcontrol.hub import Hub
 
 
@@ -43,7 +43,7 @@ class GetDevices:
 
 
 class GetDevice:
-    def __init__(self, hub_in: Hub, device_in: hubitatcontrol.generic.Device):
+    def __init__(self, hub_in: Hub, device_in: generic.Device):
         self.hub = hub_in
         self.device = device_in
 
@@ -53,25 +53,25 @@ class GetDevice:
         c = self.device["capabilities"]
 
         if all([x in c for x in sensors.TemperatureSensor.spec]):
-            return hubitatcontrol.sensors.TemperatureSensor(self.hub, self.device)
+            return sensors.TemperatureSensor(self.hub, self.device)
 
         if all([x in c for x in sensors.EnvironmentalSensor.spec]):
-            return hubitatcontrol.sensors.EnvironmentalSensor(self.hub, self.device)
+            return sensors.EnvironmentalSensor(self.hub, self.device)
 
         if all([x in c for x in generic.ZigbeeOutlet.spec]):
-            return hubitatcontrol.generic.ZigbeeOutlet(self.hub, self.device)
+            return generic.ZigbeeOutlet(self.hub, self.device)
 
         if all([x in c for x in lights.RGBWBulb.spec]):
-            return hubitatcontrol.lights.RGBWBulb(self.hub, self.device)
+            return lights.RGBWBulb(self.hub, self.device)
 
         if all([x in c for x in lights.ColorTempBulb.spec]):
-            return hubitatcontrol.lights.ColorTempBulb(self.hub, self.device)
+            return lights.ColorTempBulb(self.hub, self.device)
 
         if all([x in c for x in lights.Dimmer.spec]):
-            return hubitatcontrol.lights.Dimmer(self.hub, self.device)
+            return lights.Dimmer(self.hub, self.device)
 
         if all([x in c for x in lights.Bulb.spec]):
-            return hubitatcontrol.lights.Bulb(self.hub, self.device)
+            return lights.Bulb(self.hub, self.device)
 
-        if all([x in c for x in ["Switch"]]):
-            return hubitatcontrol.lights.Switch(self.hub, self.device)
+        if all([x in c for x in lights.Switch.spec]):
+            return lights.Switch(self.hub, self.device)

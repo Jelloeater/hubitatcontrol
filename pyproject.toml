@@ -78,6 +78,8 @@ exclude-entropy-patterns = [
     {path-pattern = 'poetry\.lock', pattern = '.'},
     {path-pattern = 'Pipfile\.lock', pattern = '.'},
     {path-pattern = 'README\.md', pattern = '.'},
+    {path-pattern = 'index\.rst', pattern = '.'},
+
 ]
 
 [tool.poetry.group.test.dependencies]
