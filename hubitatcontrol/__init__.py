@@ -1,8 +1,22 @@
 """Hubitat Maker API"""
+import os
+
+from dotenv import load_dotenv
+
 import hubitatcontrol.generic as generic
 import hubitatcontrol.lights as lights
 import hubitatcontrol.sensors as sensors
 from hubitatcontrol.hub import Hub
+
+
+class GetSingleDevice:
+    @staticmethod
+    def name(device_name: str):
+        # TODO Finish name method for README
+        h = get_hub_envs()
+        for i in h.devices:
+            if i["name"] == device_name:
+                return i
 
 
 class GetDevices:
@@ -13,7 +27,7 @@ class GetDevices:
         device_list = []
         for i in self.hub.devices:
             if all([x in i["capabilities"] for x in capabilities_list]):
-                d = GetDevice(self.hub, i).cast_device()
+                d = DeviceInit(self.hub, i).cast_device()
                 device_list.append(d)
         return device_list
 
@@ -42,7 +56,7 @@ class GetDevices:
         return self.__get_devices_from_capabilities__(lights.RGBWBulb.spec)
 
 
-class GetDevice:
+class DeviceInit:
     def __init__(self, hub_in: Hub, device_in: generic.Device):
         self.hub = hub_in
         self.device = device_in
@@ -75,3 +89,15 @@ class GetDevice:
 
         if all([x in c for x in lights.Switch.spec]):
             return lights.Switch(self.hub, self.device)
+
+
+def get_hub_envs() -> Hub:
+    """
+    Generates a Hub object from local environmental variables
+    """
+    load_dotenv()
+    host_env = os.getenv("HUBITAT_HOST")
+    token_env = os.getenv("HUBITAT_API_TOKEN")
+    app_id_env = os.getenv("HUBITAT_API_APP_ID")
+    cloud_token = os.getenv("HUBITAT_CLOUD_TOKEN")
+    return Hub(host=host_env, token=token_env, app_id=app_id_env, cloud_token=cloud_token)

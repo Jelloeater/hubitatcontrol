@@ -1,7 +1,8 @@
 
-n.n.n / 2023-05-29
+n.n.n / 2023-05-30
 ==================
 
+  * feat: Finished updating unit tests
   * test: Unit test CICD
   * Fixed unit tests and device casing woohoo!
   * wip: Move spec to class ref

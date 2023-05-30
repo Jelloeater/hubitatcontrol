@@ -10,9 +10,14 @@ Hubitat Maker API
 - hubitatcontrol.lights
 - hubitatcontrol.sensors
 
+## Functions
+
+`get_hub_envs() ‑> hubitatcontrol.hub.Hub`
+:   Generates a Hub object from local environmental variables
+
 ## Classes
 
-`GetDevice(hub_in: hubitatcontrol.hub.Hub, device_in: hubitatcontrol.hub.Device)`
+`DeviceInit(hub_in: hubitatcontrol.hub.Hub, device_in: hubitatcontrol.hub.Device)`
 :
 
 ```
@@ -51,5 +56,15 @@ Hubitat Maker API
 :
 
 `TemperatureSensor(self) ‑> list[hubitatcontrol.sensors.TemperatureSensor]`
+:
+```
+
+`GetSingleDevice()`
+:
+
+```
+### Static methods
+
+`name(device_name: str)`
 :
 ```
