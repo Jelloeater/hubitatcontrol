@@ -44,12 +44,11 @@ pip install git+https://github.com/Jelloeater/hubitatcontrol.git
 **Local Example**
 
 ```python
-import __main__
-import hubitatcontrol as hc
+import __main__ as hc
 
-hub = __main__.get_hub(host='http://192.168.1.100', token='Maker_Token',
-                       app_id='Maker_App_ID')
-device = __main__.lookup_device(hub, 'Device_Name')
+hub = hc.get_hub(host='http://192.168.1.100', token='Maker_Token',
+                 app_id='Maker_App_ID')
+device = hc.lookup_device(hub, 'Device_Name')
 
 print(device.switch)
 device.turn_on()
@@ -59,12 +58,11 @@ print(device.switch)
 **Cloud Example**
 
 ```python
-import __main__
-import hubitatcontrol as hc
+import __main__ as hc
 
-hub = __main__.get_hub(host='https://cloud.hubitat.com', token='Maker_Token',
-                       app_id='Maker_App_ID', cloud_token='Cloud_API_token')
-device = __main__.lookup_device(hub, 'Device_Name')
+hub = hc.get_hub(host='https://cloud.hubitat.com', token='Maker_Token',
+                 app_id='Maker_App_ID', cloud_token='Cloud_API_token')
+device = hc.lookup_device(hub, 'Device_Name')
 
 print(device.switch)
 device.turn_on()
