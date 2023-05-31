@@ -2,6 +2,13 @@
 n.n.n / 2023-05-31
 ==================
 
+
+
+v3.0.0 / 2023-05-31
+===================
+
+  * Merge pull request #48 from Jelloeater/feat/device-refactor
+  * cicd: Update CLI test threshold due to .env file missing in GH runner
   * feat: Added single device get classes and updated readme
   * Added single device methods
   * wip: Started refactor for docs
