@@ -35,4 +35,4 @@ class TestCLI:
     @pytest.mark.skipif(load_dotenv('.env') is False, reason='No env file found')
     def test_cli_on(self):
         test_bulb = get_device_of_type("Virtual RGBW Light")
-        cli.on(test_bulb.id)
+        result = cli.on(test_bulb['id'])

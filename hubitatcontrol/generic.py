@@ -2,6 +2,8 @@ from hubitatcontrol.hub import Device
 
 
 class Switch(Device):
+    spec = ["Switch"]
+
     @property
     def switch(self) -> str:
         """Returns either (on or off)"""
@@ -15,6 +17,8 @@ class Switch(Device):
 
 
 class ZigbeeOutlet(Switch):
+    spec = ["PowerMeter", "Outlet"]
+
     @property
     def power(self) -> int:
         """Returns power usage"""

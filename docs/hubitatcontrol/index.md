@@ -12,20 +12,62 @@ Hubitat Maker API
 
 ## Functions
 
-`get_all_environmental_sensors(hub_in: <module 'hubitatcontrol.hub' from '/home/jesse/CodingWorkspace/hubitatcontrol/hubitatcontrol/hub.py'>) ‑> list[hubitatcontrol.sensors.EnvironmentalSensor]`
-:   Returns list of all hub devices with associated helper functions
+`get_hub_envs() ‑> hubitatcontrol.hub.Hub`
+:   Generates a Hub object from local environmental variables
 
-`get_all_temperature_sensors(hub_in: <module 'hubitatcontrol.hub' from '/home/jesse/CodingWorkspace/hubitatcontrol/hubitatcontrol/hub.py'>) ‑> list[hubitatcontrol.sensors.TemperatureSensor]`
-:   Returns list of all hub devices with associated helper functions
+## Classes
 
-`get_device_type(device_in: hubitatcontrol.hub.Device, hub_in: <module 'hubitatcontrol.hub' from '/home/jesse/CodingWorkspace/hubitatcontrol/hubitatcontrol/hub.py'>)`
+`DeviceInit(hub_in: hubitatcontrol.hub.Hub, device_in: hubitatcontrol.hub.Device)`
+:   This class is normally not used, as it's for dynamically casting devices
+
+```
+### Methods
+
+`cast_device(self)`
+:   The order here is very important that we cast the device properly based on increasing complexity /
+    functionality
+```
+
+`GetDevices(hub_in: hubitatcontrol.hub.Hub)`
+:   Get a list of pre-casted devices you can search though
+
+```
+### Methods
+
+`Bulb(self) ‑> list[hubitatcontrol.lights.Bulb]`
 :
 
-`get_hub(host, token, app_id, cloud_token=None) ‑> hubitatcontrol.hub.Hub`
+`ColorTempBulb(self) ‑> list[hubitatcontrol.lights.ColorTempBulb]`
 :
 
-`lookup_device(hub_in, device_lookup)`
-:   Takes device NAME, not ID for lookup
+`Dimmer(self) ‑> list[hubitatcontrol.lights.Dimmer]`
+:
 
-`lookup_device_id(hub_in, device_id)`
-:   Takes device ID for lookup
+`EnvironmentalSensor(self) ‑> list[hubitatcontrol.sensors.EnvironmentalSensor]`
+:
+
+`Outlet(self) ‑> list[hubitatcontrol.generic.ZigbeeOutlet]`
+:
+
+`RGBWBulb(self) ‑> list[hubitatcontrol.lights.RGBWBulb]`
+:
+
+`Switch(self) ‑> list[hubitatcontrol.generic.Switch]`
+:
+
+`TemperatureSensor(self) ‑> list[hubitatcontrol.sensors.TemperatureSensor]`
+:
+```
+
+`GetSingleDevice(hub_in: hubitatcontrol.hub.Hub)`
+:   Used to get a single device based on lookup
+
+```
+### Methods
+
+`id(self, device_id: int)`
+:   Get a device by id and cast to the matched spec
+
+`name(self, device_name: str)`
+:   Get a device by name and cast to the matched spec
+```

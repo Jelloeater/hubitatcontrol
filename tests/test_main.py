@@ -1,80 +1,67 @@
-import os
+import logging
 import random
 import time
 
-import pytest
-from dotenv import load_dotenv
-
 import hubitatcontrol
 from hubitatcontrol import *
-
-load_dotenv()
-host_env = os.getenv("HUBITAT_HOST")
-token_env = os.getenv("HUBITAT_API_TOKEN")
-app_id_env = os.getenv("HUBITAT_API_APP_ID")
-cloud_token = os.getenv("HUBITAT_CLOUD_TOKEN")
+from hubitatcontrol import get_hub_envs
 
 
 def get_device_of_type(device_type: str):
-    h = Hub(host=host_env, token=token_env, app_id=app_id_env, cloud_token=cloud_token)
+    h = get_hub_envs()
     for i in h.devices:
         if i["type"] == device_type:
-            return lookup_device(h, i["label"])
+            return i
 
 
 def test_creds():
+    load_dotenv()
     import os
 
     assert os.getenv("HUBITAT_API_APP_ID") is not None
     assert os.getenv("HUBITAT_API_TOKEN") is not None
 
 
-class TestDeviceType:
-    def test_get_all_temperature_sensors(self):
-        h = Hub(host=host_env, token=token_env, app_id=app_id_env, cloud_token=cloud_token)
-        x = hubitatcontrol.get_all_temperature_sensors(h)
-        # TODO -> Fix temp data get from EcoBee <-
-        assert x is not None
-
-
 class TestDevices:
     def test_device_bulb(self):
-        test_bulb = get_device_of_type("Virtual RGBW Light")
-        state = test_bulb.switch
-        temp = test_bulb.color_temp
-        hue = test_bulb.hue
-        sat = test_bulb.saturation
+        t = get_device_of_type("Virtual RGBW Light")
+        t = hubitatcontrol.DeviceInit(get_hub_envs(), t).cast_device()
+        state = t.switch
+        temp = t.color_temp
+        hue = t.hue
+        sat = t.saturation
 
-        test_bulb.turn_on()
-        assert test_bulb.switch == "on"
-        test_bulb.turn_off()
-        assert test_bulb.switch == "off"
-        test_bulb.turn_on()
-        assert test_bulb.switch == "on"
+        t.turn_on()
+        assert t.switch == "on"
+        t.turn_off()
+        assert t.switch == "off"
+        t.turn_on()
+        assert t.switch == "on"
 
-        test_bulb.set_color_temp(3205)
-        assert test_bulb.color_temp == 3205
-        test_bulb.set_color_temp(temp)
+        t.set_color_temp(3205)
+        assert t.color_temp == 3205
+        t.set_color_temp(temp)
 
-        test_bulb.set_hue(100)
-        assert test_bulb.hue == 100
-        test_bulb.set_hue(hue)
+        t.set_hue(100)
+        assert t.hue == 100
+        t.set_hue(hue)
 
-        test_bulb.set_saturation(10)
+        t.set_saturation(10)
         time.sleep(1)
-        assert test_bulb.saturation == 10
-        test_bulb.set_saturation(80)
+        assert t.saturation == 10
+        t.set_saturation(80)
         time.sleep(1)
-        assert test_bulb.saturation == 80
-        test_bulb.set_hue(sat)
+        assert t.saturation == 80
+        t.set_hue(sat)
 
         if state == "on":
-            test_bulb.turn_on()
+            t.turn_on()
         else:
-            test_bulb.turn_off()
+            t.turn_off()
 
     def test_device_outlet(self):
         t = get_device_of_type("Virtual Switch")
+        t = hubitatcontrol.DeviceInit(get_hub_envs(), t).cast_device()
         state = t.switch
         t.turn_off()
         assert t.switch == "off"
@@ -87,6 +74,8 @@ class TestDevices:
 
     def test_device_dimmer(self):
         d = get_device_of_type("Virtual Dimmer")
+        d = hubitatcontrol.DeviceInit(get_hub_envs(), d).cast_device()
+
         assert d
         state_l = d.switch  # To set light back where they were
         state = d.level
@@ -102,15 +91,39 @@ class TestDevices:
 
     def test_temp_sensor(self):
         d = get_device_of_type("Virtual Temperature Sensor")
+        d = hubitatcontrol.DeviceInit(get_hub_envs(), d).cast_device()
+
         assert d.temperature == 72
 
     def test_set_color_map(self):
-        test_bulb = get_device_of_type("Virtual RGBW Light")
+        d = get_device_of_type("Virtual RGBW Light")
+        d = hubitatcontrol.DeviceInit(get_hub_envs(), d).cast_device()
+
         hue = random.randint(0, 100)
         saturation = random.randint(0, 100)
         level = random.randint(0, 100)
 
-        test_bulb.set_color(hue=hue, saturation=saturation, level=level)
-        assert test_bulb.level == level
-        assert test_bulb.hue == hue
-        assert test_bulb.saturation == saturation
+        d.set_color(hue=hue, saturation=saturation, level=level)
+        assert d.level == level
+        assert d.hue == hue
+        assert d.saturation == saturation
+
+
+class TestMisc:
+    def test_get_all_temperature_sensors(self):
+        h = get_hub_envs()
+        for z in hubitatcontrol.GetDevices(h).TemperatureSensor():
+            logging.info(f"{z.name} - {z.temperature}")
+            assert z.temperature > -100  # Make sure we have a valid temperature
+
+    def test_get_by_name(self):
+        h = get_hub_envs()
+        TEST_DEVICE = '1RGB'
+        x = hubitatcontrol.GetSingleDevice(h).name(TEST_DEVICE)
+        assert x.name == TEST_DEVICE
+
+    def test_get_by_id(self):
+        h = get_hub_envs()
+        TEST_DEVICE = 261
+        x = hubitatcontrol.GetSingleDevice(h).id(TEST_DEVICE)
+        assert x.id == TEST_DEVICE

@@ -7,7 +7,8 @@ import keyring
 import typer
 from dotenv import load_dotenv
 
-from hubitatcontrol import get_hub
+import hubitatcontrol
+from hubitatcontrol import Hub
 
 app_name = "hubitatcontrol"
 
@@ -30,7 +31,7 @@ def check_keyring():
             raise Exception('Empty Keyring')
 
 
-def hub_from_keyring():
+def hub_from_keyring() -> Hub:
     check_keyring()
     host_env = keyring.get_password("hubitatcontrol", "HUBITAT_HOST")
     token_env = keyring.get_password("hubitatcontrol", "HUBITAT_API_TOKEN")
@@ -38,7 +39,8 @@ def hub_from_keyring():
     cloud_token_env = keyring.get_password("hubitatcontrol", "HUBITAT_CLOUD_TOKEN")
     if cloud_token_env == 'None':  # nosec # Fixes string to obj casting on env file parse
         cloud_token_env = None
-    return get_hub(host=host_env, token=token_env, app_id=app_id_env, cloud_token=cloud_token_env)
+
+    return Hub(host=host_env, token=token_env, app_id=app_id_env, cloud_token=cloud_token_env)
 
 
 @app.command()
@@ -51,18 +53,17 @@ def ls():
 
 
 @app.command()
-def on(device_id: int):
+def on(device_id: int) -> hubitatcontrol.lights.Switch:
     """
     Turn on a device via it's Device ID
     """
 
     hub_in = hub_from_keyring()
-    device = hub_in.get_device_id(device_id)
-    import hubitatcontrol.hub
+    dev = hubitatcontrol.GetDevices(hub_in).Switch()
 
-    dev = hubitatcontrol.lookup_device(hub_in, device['name'])
-
-    dev.turn_on()
+    for i in dev:
+        if i.id == device_id:
+            i.turn_on()
 
 
 @app.command()
@@ -72,12 +73,11 @@ def off(device_id: int):
     """
 
     hub_in = hub_from_keyring()
-    device = hub_in.get_device_id(device_id)
-    import hubitatcontrol.hub
+    dev = hubitatcontrol.GetDevices(hub_in).Switch()
 
-    dev = hubitatcontrol.lookup_device(hub_in, device['name'])
-
-    dev.turn_off()
+    for i in dev:
+        if i.id == device_id:
+            i.turn_off()
 
 
 @app.command()
@@ -85,10 +85,7 @@ def level(device_id: int, level: int):
     """Turn on a device via it's Device ID"""
 
     hub_in = hub_from_keyring()
-    device = hub_in.get_device_id(device_id)
-    import hubitatcontrol.hub
-
-    dev = hubitatcontrol.lookup_device(hub_in, device['name'])
+    dev = hub_in.get_device_id(device_id)
 
     dev.set_level(level)
 
@@ -144,8 +141,8 @@ def print_device_list_types(hub_in):
     print(prettytable.from_json(json.dumps(obj_to_table)))
 
 
-def hub_creds(host_env, token_env, app_id_env):
-    return get_hub(host=host_env, token=token_env, app_id=app_id_env)
+def get_hub(host, token, app_id, cloud_token=None) -> Hub:
+    return Hub(host=host, token=token, app_id=app_id, cloud_token=cloud_token)
 
 
 if __name__ == "__main__":
