@@ -11,14 +11,23 @@ from hubitatcontrol.hub import Hub
 
 class GetSingleDevice:
     def __init__(self, hub_in: Hub):
+        """
+        Used to get a single device based on lookup
+        """
         self.hub = hub_in
 
     def name(self, device_name: str):
+        """
+        Get a device by name and cast to the matched spec
+        """
         for i in self.hub.devices:
             if i["name"] == device_name:
                 return DeviceInit(device_in=i, hub_in=self.hub).cast_device()
 
     def id(self, device_id: int):
+        """
+        Get a device by id and cast to the matched spec
+        """
         for i in self.hub.devices:
             if i["id"] == str(device_id):
                 return DeviceInit(device_in=i, hub_in=self.hub).cast_device()
@@ -26,6 +35,9 @@ class GetSingleDevice:
 
 class GetDevices:
     def __init__(self, hub_in: Hub):
+        """
+        Get a list of pre-casted devices you can search though
+        """
         self.hub = hub_in
 
     def __get_devices_from_capabilities__(self, capabilities_list: [str]):
@@ -37,6 +49,8 @@ class GetDevices:
         return device_list
 
     def TemperatureSensor(self) -> list[sensors.TemperatureSensor]:
+        # TODO -> Fix temp data get from EcoBee <-
+
         return self.__get_devices_from_capabilities__(sensors.TemperatureSensor.spec)
 
     def EnvironmentalSensor(self) -> list[sensors.EnvironmentalSensor]:
@@ -63,6 +77,9 @@ class GetDevices:
 
 class DeviceInit:
     def __init__(self, hub_in: Hub, device_in: generic.Device):
+        """
+        This class is normally not used, as it's for dynamically casting devices
+        """
         self.hub = hub_in
         self.device = device_in
 
