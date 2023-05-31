@@ -1,7 +1,8 @@
 
-n.n.n / 2023-05-30
+n.n.n / 2023-05-31
 ==================
 
+  * wip: Started refactor for docs
   * feat: Finished updating unit tests
   * test: Unit test CICD
   * Fixed unit tests and device casing woohoo!

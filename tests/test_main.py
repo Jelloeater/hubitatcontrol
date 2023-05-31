@@ -21,12 +21,24 @@ def test_creds():
     assert os.getenv("HUBITAT_API_TOKEN") is not None
 
 
-class TestDeviceType:
+class TestMisc:
     def test_get_all_temperature_sensors(self):
         h = get_hub_envs()
         x = hubitatcontrol.GetDevices(h).TemperatureSensor()
         # TODO -> Fix temp data get from EcoBee <-
         assert x is not None
+
+    def test_get_by_name(self):
+        h = get_hub_envs()
+        TEST_DEVICE = '1RGB'
+        x = hubitatcontrol.GetSingleDevice(h).name(TEST_DEVICE)
+        assert x.name == TEST_DEVICE
+
+    def test_get_by_id(self):
+        h = get_hub_envs()
+        TEST_DEVICE = 261
+        x = hubitatcontrol.GetSingleDevice(h).id(TEST_DEVICE)
+        assert x.id == TEST_DEVICE
 
 
 class TestDevices:
