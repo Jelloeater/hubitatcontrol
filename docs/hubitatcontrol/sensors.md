@@ -20,6 +20,11 @@
 * hubitatcontrol.sensors.TemperatureSensor
 * hubitatcontrol.hub.Device
 
+### Class variables
+
+`spec`
+:
+
 ### Instance variables
 
 `humidity: int`
@@ -38,6 +43,11 @@
 
 * hubitatcontrol.environment.Thermostat
 * hubitatcontrol.sensors.EnvironmentalSensor
+
+### Class variables
+
+`spec`
+:
 
 ### Instance variables
 

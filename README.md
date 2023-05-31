@@ -42,30 +42,31 @@ pip install git+https://github.com/Jelloeater/hubitatcontrol.git
 
 ### API
 **Local Example**
+
 ```python
 import hubitatcontrol as hc
 
-hub = hc.get_hub(host='http://192.168.1.100', token='Maker_Token',
-                 app_id='Maker_App_ID')
-device = hc.lookup_device(hub, 'Device_Name')
+hub = hc.Hub(host='http://192.168.1.100', token='Maker_Token',
+app_id='Maker_App_ID') # Get Hub object to auth and poll against
 
+# If you have a cloud based maker API, you can include the cloud token
+# hub = hc.get_hub(host='https://cloud.hubitat.com', token='Maker_Token',
+#                  app_id='Maker_App_ID', cloud_token='Cloud_API_token')
+
+TEST_DEVICE = '1RGB'
+
+device = hc.GetSingleDevice(hub).name(TEST_DEVICE)
+
+# Turn on all the switches (includes lights)
+device.turn_on() # Send command to device
 print(device.switch)
-device.turn_on()
-print(device.switch)
+
+# Get temprature from all sensors
+for i in hc.GetDevices(hub).TemperatureSensor():
+    print(f"{i.name} - {i.temperature}")
+
 ```
 
-**Cloud Example**
-```python
-import hubitatcontrol as hc
-
-hub = hc.get_hub(host='https://cloud.hubitat.com', token='Maker_Token',
-                 app_id='Maker_App_ID', cloud_token='Cloud_API_token')
-device = hc.lookup_device(hub, 'Device_Name')
-
-print(device.switch)
-device.turn_on()
-print(device.switch)
-```
 
 ### CLI Interface
 - If you have all the needed API keys added to your .env file, all you need to do is add them to your keyring

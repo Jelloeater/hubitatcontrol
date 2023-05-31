@@ -65,6 +65,11 @@
 * hubitatcontrol.generic.ZigbeeOutlet
 * hubitatcontrol.lights.Dimmer
 
+### Class variables
+
+`spec`
+:
+
 ### Instance variables
 
 `switch: str`
@@ -105,6 +110,11 @@
 
 * hubitatcontrol.generic.Switch
 * hubitatcontrol.hub.Device
+
+### Class variables
+
+`spec`
+:
 
 ### Instance variables
 

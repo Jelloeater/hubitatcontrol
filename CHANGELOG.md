@@ -1,8 +1,20 @@
 
-n.n.n / 2023-05-15
+n.n.n / 2023-05-31
 ==================
 
-
+  * feat: Added single device get classes and updated readme
+  * Added single device methods
+  * wip: Started refactor for docs
+  * feat: Finished updating unit tests
+  * test: Unit test CICD
+  * Fixed unit tests and device casing woohoo!
+  * wip: Move spec to class ref
+  * wip: Casting working now, still more work to do
+  * wip: Fixed Search function
+  * wip: Fixing CLI test
+  * Adde missing funcs
+  * wip:Started on class refactor
+  * Updated doc gen
 
 v2.3.3 / 2023-05-10
 ===================

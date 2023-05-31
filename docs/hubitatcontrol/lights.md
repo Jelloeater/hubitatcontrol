@@ -16,6 +16,11 @@
 
 * hubitatcontrol.lights.ColorTempBulb
 * hubitatcontrol.lights.ZWavePlusSceneSwitch
+
+### Class variables
+
+`spec`
+:
 ```
 
 `ColorTempBulb(hub: hubitatcontrol.hub.Hub, device_from_hub: dict)`
@@ -32,6 +37,11 @@
 ### Descendants
 
 * hubitatcontrol.lights.RGBWBulb
+
+### Class variables
+
+`spec`
+:
 
 ### Instance variables
 
@@ -57,6 +67,11 @@
 
 * hubitatcontrol.lights.Bulb
 
+### Class variables
+
+`spec`
+:
+
 ### Instance variables
 
 `level: int`
@@ -79,6 +94,11 @@
 * hubitatcontrol.lights.Dimmer
 * hubitatcontrol.generic.Switch
 * hubitatcontrol.hub.Device
+
+### Class variables
+
+`spec`
+:
 
 ### Instance variables
 

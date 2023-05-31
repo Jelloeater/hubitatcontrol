@@ -1,72 +1,125 @@
 """Hubitat Maker API"""
+import os
 
-import hubitatcontrol.generic
-import hubitatcontrol.lights
-import hubitatcontrol.sensors
+from dotenv import load_dotenv
+
+import hubitatcontrol.generic as generic
+import hubitatcontrol.lights as lights
+import hubitatcontrol.sensors as sensors
 from hubitatcontrol.hub import Hub
 
 
-def get_device_type(device_in: hubitatcontrol.hub.Device, hub_in: hubitatcontrol.hub):
-    if device_in is None:
-        raise Exception("Device Not Found")
-    if "ColorControl" in device_in["capabilities"] and "ColorMode" in device_in["capabilities"]:
-        return hubitatcontrol.lights.RGBWBulb(device_from_hub=device_in, hub=hub_in)
-    if "ColorTemperature" in device_in["capabilities"]:
-        return hubitatcontrol.lights.ColorTempBulb(device_from_hub=device_in, hub=hub_in)
-    if "ChangeLevel" in device_in["capabilities"]:
-        return hubitatcontrol.lights.Bulb(device_from_hub=device_in, hub=hub_in)
-    if "SwitchLevel" in device_in["capabilities"]:
-        return hubitatcontrol.lights.Dimmer(device_from_hub=device_in, hub=hub_in)
-    if "PowerMeter" in device_in["capabilities"] and "Outlet" in device_in["capabilities"]:
-        return hubitatcontrol.generic.ZigbeeOutlet(device_from_hub=device_in, hub=hub_in)
-    if "Switch" in device_in["capabilities"]:
-        return hubitatcontrol.generic.Switch(device_from_hub=device_in, hub=hub_in)
-    if (
-        "TemperatureMeasurement" in device_in["capabilities"]
-        and "RelativeHumidityMeasurement" in device_in["capabilities"]
-    ):
-        return hubitatcontrol.sensors.EnvironmentalSensor(device_from_hub=device_in, hub=hub_in)
-    if "TemperatureMeasurement" in device_in["capabilities"]:
-        return hubitatcontrol.sensors.TemperatureSensor(device_from_hub=device_in, hub=hub_in)
+class GetSingleDevice:
+    def __init__(self, hub_in: Hub):
+        """
+        Used to get a single device based on lookup
+        """
+        self.hub = hub_in
+
+    def name(self, device_name: str):
+        """
+        Get a device by name and cast to the matched spec
+        """
+        for i in self.hub.devices:
+            if i["name"] == device_name:
+                return DeviceInit(device_in=i, hub_in=self.hub).cast_device()
+
+    def id(self, device_id: int):
+        """
+        Get a device by id and cast to the matched spec
+        """
+        for i in self.hub.devices:
+            if i["id"] == str(device_id):
+                return DeviceInit(device_in=i, hub_in=self.hub).cast_device()
 
 
-def get_hub(host, token, app_id, cloud_token=None) -> Hub:
-    return Hub(host=host, token=token, app_id=app_id, cloud_token=cloud_token)
+class GetDevices:
+    def __init__(self, hub_in: Hub):
+        """
+        Get a list of pre-casted devices you can search though
+        """
+        self.hub = hub_in
+
+    def __get_devices_from_capabilities__(self, capabilities_list: [str]):
+        device_list = []
+        for i in self.hub.devices:
+            if all([x in i["capabilities"] for x in capabilities_list]):
+                d = DeviceInit(self.hub, i).cast_device()
+                device_list.append(d)
+        return device_list
+
+    def TemperatureSensor(self) -> list[sensors.TemperatureSensor]:
+        # TODO -> Fix temp data get from EcoBee <-
+
+        return self.__get_devices_from_capabilities__(sensors.TemperatureSensor.spec)
+
+    def EnvironmentalSensor(self) -> list[sensors.EnvironmentalSensor]:
+        return self.__get_devices_from_capabilities__(sensors.EnvironmentalSensor.spec)
+
+    def Switch(self) -> list[generic.Switch]:
+        return self.__get_devices_from_capabilities__(generic.Switch.spec)
+
+    def Outlet(self) -> list[generic.ZigbeeOutlet]:
+        return self.__get_devices_from_capabilities__(generic.ZigbeeOutlet.spec)
+
+    def Dimmer(self) -> list[lights.Dimmer]:
+        return self.__get_devices_from_capabilities__(lights.Dimmer.spec)
+
+    def Bulb(self) -> list[lights.Bulb]:
+        return self.__get_devices_from_capabilities__(lights.Bulb.spec)
+
+    def ColorTempBulb(self) -> list[lights.ColorTempBulb]:
+        return self.__get_devices_from_capabilities__(lights.ColorTempBulb.spec)
+
+    def RGBWBulb(self) -> list[lights.RGBWBulb]:
+        return self.__get_devices_from_capabilities__(lights.RGBWBulb.spec)
 
 
-def lookup_device(hub_in, device_lookup):
+class DeviceInit:
+    def __init__(self, hub_in: Hub, device_in: generic.Device):
+        """
+        This class is normally not used, as it's for dynamically casting devices
+        """
+        self.hub = hub_in
+        self.device = device_in
+
+    def cast_device(self):
+        """The order here is very important that we cast the device properly based on increasing complexity /
+        functionality"""
+        c = self.device["capabilities"]
+
+        if all([x in c for x in sensors.TemperatureSensor.spec]):
+            return sensors.TemperatureSensor(self.hub, self.device)
+
+        if all([x in c for x in sensors.EnvironmentalSensor.spec]):
+            return sensors.EnvironmentalSensor(self.hub, self.device)
+
+        if all([x in c for x in generic.ZigbeeOutlet.spec]):
+            return generic.ZigbeeOutlet(self.hub, self.device)
+
+        if all([x in c for x in lights.RGBWBulb.spec]):
+            return lights.RGBWBulb(self.hub, self.device)
+
+        if all([x in c for x in lights.ColorTempBulb.spec]):
+            return lights.ColorTempBulb(self.hub, self.device)
+
+        if all([x in c for x in lights.Dimmer.spec]):
+            return lights.Dimmer(self.hub, self.device)
+
+        if all([x in c for x in lights.Bulb.spec]):
+            return lights.Bulb(self.hub, self.device)
+
+        if all([x in c for x in lights.Switch.spec]):
+            return lights.Switch(self.hub, self.device)
+
+
+def get_hub_envs() -> Hub:
     """
-    Takes device NAME, not ID for lookup
+    Generates a Hub object from local environmental variables
     """
-
-    return get_device_type(
-        device_in=hub_in.get_device(device_lookup), hub_in=hub_in
-    )  # Fall through return # pragma: no cover
-
-
-def lookup_device_id(hub_in, device_id):
-    """
-    Takes device ID for lookup
-    """
-    return get_device_type(
-        device_in=hub_in.get_device_id(device_id), hub_in=hub_in
-    )  # Fall through return # pragma: no cover
-
-
-# TODO Refactor this to be dry
-def get_all_temperature_sensors(hub_in: hubitatcontrol.hub) -> list[hubitatcontrol.sensors.TemperatureSensor]:
-    """Returns list of all hub devices with associated helper functions"""
-    device_list = []
-    for i in hub_in.devices:
-        if "TemperatureMeasurement" in i["capabilities"]:
-            device_list.append(get_device_type(i, hub_in))
-    return device_list
-
-
-def get_all_environmental_sensors(hub_in: hubitatcontrol.hub) -> list[hubitatcontrol.sensors.EnvironmentalSensor]:
-    """Returns list of all hub devices with associated helper functions"""
-    device_list = []
-    for i in hub_in.devices:
-        if ("RelativeHumidityMeasurement" in i["capabilities"]) and ("TemperatureMeasurement" in i["capabilities"]):
-            device_list.append(get_device_type(i, hub_in))
-    return device_list
+    load_dotenv()
+    host_env = os.getenv("HUBITAT_HOST")
+    token_env = os.getenv("HUBITAT_API_TOKEN")
+    app_id_env = os.getenv("HUBITAT_API_APP_ID")
+    cloud_token = os.getenv("HUBITAT_CLOUD_TOKEN")
+    return Hub(host=host_env, token=token_env, app_id=app_id_env, cloud_token=cloud_token)

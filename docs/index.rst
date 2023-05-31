@@ -65,39 +65,37 @@ pip install git+https://github.com/Jelloeater/hubitatcontrol.git
 
 import hubitatcontrol as hc
 
-hub = hc.get*hub(host='http://192.168.1.100', token='Maker*Token',
+hub = hc.Hub(host='http://192.168.1.100', token='Maker_Token',
 
-				 app\_id='Maker\_App\_ID')
+app*id='Maker*App_ID') # Get Hub object to auth and poll against
 
-device = hc.lookup*device(hub, 'Device*Name')
-
-print(device.switch)
-
-device.turn_on()
-
-print(device.switch)
-
-```
-
-**Cloud Example**
-
-```python
-
-import hubitatcontrol as hc
-
+If you have a cloud based maker API, you can include the cloud token
+====================================================================
 hub = hc.get*hub(host='https://cloud.hubitat.com', token='Maker*Token',
+=======================================================================
+app*id='Maker*App*ID', cloud*token='Cloud*API*token')
+=====================================================
 
-				 app\_id='Maker\_App\_ID', cloud\_token='Cloud\_API\_token')
+TEST_DEVICE = '1RGB'
 
-device = hc.lookup*device(hub, 'Device*Name')
+device = hc.GetSingleDevice(hub).name(TEST_DEVICE)
+
+Turn on all the switches (includes lights)
+==========================================
+
+device.turn_on() # Send command to device
 
 print(device.switch)
 
-device.turn_on()
+Get temprature from all sensors
+===============================
 
-print(device.switch)
+for i in hc.GetDevices(hub).TemperatureSensor():
+
+	print(f"{i.name} \- {i.temperature}")
 
 ```
+
 
 ## CLI Interface
 ================
@@ -163,6 +161,8 @@ hubitatcontrol ls
 [Located in /docs folder](docs)
 
 You will need a .dot file browser for the class diagrams
+
+**WIP: Setup ReadTheDocs auto gen**
 
 # Issues / Features
 ===================
