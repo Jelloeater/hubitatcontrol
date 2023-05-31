@@ -7,6 +7,7 @@ n.n.n / 2023-05-31
 v3.0.0 / 2023-05-31
 ===================
 
+  * Version 3.0.0 Release Major class refactor, MUCH cleaner and easier to work with
   * Merge pull request #48 from Jelloeater/feat/device-refactor
   * cicd: Update CLI test threshold due to .env file missing in GH runner
   * feat: Added single device get classes and updated readme

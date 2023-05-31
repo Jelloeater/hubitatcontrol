@@ -19,9 +19,7 @@ tasks:
             -   task: security
             -   task: docs
     publish:
-        -   task: format
         -   task: security
-        -   task: test
         -   task: build
         - poetry publish
     build:
