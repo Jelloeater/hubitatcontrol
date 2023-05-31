@@ -18,7 +18,7 @@ Hubitat Maker API
 ## Classes
 
 `DeviceInit(hub_in: hubitatcontrol.hub.Hub, device_in: hubitatcontrol.hub.Device)`
-:
+:   This class is normally not used, as it's for dynamically casting devices
 
 ```
 ### Methods
@@ -29,7 +29,7 @@ Hubitat Maker API
 ```
 
 `GetDevices(hub_in: hubitatcontrol.hub.Hub)`
-:
+:   Get a list of pre-casted devices you can search though
 
 ```
 ### Methods
@@ -60,14 +60,14 @@ Hubitat Maker API
 ```
 
 `GetSingleDevice(hub_in: hubitatcontrol.hub.Hub)`
-:
+:   Used to get a single device based on lookup
 
 ```
 ### Methods
 
 `id(self, device_id: int)`
-:
+:   Get a device by id and cast to the matched spec
 
 `name(self, device_name: str)`
-:
+:   Get a device by name and cast to the matched spec
 ```

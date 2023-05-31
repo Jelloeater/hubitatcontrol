@@ -2,6 +2,7 @@
 n.n.n / 2023-05-31
 ==================
 
+  * Added single device methods
   * wip: Started refactor for docs
   * feat: Finished updating unit tests
   * test: Unit test CICD

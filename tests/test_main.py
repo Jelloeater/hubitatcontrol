@@ -1,3 +1,4 @@
+import logging
 import random
 import time
 
@@ -19,26 +20,6 @@ def test_creds():
 
     assert os.getenv("HUBITAT_API_APP_ID") is not None
     assert os.getenv("HUBITAT_API_TOKEN") is not None
-
-
-class TestMisc:
-    def test_get_all_temperature_sensors(self):
-        h = get_hub_envs()
-        x = hubitatcontrol.GetDevices(h).TemperatureSensor()
-        # TODO -> Fix temp data get from EcoBee <-
-        assert x is not None
-
-    def test_get_by_name(self):
-        h = get_hub_envs()
-        TEST_DEVICE = '1RGB'
-        x = hubitatcontrol.GetSingleDevice(h).name(TEST_DEVICE)
-        assert x.name == TEST_DEVICE
-
-    def test_get_by_id(self):
-        h = get_hub_envs()
-        TEST_DEVICE = 261
-        x = hubitatcontrol.GetSingleDevice(h).id(TEST_DEVICE)
-        assert x.id == TEST_DEVICE
 
 
 class TestDevices:
@@ -126,3 +107,23 @@ class TestDevices:
         assert d.level == level
         assert d.hue == hue
         assert d.saturation == saturation
+
+
+class TestMisc:
+    def test_get_all_temperature_sensors(self):
+        h = get_hub_envs()
+        for z in hubitatcontrol.GetDevices(h).TemperatureSensor():
+            logging.info(f"{z.name} - {z.temperature}")
+            assert z.temperature > -100  # Make sure we have a valid temperature
+
+    def test_get_by_name(self):
+        h = get_hub_envs()
+        TEST_DEVICE = '1RGB'
+        x = hubitatcontrol.GetSingleDevice(h).name(TEST_DEVICE)
+        assert x.name == TEST_DEVICE
+
+    def test_get_by_id(self):
+        h = get_hub_envs()
+        TEST_DEVICE = 261
+        x = hubitatcontrol.GetSingleDevice(h).id(TEST_DEVICE)
+        assert x.id == TEST_DEVICE
