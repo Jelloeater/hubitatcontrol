@@ -42,7 +42,7 @@ class Device:
         self.name = device_from_hub["name"]
         self.label = device_from_hub["label"]
         self.type = device_from_hub["type"]
-        self.id = device_from_hub["id"]
+        self.id = int(device_from_hub["id"])
 
     @property
     def commands(self):

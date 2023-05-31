@@ -10,13 +10,18 @@ from hubitatcontrol.hub import Hub
 
 
 class GetSingleDevice:
-    @staticmethod
-    def name(device_name: str):
-        # TODO Finish name method for README
-        h = get_hub_envs()
-        for i in h.devices:
+    def __init__(self, hub_in: Hub):
+        self.hub = hub_in
+
+    def name(self, device_name: str):
+        for i in self.hub.devices:
             if i["name"] == device_name:
-                return i
+                return DeviceInit(device_in=i, hub_in=self.hub).cast_device()
+
+    def id(self, device_id: int):
+        for i in self.hub.devices:
+            if i["id"] == str(device_id):
+                return DeviceInit(device_in=i, hub_in=self.hub).cast_device()
 
 
 class GetDevices:

@@ -59,12 +59,15 @@ Hubitat Maker API
 :
 ```
 
-`GetSingleDevice()`
+`GetSingleDevice(hub_in: hubitatcontrol.hub.Hub)`
 :
 
 ```
-### Static methods
+### Methods
 
-`name(device_name: str)`
+`id(self, device_id: int)`
+:
+
+`name(self, device_name: str)`
 :
 ```
