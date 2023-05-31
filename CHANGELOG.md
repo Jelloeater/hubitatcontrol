@@ -2,6 +2,7 @@
 n.n.n / 2023-05-31
 ==================
 
+  * feat: Added single device get classes and updated readme
   * Added single device methods
   * wip: Started refactor for docs
   * feat: Finished updating unit tests
