@@ -1,0 +1,278 @@
+repo_name: Jelloeater/hubitatcontrol
+report_id: c92f61f52cf3def5010388b4c4335b85
+version: 0.1
+repo_type: Public
+timestamp: '2024-06-07T17:43:32+00:00'
+requested_by: Jelloeater
+provider: github
+branch: main
+detected_tools_count: 19
+tools:
+- name: Python
+  description: A clear and powerful object-oriented programming language, comparable
+    to Perl, Ruby, Scheme, or Java.
+  website_url: https://www.python.org
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/993/pUBY5pVj.png
+  detection_source_url: https://github.com/Jelloeater/hubitatcontrol
+  detection_source: Repo Metadata
+- name: Docker
+  description: Enterprise Container Platform for High-Velocity Innovation.
+  website_url: https://www.docker.com/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Virtual Machine Platforms & Containers
+  image_url: https://img.stackshare.io/service/586/n4u37v9t_400x400.png
+  detection_source_url: https://github.com/Jelloeater/hubitatcontrol
+  detection_source: Repo Metadata
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/Jelloeater/hubitatcontrol
+  detection_source: Repo Metadata
+- name: GitHub Actions
+  description: Automate your workflow from idea to production
+  website_url: https://github.com/features/actions
+  open_source: false
+  hosted_saas: true
+  category: Build, Test, Deploy
+  sub_category: Continuous Integration
+  image_url: https://img.stackshare.io/service/11563/actions.png
+  detection_source_url: https://github.com/Jelloeater/hubitatcontrol/blob/main/.github/workflows/Run-TODO-to-Issue.yml
+  detection_source: ".github/workflows/Run-TODO-to-Issue.yml"
+  last_updated_by: Jesse
+  last_updated_on: 2023-02-14 22:04:15.000000000 Z
+- name: PyPI
+  description: A repository of software for the Python programming language
+  website_url: https://pypi.org/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Hosted Package Repository
+  image_url: https://img.stackshare.io/service/12572/-RIWgodF_400x400.jpg
+  detection_source_url: https://github.com/Jelloeater/hubitatcontrol/blob/main/pyproject.toml
+  detection_source: pyproject.toml
+  last_updated_by: Jesse Schoepfer
+  last_updated_on: 2023-01-10 06:26:01.000000000 Z
+- name: black
+  description: The uncompromising code formatter
+  package_url: https://pypi.org/project/black
+  version: 23.3.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20099/default_029b9bbfb6be2cd34bebeda5b8e1e80a1d22441c.png
+  detection_source_url: https://github.com/Jelloeater/hubitatcontrol/blob/main/poetry.lock
+  detection_source: pyproject.toml
+  last_updated_by: Jesse Schoepfer
+  last_updated_on: 2023-02-14 20:04:37.000000000 Z
+  vulnerabilities:
+  - name: Black vulnerable to Regular Expression Denial of Service (ReDoS)
+    cve_id: CVE-2024-21503
+    cve_url: https://github.com/advisories/GHSA-fj7x-q9j7-g6q6
+    detected_date: Mar 21
+    severity: moderate
+    first_patched: 24.3.0
+- name: requests
+  description: Python HTTP for Humans
+  package_url: https://pypi.org/project/requests
+  version: 2.31.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19826/default_d7c684bf2673f008a9f02ac93901229297a22d7e.png
+  detection_source_url: https://github.com/Jelloeater/hubitatcontrol/blob/main/poetry.lock
+  detection_source: pyproject.toml
+  last_updated_by: Jesse Schoepfer
+  last_updated_on: 2023-05-31 04:04:42.000000000 Z
+  vulnerabilities:
+  - name: Requests `Session` object does not verify requests after making first request
+      with verify=False
+    cve_id: CVE-2024-35195
+    cve_url: https://github.com/advisories/GHSA-9wx4-h78v-vm56
+    detected_date: May 21
+    severity: moderate
+    first_patched: 2.32.0
+- name: autoflake
+  description: Removes unused imports and unused variables
+  package_url: https://pypi.org/project/autoflake
+  version: 2.1.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/pypi/image.png
+  detection_source_url: https://github.com/Jelloeater/hubitatcontrol/blob/main/poetry.lock
+  detection_source: pyproject.toml
+  last_updated_by: Jesse Schoepfer
+  last_updated_on: 2023-04-16 23:02:07.000000000 Z
+- name: bandit
+  description: Security oriented static analyser for python code
+  package_url: https://pypi.org/project/bandit
+  version: 1.7.5
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/pypi/image.png
+  detection_source_url: https://github.com/Jelloeater/hubitatcontrol/blob/main/poetry.lock
+  detection_source: pyproject.toml
+  last_updated_by: Jesse Schoepfer
+  last_updated_on: 2023-02-13 18:26:05.000000000 Z
+- name: flake8
+  description: 'The modular source code checker: pep8, pyflakes and co'
+  package_url: https://pypi.org/project/flake8
+  version: 6.0.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19920/default_c8be5290cb8d8a8b578535a2c6475d1057ff4ea4.png
+  detection_source_url: https://github.com/Jelloeater/hubitatcontrol/blob/main/poetry.lock
+  detection_source: pyproject.toml
+  last_updated_by: Jesse Schoepfer
+  last_updated_on: 2023-04-16 23:02:07.000000000 Z
+- name: isort
+  description: A Python utility / library to sort Python imports
+  package_url: https://pypi.org/project/isort
+  version: 5.12.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20117/default_9cf91bfbbfb266fc12a914cdc09d9e4b55c773bb.png
+  detection_source_url: https://github.com/Jelloeater/hubitatcontrol/blob/main/poetry.lock
+  detection_source: pyproject.toml
+  last_updated_by: Jesse Schoepfer
+  last_updated_on: 2023-01-21 18:39:33.000000000 Z
+- name: keyring
+  description: Store and access your passwords safely
+  package_url: https://pypi.org/project/keyring
+  version: 23.13.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19953/default_fbe690a687f1af7dc36ac3d526708be3294c4cc9.png
+  detection_source_url: https://github.com/Jelloeater/hubitatcontrol/blob/main/poetry.lock
+  detection_source: pyproject.toml
+  last_updated_by: Jesse Schoepfer
+  last_updated_on: 2023-04-01 05:57:18.000000000 Z
+- name: pre-commit
+  description: A framework for managing and maintaining multi-language pre-commit
+    hooks
+  package_url: https://pypi.org/project/pre-commit
+  version: 3.3.2
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20560/default_d975dcf643a054134f39226d51d4a5fea9320efe.png
+  detection_source_url: https://github.com/Jelloeater/hubitatcontrol/blob/main/poetry.lock
+  detection_source: pyproject.toml
+  last_updated_by: Jesse Schoepfer
+  last_updated_on: 2023-02-13 18:26:05.000000000 Z
+- name: pylint
+  description: Python code static checker
+  package_url: https://pypi.org/project/pylint
+  version: 2.17.4
+  license: GPL-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19980/default_a82f3cd9981909e38152c6f66eefe94bed2aa5ca.png
+  detection_source_url: https://github.com/Jelloeater/hubitatcontrol/blob/main/poetry.lock
+  detection_source: pyproject.toml
+  last_updated_by: Jesse Schoepfer
+  last_updated_on: 2023-02-14 04:45:29.000000000 Z
+- name: pytest
+  description: 'Pytest: simple powerful testing with Python'
+  package_url: https://pypi.org/project/pytest
+  version: 7.3.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19843/default_4604ff5dcb7f4d9c7b3833591c2142493951b19c.png
+  detection_source_url: https://github.com/Jelloeater/hubitatcontrol/blob/main/poetry.lock
+  detection_source: pyproject.toml
+  last_updated_by: Jesse Schoepfer
+  last_updated_on: 2023-05-31 04:04:42.000000000 Z
+- name: pytest-cov
+  description: Pytest plugin for measuring coverage
+  package_url: https://pypi.org/project/pytest-cov
+  version: 4.1.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19958/default_e91a78767854f0fa80aab2f13d1a25b15ca2d278.png
+  detection_source_url: https://github.com/Jelloeater/hubitatcontrol/blob/main/poetry.lock
+  detection_source: pyproject.toml
+  last_updated_by: Jesse Schoepfer
+  last_updated_on: 2023-05-31 04:04:42.000000000 Z
+- name: python-dotenv
+  description: Add .env support to your django/flask apps in development and deployments
+  package_url: https://pypi.org/project/python-dotenv
+  version: 1.0.0
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20095/default_3141eabecdd8efa55de73a33c43f2ac0d5bbf954.png
+  detection_source_url: https://github.com/Jelloeater/hubitatcontrol/blob/main/poetry.lock
+  detection_source: pyproject.toml
+  last_updated_by: Jesse Schoepfer
+  last_updated_on: 2023-02-18 02:47:02.000000000 Z
+- name: setuptools
+  description: Easily download
+  package_url: https://pypi.org/project/setuptools
+  version: 67.8.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19831/default_65d1c12a133e1aa67ae96a1221c9c122ddf86c5f.png
+  detection_source_url: https://github.com/Jelloeater/hubitatcontrol/blob/main/poetry.lock
+  detection_source: pyproject.toml
+  last_updated_by: Jesse Schoepfer
+  last_updated_on: 2023-05-31 04:04:42.000000000 Z
+- name: vulture
+  description: Find dead code
+  package_url: https://pypi.org/project/vulture
+  version: '2.7'
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/pypi/image.png
+  detection_source_url: https://github.com/Jelloeater/hubitatcontrol/blob/main/poetry.lock
+  detection_source: pyproject.toml
+  last_updated_by: Jesse Schoepfer
+  last_updated_on: 2023-01-21 17:43:50.000000000 Z
