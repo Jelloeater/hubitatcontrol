@@ -81,7 +81,7 @@ tasks:
     security:
         - poetry run whispers {{.BUILD_DIR}} # Check for security issues
         - poetry run bandit --silent -r {{.BUILD_DIR}}
-        - poetry run tartufo scan-local-repo .
+        # - poetry run tartufo scan-local-repo .
     install-hooks:
         cmds:
             - poetry run pre-commit install

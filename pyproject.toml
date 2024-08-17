@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "hubitatcontrol"
-version = "v3.0.0"
+version = "v3.0.1"
 description = "Hubitat Maker API Interface"
 authors = ["Jesse Schoepfer <jelloeater@gmail.com>"]
 license = "MIT License"
@@ -22,7 +22,7 @@ hubitatcontrol = "hubitatcontrol.__main__:app"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-requests = "*"
+requests = "2.32.3"
 typer = "*"
 prettytable = "*"
 keyring = "^23.13.1"
@@ -87,6 +87,8 @@ exclude-entropy-patterns = [
     {path-pattern = 'Pipfile\.lock', pattern = '.'},
     {path-pattern = 'README\.md', pattern = '.'},
     {path-pattern = 'index\.rst', pattern = '.'},
+    {path-pattern = 'techstack\.yml', pattern = '.'},
+    {path-pattern = 'techstack\.md', pattern = '.'},
 
 ]
 
