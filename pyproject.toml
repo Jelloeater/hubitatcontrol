@@ -5,7 +5,9 @@ description = "Hubitat Maker API Interface"
 authors = ["Jesse Schoepfer <jelloeater@gmail.com>"]
 license = "MIT License"
 readme = "README.md"
-homepage = "https://github.com/Jelloeater/hubitatcontrol"
+homepage = "https://pypi.org/project/hubitatcontrol"
+repository = "https://github.com/Jelloeater/hubitatcontrol"
+documentation = "https://github.com/Jelloeater/hubitatcontrol/tree/main/docs"
 keywords = ["hubitat", "makerapi","requests"]
 classifiers = ["Development Status :: 5 - Production/Stable",
  "Environment :: No Input/Output (Daemon)",
