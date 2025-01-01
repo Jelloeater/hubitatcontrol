@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "hubitatcontrol"
-version = "v3.0.1"
+version = "v3.0.2"
 description = "Hubitat Maker API Interface"
-authors = ["Jesse Schoepfer <jelloeater@gmail.com>"]
+authors = ["Jelloeater <jello@jelloeater.me"]
 license = "MIT License"
 readme = "README.md"
 homepage = "https://pypi.org/project/hubitatcontrol"
