@@ -10,7 +10,10 @@ on:
       - "v[0-9]+.[0-9]+.[0-9]+"
 
 jobs:
+    test:
+        uses: ./.github/workflows/test.yml
     release-gen:
+        needs: test
         runs-on: ubuntu-latest
         permissions:
           contents: write
@@ -22,6 +25,7 @@ jobs:
             generateReleaseNotes: true
 
     build-and-push-image:
+      needs: test
       runs-on: ubuntu-latest
       permissions:
         contents: read
@@ -54,3 +58,16 @@ jobs:
             labels: ${{ steps.meta.outputs.labels }}
             cache-from: type=gha
             cache-to: type=gha,mode=max
+    publish:
+        needs: test
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            packages: write
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+            - name: Build and publish to pypi
+              uses: JRubics/poetry-publish@v2.0
+              with:
+                  pypi_token: ${{ secrets.PYPI_TOKEN }}

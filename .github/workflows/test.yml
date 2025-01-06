@@ -1,6 +1,7 @@
 name: Test
 
 on:
+    workflow_call:
     pull_request: { }
     push:
         branches: [ main ]
@@ -26,4 +27,9 @@ jobs:
                 max_attempts: 3
                 retry_on: error
                 command: task test
-
+            - name: Build and publish to pypi
+              uses: JRubics/poetry-publish@v2.0
+              with:
+                  pypi_token: ${{ secrets.PYPI_TOKEN }}
+                  poetry_install_options: "--sync --no-root"
+                  poetry_publish_options: "--dry-run"
